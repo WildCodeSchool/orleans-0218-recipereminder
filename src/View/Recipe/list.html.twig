@@ -1,8 +1,12 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Item {{ item.title }}</h1>
-    <p>{{ item.id }}. {{ item.title }}</p>
-    <a href="/item/edit/{{ item.id }}">Edit</a>
-    <a href="/">Back</a>
+    <h1 class="text-center"> {{ title }}</h1>
+    <div id="list" class="mx-auto">
+        {% for thumb in list %}
+
+           {# {% include 'thumb.html.twig' %} #}
+        {% endfor %}
+    </div>
+
 {% endblock %}

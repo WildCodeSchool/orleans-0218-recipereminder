@@ -62,8 +62,20 @@ abstract class AbstractManager
         return $statement->fetch();
     }
 
+    public function selectAllThumb()
+    {
+
+        // prepared request
+        $statement = $this->pdoConnection->prepare("SELECT * FROM $this->table");
+        $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
+
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
+
     /**
-     * DELETE on row in dataase by ID
+     * DELETE on row in database by ID
      *
      * @param int $id
      */
