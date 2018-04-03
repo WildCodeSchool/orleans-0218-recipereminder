@@ -8,6 +8,9 @@
 
 namespace Controller;
 
+use Model\Event;
+use Model\EventManager;
+
 class EventController extends AbstractController
 {
 
