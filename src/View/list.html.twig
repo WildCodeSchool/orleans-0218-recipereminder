@@ -3,11 +3,13 @@
 {% block content %}
     <h1 class="text-center"> {{ title }}</h1>
     <div id="list" class="mx-auto">
+        <div class="row">
         {% for thumb in list %}
             {% include 'thumb.html.twig' %}
             {% else %}
             <p> Aucun élément à afficher.</p>
         {% endfor %}
+        </div>
     </div>
 
 {% endblock %}
