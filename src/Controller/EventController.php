@@ -8,7 +8,6 @@
 
 namespace Controller;
 
-
 class EventController extends AbstractController
 {
 

@@ -8,7 +8,6 @@
 
 namespace Model;
 
-
 class EventManager extends AbstractManager
 {
     const TABLE = 'event';
