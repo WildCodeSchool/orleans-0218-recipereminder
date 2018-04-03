@@ -1,14 +1,18 @@
+
 {
-    "name": "recipe/recipe",
-    "description": "Recipe Reminder",
+    "name": "aurel/simple-mvc",
+    "description": "Simple from scratch PHP MVC",
     "authors": [
         {
-            "name": "Raphael Mouton",
-            "email": "raphaelmouton@live.fr"
+            "name": "Aurelien",
+            "email": "barbier.aurelien@wildcodeschool.fr"
         }
     ],
+    "minimum-stability": "stable",
     "require": {
-        "twig/twig": "^2.4"
+        "nikic/fast-route": "^1.2",
+        "twig/twig": "^2.4",
+        "squizlabs/php_codesniffer": "*"
     },
     "autoload": {
         "psr-4": {
@@ -17,4 +21,3 @@
         }
     }
 }
-
