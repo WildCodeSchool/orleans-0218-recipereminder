@@ -8,7 +8,6 @@
 
 namespace Controller;
 
-
 class HomepageController extends AbstractController
 {
     public function index()

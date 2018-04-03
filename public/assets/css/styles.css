@@ -13,10 +13,14 @@ h1 {
     text-align: center;
     font-weight: bold;
     font-family: 'Galada', cursive;
-    vertical-align: middle;
 }
 
 h2 {
     text-align: center;
     font-family: 'Abril Fatface', cursive;
+}
+
+.thumbnail {
+    height: 500px;
+    background-image: url('../images/thumbtest2.jpg');
 }
