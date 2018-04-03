@@ -2,7 +2,7 @@ body {
     margin: 0;
 }
 
-header {
+.banner {
     background-color: gainsboro;
     background-size: cover;
     height: 500px;
