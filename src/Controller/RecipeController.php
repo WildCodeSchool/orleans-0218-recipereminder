@@ -8,7 +8,6 @@
 
 namespace Controller;
 
-
 use Model\Recipe;
 use Model\RecipeManager;
 
@@ -23,7 +22,7 @@ class RecipeController extends AbstractController
      *
      * @return string
      */
-    public function recipe()
+    public function listRecipe()
     {
         /*$itemManager = new RecipeManager();
         $items = $itemManager->selectAll();*/
@@ -34,6 +33,6 @@ class RecipeController extends AbstractController
 
 
 
-        return $this->twig->render('Recipe/list.html.twig', ['title' => $title , 'list' => $recipes ]);
+        return $this->twig->render('list.html.twig', ['title' => $title , 'list' => $recipes ]);
     }
 }

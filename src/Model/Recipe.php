@@ -155,8 +155,4 @@ class Recipe
     {
         $this->comment = $comment;
     }
-    
-    
-    
-    
 }

@@ -17,7 +17,7 @@ $routes = [
         ['show', '/item/{id:\d+}', 'GET'], // action, url, method
     ],*/
     'Recipe' => [ // Controller
-        ['recipe', '/recipe', 'GET'], // action, url, method
+        ['listRecipe', '/recipe', 'GET'], // action, url, method
 
     ],
 
