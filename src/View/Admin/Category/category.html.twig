@@ -4,7 +4,7 @@
     <h1>Administration des catégories</h1>
     <ul>
         {% for category in categories %}
-            <li><a href="/category/{{ item.id }}">{{ item.id }}. {{ namecategory.title }}</a></li>
+            <li>{{ category.name }} </li>
         {% else %}
             <li>Rien à afficher</li>
         {% endfor %}
