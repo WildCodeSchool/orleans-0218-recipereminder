@@ -3,56 +3,58 @@
 .navbar-default {
     background-color: white;
     box-shadow: 2px 2px 5px grey;
-    border-radius: 0px;
+    border-radius: 0;
 }
 .logo-header {
-    padding-top: -20px;
-    margin-left:-50px ;
+    margin-top: 3px;
+    font-family: 'Galada', cursive;
+    font-size: 25px;
+    color:#1f212f;
 }
-.navbar-nav {
+.navbar-default .navbar-nav > li > a {
     font-weight: bold;
-    font-size: 18px;
-    margin-top: 4px;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-left: 5px;
+    font-family: 'Galada', cursive;
+    color:#de8835;
 }
+.navbar-default .navbar-nav > li > a:hover {
+    color:#ff8008;
+}
+
 .btn.btn-default.btn-outline.btn-circle.collapsed {
     font-weight: bold;
-    border: 0px;
+    border: 0;
     font-size: 18px;
-
+    color:#1f212f;
+    font-family: 'Galada', cursive;
 }
-
+.btn.btn-default.btn-outline.btn-circle.collapsed:hover {
+    color:#ff8008;
+}
+/*FIN NAVBAR */
 
 /*FOOTER */
-.footer{
-    position: absolute;
-    bottom:0;
-    width: 100%;
-}
 .grey {
-    background-color:#eee;
+    background-color:#fffcf9;
+    padding: 70px;
+    font-size: 15px;
+    text-align: center;
+    box-shadow: 2px 0 1px grey;
 }
-.section-seperate {
-    border-bottom: 1px solid #777984;
+.grey a {
+    color:dimgrey;
 }
-.padding-t-b {
-    padding-top: 80px;
-    padding-bottom: 80px;
+.grey a:hover {
+    color:black;
+    text-decoration: none;
 }
-.padding-t-b40 {
-    padding-top: 40px;
-    padding-bottom: 40px;
+.logo-footer {
+    padding-top: -20px;
+    font-family: 'Galada', cursive;
+    font-size: 25px;
+    color:#1f212f;
 }
-.margin-b-30 {
-    margin-bottom:30px!important
-}
-li, li a {
-    font-size: 16px;
-    font-weight: 500;
-    color: #515769;
-}
+/*FIN FOOTER*/
 
-.footer .footer-list-item {
-
-    color: #777984;
-    margin-bottom: 15px;
-}
