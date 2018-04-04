@@ -8,7 +8,6 @@
 
 namespace Model;
 
-
 class CategoryManager extends AbstractManager
 {
     const TABLE = 'category';

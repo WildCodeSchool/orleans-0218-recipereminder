@@ -23,12 +23,11 @@ class CategoryController extends AbstractController
      *
      * @return string
      */
-    public function dish_cat()
+    public function dishCat()
     {
             $categoryManager = new CategoryManager();
             $categories = $categoryManager->selectAll();
 
         return $this->twig->render('admin/category.html.twig', ['categories' => $categories]);
     }
- }
-
+}

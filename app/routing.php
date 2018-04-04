@@ -20,7 +20,7 @@ $routes = [
 
 
     'Category' => [ // Controller
-        ['index', '/admin/category', 'GET'], // action, url, method
+        ['dishCat', '/admin/category', 'GET'], // action, url, method
 
     ],
 
