@@ -2,11 +2,13 @@
 
 {% block content %}
     <h1>Administration des catégories</h1>
-    <ul>
-        {% for category in categories %}
-            <li>{{ category.name }} </li>
+    {% for category in categories %}
+        <table class="table table-bordered">
+        <thead>
+        <tr>
+        <td>{{ category.name }} </td>
         {% else %}
-            <li>Rien à afficher</li>
+            <td>Rien à afficher</td>
         {% endfor %}
-    </ul>
+    </table>
 {% endblock %}
