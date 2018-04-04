@@ -1,7 +1,11 @@
-<div class="col-xs-12 col-md-4">
+<div class="col-xs-12 col-sm-6 col-md-4">
     <a href="#" class="thumbnail">
-        <h2>{{ list.name }}</h2>
-        <h3>{{ list.category }}</h3>
-        <h3>{{ list.date }}</h3>
+        {% if thumb.img is empty %}
+        <img src="assets/images/thumbtest3.jpg" alt="recipe image" class="img-fluid">
+        {% else %}
+        <img src="assets/images/{{ thumb.img }}" alt="{{ thumb.name }}" class="img-fluid">
+        {% endif %}
+        {{ thumb.name }}
+        {{ thumb.info }}
     </a>
 </div>
