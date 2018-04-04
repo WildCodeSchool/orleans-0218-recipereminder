@@ -2,24 +2,24 @@
 
 {% block content %}
     <h1>Administration des catégories</h1>
-    <div class="container">
-    <div class="row">
-    <div class="col-sm-5">
-     <table class="table table-bordered text-center">
-<thead>
-         <tbody>
-
-<tr>
-    {% for category in categories %}
-
-        <td>{{ category.name }} </td>
-        {% else %}
-
-</tr>
-         </thead>
-        </tbody>
-     </table>
-    </div>
-    </div>
-    </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5">
+                     <table class="table table-bordered text-center">
+                         <thead>
+                             <tr>
+                                 <th>Catégories</th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                         {% for category in categories %}
+                            <tr>
+                                <td>{{ category.name }}</td>
+                            </tr>
+                            {% else %}
+                         </tbody>
+                     </table>
+                </div>
+            </div>
+        </div>
 {% endblock %}
