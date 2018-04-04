@@ -24,14 +24,9 @@ class RecipeController extends AbstractController
      */
     public function listRecipe()
     {
-        /*$itemManager = new RecipeManager();
-        $items = $itemManager->selectAll();*/
-
         $title = 'Recettes';
         $recipeManager = new RecipeManager();
         $recipes = $recipeManager->selectAllThumb();
-
-
 
         return $this->twig->render('list.html.twig', ['title' => $title , 'list' => $recipes ]);
     }

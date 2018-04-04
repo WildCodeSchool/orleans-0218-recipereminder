@@ -39,9 +39,14 @@ abstract class AbstractManager
      *
      * @return array
      */
-    public function selectAll(): array
+    public function selectAll()
     {
-        return $this->pdoConnection->query('SELECT * FROM ' . $this->table, \PDO::FETCH_CLASS, $this->className)->fetchAll();
+        $statement = $this->pdoConnection->prepare("SELECT * FROM $this->table");
+        $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
+
+        $statement->execute();
+
+        return $statement->fetchAll();
     }
 
     /**
@@ -62,17 +67,6 @@ abstract class AbstractManager
         return $statement->fetch();
     }
 
-    public function selectAllThumb()
-    {
-
-        // prepared request
-        $statement = $this->pdoConnection->prepare("SELECT * FROM $this->table");
-        $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
-
-        $statement->execute();
-
-        return $statement->fetchAll();
-    }
 
     /**
      * DELETE on row in database by ID
