@@ -2,13 +2,25 @@
 
 {% block content %}
     <h1>Administration des catégories</h1>
+    <div class="container">
+    <div class="row">
+    <div class="col-sm-5">
+    <table class="table table-bordered text-center">
+
+        <tbody>
+    <thead>
+
     {% for category in categories %}
-        <table class="table table-bordered">
-        <thead>
-        <tr>
+
         <td>{{ category.name }} </td>
         {% else %}
             <td>Rien à afficher</td>
         {% endfor %}
+
+    </div>
+    </div>
+    </div>
+        </thead>
+    </tbody>
     </table>
 {% endblock %}
