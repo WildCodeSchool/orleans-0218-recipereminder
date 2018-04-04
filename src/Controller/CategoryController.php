@@ -28,6 +28,6 @@ class CategoryController extends AbstractController
             $categoryManager = new CategoryManager();
             $categories = $categoryManager->selectAll();
 
-        return $this->twig->render('admin/category.html.twig', ['categories' => $categories]);
+        return $this->twig->render('Admin/Category/category.html.twig', ['categories' => $categories]);
     }
 }
