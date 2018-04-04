@@ -5,12 +5,14 @@
     box-shadow: 2px 2px 5px grey;
     border-radius: 0;
 }
+
 .logo-header {
     margin-top: 3px;
     font-family: 'Galada', cursive;
     font-size: 25px;
     color:#1f212f;
 }
+
 .navbar-default .navbar-nav > li > a {
     font-weight: bold;
     font-size: 20px;
@@ -19,6 +21,7 @@
     font-family: 'Galada', cursive;
     color:#de8835;
 }
+
 .navbar-default .navbar-nav > li > a:hover {
     color:#ff8008;
 }
@@ -30,9 +33,11 @@
     color:#1f212f;
     font-family: 'Galada', cursive;
 }
+
 .btn.btn-default.btn-outline.btn-circle.collapsed:hover {
     color:#ff8008;
 }
+
 /*FIN NAVBAR */
 
 /*FOOTER */
@@ -43,13 +48,16 @@
     text-align: center;
     box-shadow: 2px 0 1px grey;
 }
+
 .grey a {
     color:dimgrey;
 }
+
 .grey a:hover {
     color:black;
     text-decoration: none;
 }
+
 .logo-footer {
     padding-top: -20px;
     font-family: 'Galada', cursive;
