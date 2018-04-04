@@ -23,7 +23,7 @@ class EventController extends AbstractController
     {
         $title = 'Evénements';
         $eventManager = new EventManager();
-        $events = $eventManager->selectAllThumb();
+        $events = $eventManager->listAllEvents();
 
         return $this->twig->render('list.html.twig', ['title' => $title, 'list' => $events]);
     }

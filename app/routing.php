@@ -17,7 +17,7 @@ $routes = [
         ['show', '/item/{id:\d+}', 'GET'], // action, url, method
     ],*/
     'Event' => [
-        ['listEvent', '/event/', 'GET'],
+        ['listEvent', '/event', 'GET'],
 
     ],
 ];
