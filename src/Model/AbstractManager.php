@@ -42,7 +42,10 @@ abstract class AbstractManager
     public function selectAll()
     {
         return $this->pdoConnection->query(
-            'SELECT * FROM ' . $this->table, \PDO::FETCH_CLASS, $this->className)->fetchAll();
+            'SELECT * FROM ' . $this->table,
+            \PDO::FETCH_CLASS,
+            $this->className
+        )->fetchAll();
     }
 
     /**
