@@ -24,18 +24,12 @@ class RecipeManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
-    public function selectAllThumb()
+    public function selectAllRecipe()
     {
-        // prepared request
         $sql = "SELECT r.id,r.name,img,c.name as info
                 FROM recipe as r
                 LEFT JOIN category as c ON c.id = r.id";
 
-        $statement = $this->pdoConnection->prepare($sql);
-        $statement->setFetchMode(\PDO::FETCH_ASSOC, $this->className);
-
-        $statement->execute();
-
-        return $statement->fetchAll();
+        return $this->pdoConnection->query($sql, \PDO::FETCH_ASSOC)->fetchAll();
     }
 }
