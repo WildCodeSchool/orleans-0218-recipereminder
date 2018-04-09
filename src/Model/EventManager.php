@@ -20,15 +20,4 @@ class EventManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
-    /**
-     * @return array
-     */
-    public function listAllEvents() : array
-    {
-        $statement = $this->pdoConnection->prepare('SELECT id, name, img, date as info FROM event');
-        $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
-        $statement->execute();
-
-        return $statement->fetchAll();
-    }
 }

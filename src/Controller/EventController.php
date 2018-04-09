@@ -8,23 +8,21 @@
 
 namespace Controller;
 
-use Model\Event;
 use Model\EventManager;
 
 class EventController extends AbstractController
 {
 
     /**
-     * Display item listing
+     * Display event listing
      *
      * @return string
      */
     public function listEvent()
     {
-        $title = 'Evénements';
         $eventManager = new EventManager();
-        $events = $eventManager->listAllEvents();
+        $events = $eventManager->selectAll();
 
-        return $this->twig->render('list.html.twig', ['title' => $title, 'list' => $events]);
+        return $this->twig->render('Event/eventslist.html.twig', ['events' => $events]);
     }
 }
