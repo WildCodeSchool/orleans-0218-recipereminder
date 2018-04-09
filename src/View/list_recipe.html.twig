@@ -5,9 +5,16 @@
         <h1 class="text-center"> {{ title }}</h1>
         <div id="list">
             <div class="row">
+
             {% for thumb in list %}
-                {% include 'thumb.html.twig' %}
-                {% else %}
+               {# attente pour affichage template #}
+                <p>  name : {{ thumb.name }} <br>
+                     category : {{ thumb.category }} <br>
+                     img : {{ thumb.img }} <br>
+
+                {# fin #}
+                </p>
+            {% else %}
                 <p> Aucun élément à afficher.</p>
             {% endfor %}
             </div>

@@ -26,7 +26,7 @@ class RecipeManager extends AbstractManager
 
     public function selectAllRecipe()
     {
-        $sql = "SELECT r.id,r.name,img,c.name as info
+        $sql = "SELECT r.id,r.name,img,c.name as category
                 FROM recipe as r
                 LEFT JOIN category as c ON c.id = r.id";
 
