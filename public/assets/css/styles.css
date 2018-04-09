@@ -42,7 +42,7 @@
 /*FIN NAVBAR */
 
 /*FOOTER */
-.grey {
+footer {
     background-color:#fffcf9;
     padding: 70px;
     font-size: 15px;
@@ -50,11 +50,11 @@
     box-shadow: 2px 0 1px grey;
 }
 
-.grey a {
+footer a {
     color:dimgrey;
 }
 
-.grey a:hover {
+footer a:hover {
     color:black;
     text-decoration: none;
 }
