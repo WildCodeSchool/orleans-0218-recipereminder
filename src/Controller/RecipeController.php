@@ -24,7 +24,6 @@ class RecipeController extends AbstractController
      */
     public function listRecipe()
     {
-        $title = 'Recettes';
         $recipeManager = new RecipeManager();
         $recipes = $recipeManager->selectAllRecipe();
 
