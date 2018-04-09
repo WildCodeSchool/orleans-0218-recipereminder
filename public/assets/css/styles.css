@@ -3,7 +3,7 @@ body {
 }
 
 .banner {
-    background-color: cadetblue;
+    background-image: url("http://via.placeholder.com/2000x500");
     background-size: cover;
     height: 500px;
 }
@@ -43,12 +43,11 @@ h2, h3, h4 {
     object-fit: cover;
 }
 
-.odd {
-    background-color: white;
+section:nth-child(even) {
     padding-bottom: 50px;
 }
 
-.even {
+section:nth-child(odd) {
     background-color: gainsboro;
     padding-bottom: 50px;
 }
