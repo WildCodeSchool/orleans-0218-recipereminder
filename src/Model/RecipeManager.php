@@ -32,7 +32,7 @@ class RecipeManager extends AbstractManager
                 LEFT JOIN category as c ON c.id = r.id";
 
         $statement = $this->pdoConnection->prepare($sql);
-        $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
+        $statement->setFetchMode(\PDO::FETCH_ASSOC, $this->className);
 
         $statement->execute();
 
