@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <div class="container>">
+        <h1 class="text-center">Recettes</h1>
+        <div id="list">
+            <div class="row">
+
+            {% for recipe in recipes %}
+               {# attente pour affichage template #}
+                <p>  name : {{ recipe.name }} <br>
+                     category : {{ recipe.category }} <br>
+                     img : {{ recipe.img }} <br>
+
+                {# fin #}
+                </p>
+            {% else %}
+                <p> Aucun élément à afficher.</p>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
