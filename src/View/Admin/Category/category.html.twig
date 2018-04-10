@@ -1,4 +1,4 @@
-{% extends 'Admin/admin_layout.html.twig' %}
+{% extends 'layout.html.twig' %}
 
 {% block content %}
     <h1>Administration des catégories</h1>
@@ -16,7 +16,7 @@
                             <tr>
                                 <td>{{ category.name }}</td>
                             </tr>
-                            {% else %}
+                            {% endfor %}
                          </tbody>
                      </table>
                 </div>

@@ -11,7 +11,7 @@
 
 
 $routes = [
-    /* 'Item' => [ // Controller
+     /*'Item' => [ // Controller
         ['index', '/', 'GET'], // action, url, method
         ['add', '/item/add', 'GET'], // action, url, method
         ['edit', '/item/edit/{id:\d+}', 'GET'], // action, url, method
