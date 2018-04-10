@@ -2,3 +2,5 @@
 /temp/*
 *.cache
 app/db.php
+.idea
+
