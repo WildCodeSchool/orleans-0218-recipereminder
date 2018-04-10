@@ -11,17 +11,16 @@
 
 
 $routes = [
-     /*'Item' => [ // Controller
-        ['index', '/', 'GET'], // action, url, method
-        ['add', '/item/add', 'GET'], // action, url, method
-        ['edit', '/item/edit/{id:\d+}', 'GET'], // action, url, method
-        ['show', '/item/{id:\d+}', 'GET'], // action, url, method
-    ],*/
 
-
-    'Category' => [ // Controller
-        ['dishCat', '/admin/category', 'GET'], // action, url, method
-
+    'Homepage' => [
+        ['index', '/', 'GET'],
     ],
 
+  'Category' => [ // Controller
+        ['list', '/admin/category', 'GET'], // action, url, method
+    ],
+   'Recipe' => [ // Controller
+        ['listRecipe', '/recipe', 'GET'], // action, url, method
+
+    ],
 ];
