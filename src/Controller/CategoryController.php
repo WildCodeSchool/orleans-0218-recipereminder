@@ -23,7 +23,7 @@ class CategoryController extends AbstractController
      *
      * @return string
      */
-    public function dishCat()
+    public function list()
     {
             $categoryManager = new CategoryManager();
             $categories = $categoryManager->selectAll();
