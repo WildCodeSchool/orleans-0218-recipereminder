@@ -1,3 +1,62 @@
+body {
+    margin: 0;
+}
+
+.banner {
+    background-image: url("../images/bgaffiche.jpg");
+    background-size: cover;
+    height: 500px;
+    box-shadow: 1px 1px 6px black;
+}
+
+.banner h1 {
+    margin-top: 0;
+    padding-top: 230px;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Galada', cursive;
+}
+
+h2 {
+    padding: 20px 0px 20px 0px;
+}
+
+h2, h3, h4 {
+    text-align: center;
+    font-family: 'Abril Fatface', cursive;
+}
+
+figcaption p {
+    text-align: center;
+}
+
+.thumbnail {
+    padding: 0;
+    border: 1px solid black;
+    height: 500px;
+    overflow: hidden;
+    max-width: 350px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.thumbnail img {
+    display: block;
+    max-width: 350px;
+    height: 70%;
+    width: 100%;
+    object-fit: cover;
+}
+
+section:nth-child(even) {
+    padding-bottom: 50px;
+}
+
+section:nth-child(odd) {
+    background-color: gainsboro;
+    padding-bottom: 50px;
+}
+
 /* NAVBAR */
 
 .navbar-default {
@@ -66,4 +125,3 @@ footer a:hover {
     color:#1f212f;
 }
 /*FIN FOOTER*/
-

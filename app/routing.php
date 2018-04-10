@@ -10,10 +10,11 @@
  */
 
 $routes = [
+    'Homepage' => [
+        ['index', '/', 'GET'],
+    ]
 
     'Recipe' => [ // Controller
         ['listRecipe', '/recipe', 'GET'], // action, url, method
-
     ],
-
 ];
