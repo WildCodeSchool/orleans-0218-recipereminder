@@ -16,10 +16,10 @@ $routes = [
         ['index', '/', 'GET'],
     ],
 
-  'Category' => [ // Controller
+    'Category' => [ // Controller
         ['list', '/admin/category', 'GET'], // action, url, method
     ],
-   'Recipe' => [ // Controller
+    'Recipe' => [ // Controller
         ['listRecipe', '/recipe', 'GET'], // action, url, method
 
     ],
