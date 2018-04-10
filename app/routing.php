@@ -11,13 +11,15 @@
 
 
 $routes = [
+    'Homepage' => [
+        ['index', '/', 'GET'],
+    ]
 
   'Category' => [ // Controller
         ['list', '/admin/category', 'GET'], // action, url, method
 
    'Recipe' => [ // Controller
         ['listRecipe', '/recipe', 'GET'], // action, url, method
-      
-    ],
 
+    ],
 ];
