@@ -31,9 +31,11 @@ class CategoryController extends AbstractController
             try {
                 $category = new Category();
                 $category->setName($_POST['name']);
+                $data['name']=$category->getName();
 
                 $categoryManager = new CategoryManager();
-                $categoryManager->addCategory($category);
+                $categoryManager->insert($data);
+
             } catch (\PDOException $p) {
                 if ($p->errorInfo[0]==23000) {
                     $error='Ce nom existe déjà.';
