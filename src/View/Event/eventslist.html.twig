@@ -10,7 +10,7 @@
                     {% if thumb.img is empty %}
                         <img src="../assets/images/popartcook.jpg" alt="event without image" class="">
                     {% else %}
-                        <img src="assets/images/{{ event.img }}" alt="{{ event.name }}" class="">
+                    <a href= "/event/{{ event.id }}"><img src="assets/images/{{ event.img }}" alt="{{ event.name }}" class=""></a>
                     {% endif %}
                     <figcaption class="caption">
                         <h3>{{ event.name|capitalize }}</h3>
