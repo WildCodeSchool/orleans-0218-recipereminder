@@ -125,3 +125,25 @@ footer a:hover {
     color:#1f212f;
 }
 /*FIN FOOTER*/
+
+.table-center, .table-center th{
+    text-align: center;
+}
+
+/* ----- class pour tout les boutons */
+.btn{
+    color: #fff;
+    background-color: #ff8533;
+    border-color: #e65c00;
+    margin:10px;
+}
+.btn:hover {
+    color: #fff;
+    background-color: #ff6600;
+    border-color:#e65c00;
+}
+
+.btn.focus, .btn:focus, .btn:hover {
+    color: #fff;
+    text-decoration: none;
+}
