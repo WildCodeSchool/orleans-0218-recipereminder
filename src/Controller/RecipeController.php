@@ -29,4 +29,15 @@ class RecipeController extends AbstractController
 
         return $this->twig->render('Recipe/list_recipe.html.twig', ['recipes' => $recipes ]);
     }
+
+
+    public function showRecipe(int $id)
+    {
+        $recipeManager = new RecipeManager();
+        $recipe = $recipeManager->selectOneRecipe($id);
+
+
+        return $this->twig->render('Recipe/show-one-recipe.html.twig', ['recipe' => $recipe ]);
+    }
 }
+
