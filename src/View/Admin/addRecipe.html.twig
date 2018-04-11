@@ -4,10 +4,9 @@
 
     <div class="container">
         <h1>Ajouter recette</h1>
-        {% for error in errors %}
-            <div class="alert alert-danger">
-                <strong>{{ errors }}</strong>
-        {%  endfor %}
+        {% if errors is not empty %}
+            <div class="alert alert-danger">{{ errors }}</div>
+        {% endif %}
         <form method="post" action="" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="name">Recette nom</label>
@@ -35,7 +34,7 @@
             </div>
             <div class="form-group">
                 <label for="comment">Commentaire</label>
-                <textarea class="form-control" id="comment" name="comment" value="{{ post.comment }}" rows="5"></textarea>
+                <textarea class="form-control" id="comment" name="comment" rows="5">{{ post.comment }}</textarea>
             </div>
             <button type="submit" class="btn">Ajouter recette</button>
         </form>
