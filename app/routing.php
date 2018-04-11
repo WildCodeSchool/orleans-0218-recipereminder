@@ -19,6 +19,11 @@ $routes = [
     'Category' => [ // Controller
         ['list', '/admin/category', 'GET'], // action, url, method
     ],
+
+    'Event' => [
+        ['listEvent', '/event', 'GET'],
+      ],
+
     'Recipe' => [ // Controller
         ['listRecipe', '/recipe', 'GET'], // action, url, method
 
