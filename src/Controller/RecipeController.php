@@ -56,7 +56,6 @@ class RecipeController extends AbstractController
             } catch (\Exception $e) {
                 $errors = $e->getMessage();
             }
-
         }
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->selectAll();

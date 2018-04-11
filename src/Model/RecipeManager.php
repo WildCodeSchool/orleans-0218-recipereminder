@@ -32,5 +32,4 @@ class RecipeManager extends AbstractManager
 
         return $this->pdoConnection->query($sql, \PDO::FETCH_ASSOC)->fetchAll();
     }
-
 }
