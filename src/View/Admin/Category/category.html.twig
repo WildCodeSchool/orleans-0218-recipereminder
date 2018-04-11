@@ -1,0 +1,25 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Administration des catégories</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5">
+                     <table class="table table-bordered text-center">
+                         <thead>
+                             <tr>
+                                 <th>Catégories</th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                         {% for category in categories %}
+                            <tr>
+                                <td>{{ category.name }}</td>
+                            </tr>
+                            {% endfor %}
+                         </tbody>
+                     </table>
+                </div>
+            </div>
+        </div>
+{% endblock %}

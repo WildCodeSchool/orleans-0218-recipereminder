@@ -9,14 +9,23 @@
  * @link     https://github.com/WildCodeSchool/simple-mvc
  */
 
+
 $routes = [
-    'Event' => [
-        ['listEvent', '/event', 'GET'],
-      ],
+
     'Homepage' => [
         ['index', '/', 'GET'],
     ],
+
+    'Category' => [ // Controller
+        ['list', '/admin/category', 'GET'], // action, url, method
+    ],
+
+    'Event' => [
+        ['listEvent', '/event', 'GET'],
+      ],
+
     'Recipe' => [ // Controller
         ['listRecipe', '/recipe', 'GET'], // action, url, method
+
     ],
 ];
