@@ -109,9 +109,6 @@ class Recipe
      */
     public function setCategoryId(int $category_id): void
     {
-        if(empty($category_id)){
-            throw new \Exception('Merci de choisir une catégorie!');
-        }
         $this->category_id = $category_id;
     }
 

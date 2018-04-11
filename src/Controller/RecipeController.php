@@ -43,10 +43,10 @@ class RecipeController extends AbstractController
         $errors= null;
 
         if (!empty($_POST)) {
+
                 try {
                     $recipe = new Recipe();
                     $recipe->setName($_POST['name']);
-                    $recipe->setCategoryId($_POST['category_id']);
                     $recipe->setComment($_POST['comment']);
 
                 }catch(\Exception $e){
@@ -60,7 +60,7 @@ class RecipeController extends AbstractController
         }
             $categoryManager = new CategoryManager();
             $categories = $categoryManager->selectAll();
-            return $this->twig->render('Admin/addRecipe.html.twig', ['categories' => $categories, 'errors' => $errors]);
+            return $this->twig->render('Admin/addRecipe.html.twig', ['categories' => $categories, 'errors' => $errors, 'post'=> $_POST]);
         }
 
 }
