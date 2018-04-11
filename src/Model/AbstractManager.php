@@ -85,11 +85,11 @@ abstract class AbstractManager
      */
     public function insert(array $data)
     {
-        $field= implode(',',$data);
-        $fieldPdo= implode(',:',$data);
+        $key= array_keys($data);
+        $field=implode(',',$key);
+        $fieldPdo=implode(',:',$key);
 
-
-        $sql= "INSERT INTO $this->table ($field) VALUES ($fieldPdo)";
+        $sql= "INSERT INTO $this->table ($field) VALUES (:$fieldPdo)";
         $statement = $this->pdoConnection->prepare($sql);
         $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
         foreach($data as $key => $value){
