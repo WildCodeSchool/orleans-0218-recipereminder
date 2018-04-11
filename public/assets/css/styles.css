@@ -21,9 +21,12 @@ h1, h2 {
     margin: 20px 0px 20px 0px;
 }
 
+.logo-header,.navbar-default,h1,h2, h3, h4{
+    font-family: 'Fascinate Inline', cursive;
+}
+
 h1, h2, h3, h4 {
     text-align: center;
-    font-family: 'Abril Fatface', cursive;
 }
 
 figcaption p {
@@ -68,17 +71,14 @@ section:nth-child(odd) {
 
 .logo-header {
     margin-top: 3px;
-    font-family: 'Galada', cursive;
-    font-size: 25px;
+    font-size: 30px;
     color:#1f212f;
 }
 
 .navbar-default .navbar-nav > li > a {
-    font-weight: bold;
-    font-size: 20px;
+    font-size: 26px;
     margin-top: 5px;
     margin-left: 20px;
-    font-family: 'Galada', cursive;
     color:#de8835;
 }
 
