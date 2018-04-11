@@ -85,7 +85,12 @@ abstract class AbstractManager
      */
     public function insert(array $data)
     {
-        //TODO : Implements SQL INSERT request
+        $field= implode(',',$data);
+        $fieldPdo= implode(',:',$data);
+
+
+        $sql= "INSERT INTO $this->table ($field) VALUES ($fieldPdo);
+
     }
 
 
