@@ -40,4 +40,3 @@ class RecipeController extends AbstractController
         return $this->twig->render('Recipe/show-one-recipe.html.twig', ['recipe' => $recipe ]);
     }
 }
-
