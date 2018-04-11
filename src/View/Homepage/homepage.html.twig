@@ -1,0 +1,36 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="banner">
+    <h1>Phrase d'accroche du site Recipe Reminder</h1>
+</div>
+
+<section>
+    <div class="container">
+        <h2>Les dernières recettes</h2>
+        <div class="row">
+            {% include 'thumb-recipe.html.twig' %}
+            {% include 'thumb-recipe.html.twig' %}
+            {% include 'thumb-recipe.html.twig' %}
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2>Les derniers évènements</h2>
+        <div class="row">
+            {% include 'thumb-event.html.twig' %}
+            {% include 'thumb-event.html.twig' %}
+            {% include 'thumb-event.html.twig' %}
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2>Recipe Reminder</h2>
+        <p>RecipeReminder est une application dédiée à toutes celles et ceux qui aiment recevoir. Trouver de nouvelles recettes à chaque fois peut s'avérer long et fastidieux, vous avez donc envie de les réutiliser. Mais qu'aviez vous servi en entrée à votre dernier anniversaire et qui avait tant plu ? Nos amis qui viennent ce soir adorent le chocolat, est-ce à eux que j'avais servi mon fameux coulant la dernière fois ? Il ne faudrait pas que je leur serve le même dessert à nouveau ! Avec RecipeReminder, créé par Jean-François Trap, un amoureux de la cuisine, gardez le souvenir des recettes que vous avez pu servir lors des vos derniers événements, retrouvez les facilement, réutilisez les quand il le faut, testez les sur de nouveaux convives. Avec RecipeReminder, vos soirées seront toujours réussies ! </p>
+    </div>
+</section>
+{% endblock %}
