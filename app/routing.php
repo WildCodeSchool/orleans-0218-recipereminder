@@ -26,6 +26,7 @@ $routes = [
 
     'Recipe' => [ // Controller
         ['listRecipe', '/recipe', 'GET'], // action, url, method
-
+        ['AddRecipe', '/admin/addrecipe', ['GET', 'POST']],
     ],
+
 ];

@@ -73,6 +73,9 @@ class Recipe
      */
     public function setName(string $name): void
     {
+        if (empty($name)) {
+            throw new \Exception('Le champ nom ne doit pas etre vide !');
+        }
         $this->name = $name;
     }
 
@@ -89,6 +92,7 @@ class Recipe
      */
     public function setImg(string $img): void
     {
+
         $this->img = $img;
     }
 
@@ -105,6 +109,9 @@ class Recipe
      */
     public function setCategoryId(int $category_id): void
     {
+        if(empty($category_id)){
+            throw new \Exception('Merci de choisir une catégorie!');
+        }
         $this->category_id = $category_id;
     }
 
@@ -153,6 +160,10 @@ class Recipe
      */
     public function setComment(string $comment): void
     {
+        if(empty($comment)){
+            throw new \Exception('Merci d\'ajouter un commentaire!');
+        }
         $this->comment = $comment;
     }
+
 }
