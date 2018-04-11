@@ -157,10 +157,9 @@ class Recipe
      */
     public function setComment(string $comment): void
     {
-        if(empty($comment)){
+        if (empty($comment)) {
             throw new \Exception('Merci d\'ajouter un commentaire!');
         }
         $this->comment = $comment;
     }
-
 }

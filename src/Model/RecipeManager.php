@@ -44,6 +44,5 @@ class RecipeManager extends AbstractManager
             $stm->bindValue(':ref_url', $_POST['ref_url'], \PDO::PARAM_INT);
             $stm->bindValue(':comment', $_POST['comment'], \PDO::PARAM_INT);
             $stm->execute();
-
     }
 }

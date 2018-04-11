@@ -38,29 +38,25 @@ class RecipeController extends AbstractController
      * @throws \Twig_Error_Runtime
      * @throws \Twig_Error_Syntax
      */
-    public function AddRecipe()
+    public function addRecipe()
     {
         $errors= null;
-
         if (!empty($_POST)) {
-
-                try {
-                    $recipe = new Recipe();
-                    $recipe->setName($_POST['name']);
-                    $recipe->setComment($_POST['comment']);
-
-                }catch(\Exception $e){
+            try {
+                $recipe = new Recipe();
+                $recipe->setName($_POST['name']);
+                $recipe->setComment($_POST['comment']);
+            } catch (\Exception $e) {
                     $errors['name'] = $e->getMessage();
-                }
-
-            if (empty ($e)) {
+            }
+            if (empty($e)) {
                 $FormManager = new RecipeManager();
                 $FormManager->addRecipe();
+                header('Location:Admin/recipe.html.twig');
             }
         }
             $categoryManager = new CategoryManager();
             $categories = $categoryManager->selectAll();
             return $this->twig->render('Admin/addRecipe.html.twig', ['categories' => $categories, 'errors' => $errors, 'post'=> $_POST]);
-        }
-
+    }
 }
