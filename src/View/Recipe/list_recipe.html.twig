@@ -7,13 +7,19 @@
             <div class="row">
 
             {% for recipe in recipes %}
-               {# attente pour affichage template #}
-                <p>  name : {{ recipe.name }} <br>
-                     category : {{ recipe.category }} <br>
-                     img : {{ recipe.img }} <br>
-
-                {# fin #}
-                </p>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <a href="/recipe/{{ recipe.id }}"><figure class="thumbnail">
+                        {% if recipe.img is empty %}
+                            <img src="../assets/images/thumbtest3.jpg" alt="recipe without image" class="">
+                        {% else %}
+                            <a href="/recipe/{{ recipe.id }}"><img src="assets/images/{{ recipe.img }}" alt="{{ recipe.name }}" class=""></a>
+                        {% endif %}
+                        <figcaption class="caption">
+                            <h3>{{ recipe.name|capitalize }}</h3>
+                            <p>{{ recipe.category|capitalize }}</p>
+                        </figcaption>
+                        </figure></a>
+                </div>
             {% else %}
                 <p> Aucun élément à afficher.</p>
             {% endfor %}
