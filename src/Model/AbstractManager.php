@@ -89,8 +89,14 @@ abstract class AbstractManager
         $fieldPdo= implode(',:',$data);
 
 
-        $sql= "INSERT INTO $this->table ($field) VALUES ($fieldPdo);
+        $sql= "INSERT INTO $this->table ($field) VALUES ($fieldPdo)";
+        $statement = $this->pdoConnection->prepare($sql);
+        $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
+        foreach($data as $key => $value){
+            $statement->bindValue(':'.$value, $value);
+        }
 
+        $statement->execute();
     }
 
 
