@@ -17,11 +17,11 @@ body {
     font-family: 'Galada', cursive;
 }
 
-h2 {
-    padding: 20px 0px 20px 0px;
+h1, h2 {
+    margin: 20px 0px 20px 0px;
 }
 
-h2, h3, h4 {
+h1, h2, h3, h4 {
     text-align: center;
     font-family: 'Abril Fatface', cursive;
 }
