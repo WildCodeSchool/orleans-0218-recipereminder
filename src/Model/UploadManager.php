@@ -8,7 +8,6 @@
 
 namespace Model;
 
-
 class UploadManager
 {
     /**
@@ -24,8 +23,8 @@ class UploadManager
                 throw new \Exception('Votre image est trop lourde !');
             }
             $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
-            if ($imageFileType == NULL) {
-                $filename = NULL;
+            if ($imageFileType == null) {
+                $filename = null;
                 return $filename;
             }
             if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "gif") {
@@ -37,5 +36,4 @@ class UploadManager
             return $filename;
         }
     }
-
 }

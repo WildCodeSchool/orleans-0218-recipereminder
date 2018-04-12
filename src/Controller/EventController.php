@@ -44,7 +44,7 @@ class EventController extends AbstractController
                     throw new \Exception('Le champ date doit être renseigné !');
                 }
                 $data = $_POST;
-                if (isset ($_FILES)) {
+                if (isset($_FILES)) {
                     $upload = new UploadManager();
                     $filename = $upload->upload($_FILES);
                     $data['img'] = $filename;
