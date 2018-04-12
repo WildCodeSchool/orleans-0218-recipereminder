@@ -44,15 +44,16 @@ class RecipeController extends AbstractController
         $errors = null;
         if (!empty($_POST)) {
             try {
-                $recipe = new Recipe();
-                $data = $_POST;
-                $recipe->setName($_POST['name']);
-                $recipe->setComment($_POST['comment']);
-                $data['name'] = $recipe->getName();
-                $data['comment'] = $recipe->getComment();
+                if (empty($_POST['comment'])) {
+                    throw new \Exception('Merci d\'ajouter un commentaire!');
+                }
+                if (empty($_POST['name'])) {
+                    throw new \Exception('Le champ nom ne doit pas etre vide !');
+                }
 
-                $FormManager = new RecipeManager();
-                $FormManager->insert($data);
+                $data = $_POST;
+                $recipeManager = new RecipeManager();
+                $recipeManager->insert($data);
                 header('Location:Admin/recipe.html.twig');
             } catch (\Exception $e) {
                 $errors = $e->getMessage();

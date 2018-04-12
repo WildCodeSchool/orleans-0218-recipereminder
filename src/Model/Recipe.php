@@ -73,9 +73,6 @@ class Recipe
      */
     public function setName(string $name): void
     {
-        if (empty($name)) {
-            throw new \Exception('Le champ nom ne doit pas etre vide !');
-        }
         $this->name = $name;
     }
 
@@ -157,9 +154,6 @@ class Recipe
      */
     public function setComment(string $comment): void
     {
-        if (empty($comment)) {
-            throw new \Exception('Merci d\'ajouter un commentaire!');
-        }
         $this->comment = $comment;
     }
 }
