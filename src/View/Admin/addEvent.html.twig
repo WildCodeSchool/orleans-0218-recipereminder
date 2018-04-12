@@ -1,0 +1,34 @@
+{% extends 'Admin/admin_layout.html.twig' %}
+
+{% block content %}
+
+    <div class="container">
+        <h1>Ajouter un événement</h1>
+        {% if errors is not empty %}
+            <div class="alert alert-danger">{{ errors }}</div>
+        {% endif %}
+        <form method="post" action="" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="name">Nom événement</label>
+                <input type="name" class="form-control" id="name" name="name" value="{{ post.name }}" placeholder="Nom recette">
+            </div>
+            <div class="form-group">
+                <label for="ref_book">La date de l'événement : </label>
+                <input type="date" name="date">
+            </div>
+            <div class="form-group">
+                <label for="ref_book">Ajouter lien image</label>
+                <input type="name" class="form-control" id="img" name="img" value="{{ post.img }}" placeholder="Référence livre">
+            </div>
+            <div class="form-group">
+                <label for="ref_book">Convives</label>
+                <input type="name" class="form-control" id="guest" name="guest" value="{{ post.guest }}" placeholder="Référence livre">
+            </div>
+            <div class="form-group">
+                <label for="comment">Commentaire</label>
+                <textarea class="form-control" id="comment" name="comment" rows="5">{{ post.comment }}</textarea>
+            </div>
+            <button type="submit" class="btn">Ajouter recette</button>
+        </form>
+    </div>
+{% endblock %}
