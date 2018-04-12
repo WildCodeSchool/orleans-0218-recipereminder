@@ -57,9 +57,6 @@ class Event
      */
     public function setName($name): Event
     {
-        if (empty($name)) {
-            throw new \Exception('Le champ nom ne doit pas etre vide !');
-        }
         $this->name = $name;
         return $this;
     }
@@ -139,9 +136,6 @@ class Event
      */
     public function setComment($comment): Event
     {
-        if (empty($comment)) {
-            throw new \Exception('Merci d\'ajouter un commentaire!');
-        }
         $this->comment = $comment;
         return $this;
     }
