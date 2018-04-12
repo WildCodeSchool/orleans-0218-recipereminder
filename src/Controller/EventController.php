@@ -32,7 +32,6 @@ class EventController extends AbstractController
         $errors= null;
         if (!empty($_POST)) {
             try {
-
                 $recipe = new Event();
                 $data = $_POST;
                 $recipe->setName($_POST['name']);
