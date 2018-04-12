@@ -28,6 +28,7 @@ class EventController extends AbstractController
 
         return $this->twig->render('Event/eventslist.html.twig', ['events' => $events]);
     }
+
     public function addEvent()
     {
         $errors = null;
@@ -40,16 +41,15 @@ class EventController extends AbstractController
                     throw new \Exception('Le champ nom ne doit pas etre vide !');
                 }
                 $data = $_POST;
-var_dump($_FILES);
-                if (!empty ($_FILES)){
-                $upload = new UploadManager();
-                $filename = $upload->upload($_FILES);
-                $data['img'] = $filename;
+                if (!empty ($_FILES)) {
+                    $upload = new UploadManager();
+                    $filename = $upload->upload($_FILES);
+                    $data['img'] = $filename;
                 }
 
                 $EventManager = new EventManager();
                 $EventManager->insert($data);
-              //  header('Location:Admin/recipe.html.twig');
+                header('Location:Admin/recipe.html.twig');
             } catch (\Exception $e) {
                 $errors = $e->getMessage();
             }
