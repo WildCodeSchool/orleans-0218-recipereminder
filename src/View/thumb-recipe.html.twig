@@ -1,5 +1,5 @@
 <div class="col-xs-12 col-sm-6 col-md-4">
-    <figure class="thumbnail">
+   <a href= "/recipe/{{ recipe.id }}"><figure class="thumbnail">
         {% if recipe.img is empty %}
         <img src="assets/images/thumbtest3.jpg" alt="recipe without image" class="">
         {% else %}
@@ -9,5 +9,5 @@
             <h3>{{ recipe.name }} Recipe name</h3>
             <p>{{ recipe.date }} Recipe category</p>
         </figcaption>
-    </figure>
+       </figure></a>
 </div>
