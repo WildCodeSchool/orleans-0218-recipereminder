@@ -17,14 +17,18 @@ class UploadManager
      */
     public function upload($file)
     {
-        if (isset ($_FILES)) {
+        if (isset($_FILES)) {
             $uploadDir = 'assets/images/';
             $uploadFile = $uploadDir . basename($file['img']['name']);
             if ($file["img"]["size"] > 1000000) {
                 throw new \Exception('Votre image est trop lourde !');
             }
             $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
-            if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "gif" && $imageFileType != NULL) {
+            if ($imageFileType == NULL) {
+                $filename = NULL;
+                return $filename;
+            }
+            if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "gif") {
                 throw new \Exception('Oups pas le bon format !');
             }
             $extension = pathinfo($file['img']['name'], PATHINFO_EXTENSION);
