@@ -40,8 +40,11 @@ class EventController extends AbstractController
                 if (empty($_POST['name'])) {
                     throw new \Exception('Le champ nom ne doit pas etre vide !');
                 }
+                if (empty($_POST['date'])) {
+                    throw new \Exception('Le champ date doit être renseigné !');
+                }
                 $data = $_POST;
-                if (!empty ($_FILES)) {
+                if (isset ($_FILES)) {
                     $upload = new UploadManager();
                     $filename = $upload->upload($_FILES);
                     $data['img'] = $filename;
