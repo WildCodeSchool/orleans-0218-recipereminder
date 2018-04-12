@@ -11,20 +11,20 @@
             <div class="form-group">
                 <label for="name">Nom événement</label>
                 <input type="name" class="form-control" id="name" name="name" value="{{ post.name }}"
-                       placeholder="ex: Boeuf Bourguignon">
+                       placeholder="ex: Mariage">
+            </div>
+            <div class="form-group">
+                <label for="img">Ajouter image : </label>
+                <input type="file" name="img" id="img">
             </div>
             <div class="form-group">
                 <label for="date">La date de l'événement : </label>
                 <input type="date" name="date" min="1900-01-01" value="{{ post.date }}">
             </div>
             <div class="form-group">
-                <label for="img">Ajouter lien image</label>
-                <input type="file" name="img" id="img">
-            </div>
-            <div class="form-group">
                 <label for="guest">Convives</label>
                 <input type="name" class="form-control" id="guest" name="guest" value="{{ post.guest }}"
-                       placeholder="ex: Martine la tartine">
+                       placeholder="ex: Martine, Pierre...">
             </div>
             <div class="form-group">
                 <label for="comment">Commentaire</label>
