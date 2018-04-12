@@ -17,7 +17,7 @@ class UploadManager
      */
     public function upload($file)
     {
-        if (!isset ($_FILES)) {
+        if (isset ($_FILES)) {
             $uploadDir = 'assets/images/';
             $uploadFile = $uploadDir . basename($file['img']['name']);
             if ($file["img"]["size"] > 1000000) {
