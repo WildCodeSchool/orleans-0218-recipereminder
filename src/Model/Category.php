@@ -12,16 +12,13 @@ namespace Model;
  * Class Category
  * @package Model
  */
-/**
- * Class Category
- * @package Model
- */
 class Category
 {
     /**
      * @var string
      */
     private $name;
+
     /**
      * @var int
      */
@@ -34,7 +31,6 @@ class Category
     {
         return $this->name;
     }
-
 
     /**
      * @param string $name

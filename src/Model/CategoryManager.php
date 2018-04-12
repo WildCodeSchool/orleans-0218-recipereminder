@@ -19,10 +19,4 @@ class CategoryManager extends AbstractManager
     {
         parent::__construct(self::TABLE);
     }
-
-    /**
-     * @param Category $category
-     * @throws \Exception
-     */
-
 }
