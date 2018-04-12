@@ -31,8 +31,9 @@ class RecipeController extends AbstractController
         return $this->twig->render('Recipe/list_recipe.html.twig', ['recipes' => $recipes]);
     }
 
+
     /**
-     * Ajouter une recette
+     * Ajouter une recette !
      * @return string
      * @throws \Twig_Error_Loader
      * @throws \Twig_Error_Runtime
