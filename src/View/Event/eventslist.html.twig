@@ -5,22 +5,8 @@
     <h1>Liste des événements</h1>
 
     {% for event in events %}
-        <div class="col-xs-12 col-sm-6 col-md-4">
-            <a href="/event/{{ event.id }}">
-                <figure class="thumbnail">
-                    {% if event.img is empty %}
-                        <img src="../assets/images/popartcook.jpg" alt="event without image" class="">
-                    {% else %}
-                        <img src="../assets/images/{{ event.img }}" alt="{{ event.name }}" class="">
-                    {% endif %}
-                    <figcaption class="caption">
-                        <h3>{{ event.name|capitalize }}</h3>
-                        <p>{{ event.date|capitalize }}</p>
 
-                    </figcaption>
-                </figure>
-            </a>
-        </div>
+        {% include 'thumb-event.html.twig' %}
     {% else %}
         <p> Aucun élément à afficher.</p>
     {% endfor %}
