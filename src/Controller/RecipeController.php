@@ -11,6 +11,7 @@ namespace Controller;
 use Model\Recipe;
 use Model\RecipeManager;
 use Model\CategoryManager;
+use Model\UploadManager;
 
 /**
  * Class RecipeController
@@ -50,8 +51,12 @@ class RecipeController extends AbstractController
                 if (empty($_POST['name'])) {
                     throw new \Exception('Le champ nom ne doit pas etre vide !');
                 }
-
                 $data = $_POST;
+                if (isset($_FILES)) {
+                    $upload = new UploadManager();
+                    $filename = $upload->upload($_FILES);
+                    $data['img'] = $filename;
+                }
                 $recipeManager = new RecipeManager();
                 $recipeManager->insert($data);
                 header('Location:Admin/recipe.html.twig');
