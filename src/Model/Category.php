@@ -38,9 +38,6 @@ class Category
      */
     public function setName(string $name): void
     {
-        if (empty($name)) {
-            throw new \Exception('Le nom de la catégorie est vide');
-        }
         $this->name = $name;
     }
 
@@ -59,4 +56,5 @@ class Category
     {
         $this->id = $id;
     }
+
 }
