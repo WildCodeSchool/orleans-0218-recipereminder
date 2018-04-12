@@ -14,7 +14,7 @@
                        placeholder="ex: Boeuf Bourguignon">
             </div>
             <div class="form-group">
-                <label for="category_id">Catégorie</label>
+                <label for="categoryId">Catégorie</label>
                 <select class="form-control" id="categoryId" name="categoryId">
                     {% for category in categories %}
                         <option value="{{ category.id }}"> - {{ category.name|capitalize }}</option>
