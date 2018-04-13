@@ -3,11 +3,11 @@
         {% if event.img is empty %}
             <img src="assets/images/popartcook.jpg" alt="recipe without image" class="">
         {% else %}
-            <img src="assets/images/{{ event.img }}" alt="{{ event.name }}" class="">
+            <img src="assets/upload/{{ event.img }}" alt="{{ event.name }}" class="">
         {% endif %}
         <figcaption class="caption">
-            <h3>{{ event.name }} Event name</h3>
-            <p>{{ event.date }} Event date</p>
+            <h3>{{ event.name }}</h3>
+            <p>{{ event.date }}</p>
         </figcaption>
         </figure></a>
 </div>
