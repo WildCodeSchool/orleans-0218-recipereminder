@@ -59,7 +59,7 @@ class RecipeController extends AbstractController
                 }
                 $recipeManager = new RecipeManager();
                 $recipeManager->insert($data);
-                header('Location:Admin/recipe.html.twig');
+                header('Location:/admin/recipeList');
             } catch (\Exception $e) {
                 $errors = $e->getMessage();
             }
