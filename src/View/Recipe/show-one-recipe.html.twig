@@ -13,7 +13,7 @@
                 {% if recipe.img is empty %}
                     <img src="/assets/images/thumbtest3.jpg" alt="recipe without image" class="itemImg" />
                 {% else %}
-                    <img src="/assets/images/{{ recipe.img }}" alt="{{ recipe.name }}" class="itemImg" />
+                    <img src="/assets/upload/{{ recipe.img }}" alt="{{ recipe.name }}" class="itemImg" />
                 {% endif %}
                 {% if recipe.url is not empty %}
                     <a class="btn btn-info itemRef" href="{{ recipe.url }}" role="button" target="_blank"><b>Ma recette sur le web</b></a>
