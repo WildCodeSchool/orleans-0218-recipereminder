@@ -31,7 +31,7 @@ class RecipeManager extends AbstractManager
     {
         $sql = "SELECT r.id,r.name,img,c.name as category
                 FROM recipe as r
-                LEFT JOIN category as c ON c.id = r.id";
+                LEFT JOIN category as c ON c.id = r.category_id";
 
         return $this->pdoConnection->query($sql, \PDO::FETCH_ASSOC)->fetchAll();
     }

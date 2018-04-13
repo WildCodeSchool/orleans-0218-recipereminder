@@ -1,11 +1,22 @@
-{% extends 'layout.html.twig' %}
+{% extends 'Admin/admin_layout.html.twig' %}
 
 {% block content %}
     <h1>Administration des catégories</h1>
         <div class="container">
+            <div class="text-center ">
+                    <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#categoryModal">Ajouter une Catégorie</button>
+            </div>
+            {% if error is not empty %}
             <div class="row">
-                <div class="col-sm-5">
-                     <table class="table table-bordered text-center">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="alert alert-danger text-center">{{ error }}</div>
+                </div>
+            </div>
+            {% endif %}
+            <div class="row">
+                <div class="col-sm-4 col-sm-offset-4">
+
+                     <table class="table table-striped table-bordered table-center">
                          <thead>
                              <tr>
                                  <th>Catégories</th>
@@ -13,13 +24,51 @@
                          </thead>
                          <tbody>
                          {% for category in categories %}
+
                             <tr>
-                                <td>{{ category.name }}</td>
+                                <td>{{ categorie.name }}</td>
                             </tr>
-                            {% endfor %}
-                         </tbody>
-                     </table>
+                        {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
             </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="categoryModal" role="dialog">
+                <div class="modal-dialog modal-lg">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Ajout de catégorie</h4>
+                        </div>
+                        <div class="modal-body row">
+                            <div class="col-lg-6 col-lg-offset-3">
+                                <form action="" method="POST">
+                                    <div class="form-group">
+                                        <label for="name"></label>
+                                        <input type="text" class="form-control" id="name" placeholder="Entrez une catégorie" name="name">
+                                    </div>
+                                    <div class="text-center">
+                                         <button type="submit" class="btn btn-default">Ajouter la catégorie</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
+    </div>
+
+    </div>
+
+
 {% endblock %}
