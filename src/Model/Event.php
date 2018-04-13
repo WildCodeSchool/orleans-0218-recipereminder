@@ -10,16 +10,34 @@ namespace Model;
 
 class Event
 {
+    /**
+     * @var int
+     */
     private $id;
 
+    /**
+     * @var string
+     */
     private $name;
 
+    /**
+     * @var string
+     */
     private $date;
 
+    /**
+     * @var string
+     */
     private $img;
 
+    /**
+     * @var string
+     */
     private $guest;
 
+    /**
+     * @var string
+     */
     private $comment;
 
     /**
@@ -58,7 +76,6 @@ class Event
     public function setName($name): Event
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -85,7 +102,7 @@ class Event
     /**
      * @return string
      */
-    public function getImg() : string
+    public function getImg() : ?string
     {
         return $this->img;
     }
@@ -138,7 +155,6 @@ class Event
     public function setComment($comment): Event
     {
         $this->comment = $comment;
-
         return $this;
     }
 }
