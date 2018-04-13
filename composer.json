@@ -1,4 +1,3 @@
-
 {
     "name": "aurel/simple-mvc",
     "description": "Simple from scratch PHP MVC",
@@ -12,7 +11,8 @@
     "require": {
         "nikic/fast-route": "^1.2",
         "twig/twig": "^2.4",
-        "squizlabs/php_codesniffer": "*"
+        "squizlabs/php_codesniffer": "*",
+        "php": "^7.1"
     },
     "autoload": {
         "psr-4": {
