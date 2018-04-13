@@ -6,17 +6,11 @@
         <div id="list">
             <div class="row">
 
-            {% for recipe in recipes %}
-               {# attente pour affichage template #}
-                <p>  name : {{ recipe.name }} <br>
-                     category : {{ recipe.category }} <br>
-                     img : {{ recipe.img }} <br>
-
-                {# fin #}
-                </p>
-            {% else %}
-                <p> Aucun élément à afficher.</p>
-            {% endfor %}
+                {% for recipe in recipes %}
+                    {% include 'thumb-recipe.html.twig' %}
+                {% else %}
+                    <p> Aucun élément à afficher.</p>
+                {% endfor %}
             </div>
         </div>
     </div>
