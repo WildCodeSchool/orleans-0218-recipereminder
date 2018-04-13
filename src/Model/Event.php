@@ -102,7 +102,7 @@ class Event
     /**
      * @return string
      */
-    public function getImg() : String
+    public function getImg() : ?string
     {
         return $this->img;
     }
