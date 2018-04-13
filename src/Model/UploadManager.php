@@ -3,6 +3,7 @@
  * Created by PhpStorm.
  * User: wilder18
  * Date: 12/04/18
+
  * Time: 22:45
  */
 
@@ -38,4 +39,5 @@ class UploadManager
             return $filename;
         }
     }
+
 }

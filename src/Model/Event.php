@@ -76,7 +76,6 @@ class Event
     public function setName($name): Event
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -156,7 +155,6 @@ class Event
     public function setComment($comment): Event
     {
         $this->comment = $comment;
-
         return $this;
     }
 }
