@@ -42,16 +42,16 @@ class RecipeController extends AbstractController
      */
     public function addRecipe()
     {
+        $data = $_POST;
         $errors = null;
         if (!empty($_POST)) {
             try {
-                if (empty($_POST['comment'])) {
+                if (empty(trim($_POST['comment']))) {
                     throw new \Exception('Merci d\'ajouter un commentaire!');
                 }
-                if (empty($_POST['name'])) {
+                if (empty(trim($_POST['name']))) {
                     throw new \Exception('Le champ nom ne doit pas etre vide !');
                 }
-                $data = $_POST;
                 if (isset($_FILES)) {
                     $upload = new UploadManager();
                     $filename = $upload->upload($_FILES);
@@ -66,6 +66,6 @@ class RecipeController extends AbstractController
         }
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->selectAll();
-        return $this->twig->render('Admin/addRecipe.html.twig', ['categories' => $categories, 'errors' => $errors, 'post' => $_POST]);
+        return $this->twig->render('Admin/addRecipe.html.twig', ['categories' => $categories, 'errors' => $errors, 'post' => $data]);
     }
 }
