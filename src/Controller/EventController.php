@@ -65,13 +65,13 @@ class EventController extends AbstractController
 
                 $EventManager = new EventManager();
                 $EventManager->insert($data);
-                header('Location:Admin/recipe.html.twig');
+                header('Location:/admin/eventList');
             } catch (\Exception $e) {
                 $errors = $e->getMessage();
             }
         }
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->selectAll();
-        return $this->twig->render('Admin/addEvent.html.twig', ['categories' => $categories, 'errors' => $errors, 'post' => $data]);
+        return $this->twig->render('Admin/Event/addEvent.html.twig', ['categories' => $categories, 'errors' => $errors, 'post' => $data]);
     }
 }
