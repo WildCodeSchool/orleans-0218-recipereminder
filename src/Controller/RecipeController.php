@@ -60,6 +60,7 @@ class RecipeController extends AbstractController
                 $recipeManager = new RecipeManager();
                 $recipeManager->insert($data);
                 header('Location:/admin/recipeList');
+                exit();
             } catch (\Exception $e) {
                 $errors = $e->getMessage();
             }
