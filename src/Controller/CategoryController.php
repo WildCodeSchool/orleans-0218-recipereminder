@@ -33,6 +33,7 @@ class CategoryController extends AbstractController
                     throw new \Exception('Le nom de la catégorie est vide');
                 }
 
+                $_POST['name'] = trim($_POST['name']);
                 $categoryManager = new CategoryManager();
                 $categoryManager->insert($_POST);
             } catch (\PDOException $p) {
