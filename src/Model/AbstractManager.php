@@ -89,7 +89,6 @@ abstract class AbstractManager
         $field = implode(',', $key);
         $fieldPdo = implode(',:', $key);
 
-
         $sql = "INSERT INTO $this->table ($field) VALUES (:$fieldPdo)";
         $statement = $this->pdoConnection->prepare($sql);
         $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
@@ -100,7 +99,6 @@ abstract class AbstractManager
 
         $statement->execute();
     }
-
 
     /**
      * @param int $id Id of the row to update
