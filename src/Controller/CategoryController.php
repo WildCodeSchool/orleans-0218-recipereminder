@@ -33,9 +33,9 @@ class CategoryController extends AbstractController
                     throw new \Exception('Le nom de la catégorie est vide');
                 }
 
-                $_POST['name'] = trim($_POST['name']);
+                $cleanPOST['name'] = trim($_POST['name']);
                 $categoryManager = new CategoryManager();
-                $categoryManager->insert($_POST);
+                $categoryManager->insert($cleanPOST);
             } catch (\PDOException $p) {
                 if ($p->errorInfo[0]==23000) {
                     $error='Ce nom existe déjà.';
