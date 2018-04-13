@@ -24,6 +24,9 @@ class RecipeManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
+    /**
+     * @return array
+     */
     public function selectAllRecipe()
     {
         $sql = "SELECT r.id,r.name,img,c.name as category
@@ -31,5 +34,23 @@ class RecipeManager extends AbstractManager
                 LEFT JOIN category as c ON c.id = r.category_id";
 
         return $this->pdoConnection->query($sql, \PDO::FETCH_ASSOC)->fetchAll();
+    }
+
+    /**
+     * Retrieves all information required for each recipe page
+     * @param int $id
+     * @return mixed
+     */
+    public function selectOneRecipe(int $id)
+    {
+        $sql = "SELECT r.id, r.name, r.img, r.url, r.book, r.comment, c.name as category
+                FROM recipe AS r
+                 LEFT JOIN category AS c ON c.id = r.categoryId WHERE r.id=:id";
+        $statement = $this->pdoConnection->prepare($sql);
+        $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetch();
     }
 }

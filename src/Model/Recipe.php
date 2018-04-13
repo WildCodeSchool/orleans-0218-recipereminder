@@ -10,7 +10,7 @@
 namespace Model;
 
 /**
- * Class Item
+ * Class Recipe
  *
  */
 class Recipe
@@ -30,15 +30,15 @@ class Recipe
     /**
      * @var int
      */
-    private $category_id;
+    private $categoryId;
     /**
      * @var string
      */
-    private $ref_book;
+    private $book;
     /**
      * @var string
      */
-    private $ref_url;
+    private $url;
     /**
      * @var string
      */
@@ -98,47 +98,47 @@ class Recipe
      */
     public function getCategoryId(): int
     {
-        return $this->category_id;
+        return $this->categoryId;
     }
 
     /**
-     * @param int $category_id
+     * @param int $categoryId
      */
-    public function setCategoryId(int $category_id): void
+    public function setCategoryId(int $categoryId): void
     {
-        $this->category_id = $category_id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getRefBook(): string
-    {
-        return $this->ref_book;
-    }
-
-    /**
-     * @param string $ref_book
-     */
-    public function setRefBook(string $ref_book): void
-    {
-        $this->ref_book = $ref_book;
+        $this->categoryId = $categoryId;
     }
 
     /**
      * @return string
      */
-    public function getRefUrl(): string
+    public function getBook(): string
     {
-        return $this->ref_url;
+        return $this->book;
     }
 
     /**
-     * @param string $ref_url
+     * @param string $book
      */
-    public function setRefUrl(string $ref_url): void
+    public function setBook(string $book): void
     {
-        $this->ref_url = $ref_url;
+        $this->book = $book;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrl(): string
+    {
+        return $this->url;
+    }
+
+    /**
+     * @param string $url
+     */
+    public function setUrl(string $url): void
+    {
+        $this->url = $url;
     }
 
     /**

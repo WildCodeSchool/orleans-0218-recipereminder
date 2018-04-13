@@ -69,6 +69,15 @@ class RecipeController extends AbstractController
         return $this->twig->render('Admin/addRecipe.html.twig', ['categories' => $categories, 'errors' => $errors, 'post' => $data]);
     }
 
+    public function showRecipe(int $id)
+    {
+        $recipeManager = new RecipeManager();
+        $recipe = $recipeManager->selectOneRecipe($id);
+
+
+        return $this->twig->render('Recipe/show-one-recipe.html.twig', ['recipe' => $recipe ]);
+    }
+
     public function adminListRecipe(){
         $RecipeManager = new RecipeManager();
         $recipes = $RecipeManager->selectAll();
