@@ -30,7 +30,8 @@ class RecipeController extends AbstractController
         return $this->twig->render('Recipe/list_recipe.html.twig', ['recipes' => $recipes ]);
     }
 
-    public function adminListRecipe(){
+    public function adminListRecipe()
+    {
         $RecipeManager = new RecipeManager();
         $recipes = $RecipeManager->selectAll();
 
@@ -41,5 +42,4 @@ class RecipeController extends AbstractController
             ]
         );
     }
-
 }
