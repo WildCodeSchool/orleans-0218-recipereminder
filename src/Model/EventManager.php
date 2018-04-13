@@ -20,4 +20,13 @@ class EventManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
+
+    public function selectLastsEvents()
+    {
+        $sql = "SELECT id, name, date, img FROM event 
+                ORDER BY id DESC LIMIT 3;";
+
+        return $this->pdoConnection->query($sql, \PDO::FETCH_ASSOC)->fetchAll();
+    }
+
 }
