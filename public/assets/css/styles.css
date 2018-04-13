@@ -48,11 +48,11 @@ figcaption p {
     object-fit: cover;
 }
 
-section:nth-child(even) {
+section:nth-child(odd) {
     padding-bottom: 50px;
 }
 
-section:nth-child(odd) {
+section:nth-child(even) {
     background-color: gainsboro;
     padding-bottom: 50px;
 }
@@ -96,6 +96,10 @@ section:nth-child(odd) {
 
 .btn.btn-default.btn-outline.btn-circle.collapsed:hover {
     color:#ff8008;
+}
+
+.navbar {
+    margin-bottom: 0px;
 }
 
 /*FIN NAVBAR */
