@@ -1,18 +1,25 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <div class="container>">
+    <div class="container">
         <h1 class="text-center">Recettes</h1>
-        <div id="list">
-            <div class="row">
-
-                {% for recipe in recipes %}
-                    {% include 'thumb-recipe.html.twig' %}
-                {% else %}
-                    <p> Aucun élément à afficher.</p>
-                {% endfor %}
+        <div class="row text-center searchEngine">
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                <form method="post" action="" id="formSeekRecipe">
+                    <div class="form-group">
+                    <label for="seekRecipe"></label>
+                        <input type="text" name="seekRecipe" id="seekRecipe" class="form-control"
+                               placeholder="quelle recettes cherchez-vous?">
+                    </div>
+                </form>
             </div>
+        </div>
+        <div id="list" class="text-center">
+            {% include 'Recipe/inc_listRecipe.html.twig' %}
         </div>
     </div>
 
+{% endblock %}
+{% block javascript %}
+<script src="assets/js/script.js"></script>
 {% endblock %}

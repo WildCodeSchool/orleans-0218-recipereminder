@@ -179,3 +179,7 @@ footer a:hover {
     color: #fff;
     text-decoration: none;
 }
+
+.searchEngine{
+    margin:20px;
+}

@@ -53,4 +53,15 @@ class RecipeManager extends AbstractManager
 
         return $statement->fetch();
     }
+
+    public function selectRecipesId($name)
+    {
+        $sql="SELECT id FROM $this->table WHERE name LIKE :name";
+        $statement = $this->pdoConnection->prepare($sql);
+        $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
+        $statement->bindValue(':name', '%'.$name.'%', \PDO::PARAM_STR);
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
 }
