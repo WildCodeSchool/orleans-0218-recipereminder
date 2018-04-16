@@ -16,10 +16,10 @@ class HomepageController extends AbstractController
     public function index()
     {
         $recipeManager = new RecipeManager();
-        $lastRecipes = $recipeManager->selectLastsRecipes();
+        $lastRecipes = $recipeManager->selectLastRecipes();
 
         $eventManager = new EventManager();
-        $lastEvents = $eventManager->selectLastsEvents();
+        $lastEvents = $eventManager->selectLastEvents();
 
         return $this->twig->render('Homepage/homepage.html.twig', ['lastrecipes' => $lastRecipes, 'lastevents' => $lastEvents]);
     }

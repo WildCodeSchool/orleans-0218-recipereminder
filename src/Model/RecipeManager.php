@@ -33,7 +33,7 @@ class RecipeManager extends AbstractManager
         return $this->pdoConnection->query($sql, \PDO::FETCH_ASSOC)->fetchAll();
     }
 
-    public function selectLastsRecipes()
+    public function selectLastRecipes()
     {
         $sql = "SELECT r.id, r.name, r.img, c.name AS category FROM recipe AS r 
                 LEFT JOIN category AS c 
