@@ -83,6 +83,15 @@ section:nth-child(even) {
     padding-left: 30px;
 }
 
+.admin-nav {
+    background-color: gainsboro;
+}
+
+.adminMode {
+    font-size: 20px;
+    color: #de8835;
+}
+
 .logo-header {
     margin-top: 3px;
     font-size: 30px;
