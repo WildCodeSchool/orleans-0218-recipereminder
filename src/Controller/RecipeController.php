@@ -94,15 +94,15 @@ class RecipeController extends AbstractController
 
     public function searchRecipe()
     {
-        if(empty($_POST['recipe'])){
+        if (empty($_POST['recipe'])) {
             $this->listRecipe();
         }
 
         $recipeManager = new RecipeManager();
         $recipesId=$recipeManager->selectRecipesId($_POST['recipe']);
         $recipes=[];
-        foreach ($recipesId as $key => $value){
-            $recipes[]=$recipeManager->selectOneRecipe($value->getId());
+        foreach ($recipesId as $id) {
+            $recipes[]=$recipeManager->selectOneRecipe($id->getId());
         }
 
         return $this->twig->render('Recipe/inc_listRecipe.html.twig', ['recipes' => $recipes ]);
