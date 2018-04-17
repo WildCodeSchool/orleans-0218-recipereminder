@@ -17,6 +17,6 @@ class HomepageController extends AbstractController
 
     public function adminIndex()
     {
-        return $this->twig->render('Admin/admin_homepage.html.twig');
+        return $this->twig->render('Admin/adminHomepage.html.twig');
     }
 }
