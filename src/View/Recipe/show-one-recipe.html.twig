@@ -1,0 +1,30 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="text-center itemHeader">{{ recipe.name|capitalize }}</h1>
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <h3 class="text-left">{{ recipe.category|capitalize }}</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                {% if recipe.img is empty %}
+                    <img src="/assets/images/thumbtest3.jpg" alt="recipe without image" class="itemImg" />
+                {% else %}
+                    <img src="/assets/upload/{{ recipe.img }}" alt="{{ recipe.name }}" class="itemImg" />
+                {% endif %}
+                {% if recipe.url is not empty %}
+                    <a class="btn btn-info itemRef" href="{{ recipe.url }}" role="button" target="_blank"><b>Ma recette sur le web</b></a>
+                {% elseif recipe.book is not empty %}
+                    <p class="text-left itemRef"><b>Référence:</b> {{ recipe.book }}</p>
+                {% endif %}
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <p class="comment"><q>{{ recipe.comment }}</q></p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

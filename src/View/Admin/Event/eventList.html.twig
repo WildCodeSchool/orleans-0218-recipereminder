@@ -1,0 +1,31 @@
+{% extends 'Admin/admin_layout.html.twig' %}
+
+{% block content %}
+    <h1>Administration des événements</h1>
+
+        <div class="text-center">
+            <a href="/admin/addEvent"><button class="btn">Ajouter un Evénement</button></a>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12">
+                     <table class="table table-hover table-bordered table-center">
+                         <thead>
+                             <tr>
+                                 <th>Evénement</th>
+                                 <th>Date</th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                         {% for event in events  %}
+                            <tr>
+                                <td>{{ event.name }}</td>
+                                <td>{{ event.date|date("d / m / Y") }}</td>
+                            </tr>
+                            {% endfor %}
+                         </tbody>
+                     </table>
+                </div>
+            </div>
+        </div>
+{% endblock %}

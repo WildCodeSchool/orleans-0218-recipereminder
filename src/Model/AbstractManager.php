@@ -85,12 +85,23 @@ abstract class AbstractManager
      */
     public function insert(array $data)
     {
-        //TODO : Implements SQL INSERT request
+        $key = array_keys($data);
+        $field = implode(',', $key);
+        $fieldPdo = implode(',:', $key);
+
+        $sql = "INSERT INTO $this->table ($field) VALUES (:$fieldPdo)";
+        $statement = $this->pdoConnection->prepare($sql);
+        $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
+        foreach ($data as $key => $value) {
+
+            $statement->bindValue(':'.$key, $value);
+        }
+
+        $statement->execute();
     }
 
-
     /**
-     * @param int   $id   Id of the row to update
+     * @param int $id Id of the row to update
      * @param array $data $data to update
      */
     public function update(int $id, array $data)

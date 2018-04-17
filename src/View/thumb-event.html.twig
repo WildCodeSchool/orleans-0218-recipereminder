@@ -1,13 +1,13 @@
 <div class="col-xs-12 col-sm-6 col-md-4">
+
     <figure class="thumbnail">
         {% if event.img is empty %}
             <img src="assets/images/popartcook.jpg" alt="recipe without image" class="">
         {% else %}
-            <img src="assets/images/{{ event.img }}" alt="{{ event.name }}" class="">
+            <img src="assets/upload/{{ event.img }}" alt="{{ event.name }}" class="">
         {% endif %}
         <figcaption class="caption">
             <h3>{{ event.name |capitalize }}</h3>
             <p>Le {{ event.date |date("d/m/Y")}}</p>
-        </figcaption>
-    </figure>
+
 </div>
