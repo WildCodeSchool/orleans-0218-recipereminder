@@ -1,5 +1,9 @@
 {% extends 'Admin/admin_layout.html.twig' %}
 
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/tables.css">
+{% endblock %}
+
 {% block content %}
     <h1>Administration des recettes</h1>
 
@@ -9,7 +13,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12">
-
                      <table class="table table-hover table-bordered table-center">
                          <thead>
                              <tr>
@@ -20,8 +23,8 @@
                          <tbody>
                          {% for recipe in recipes %}
                             <tr>
-                                <td>{{ recipe.name }}</td>
-                                <td>{{ recipe.category }}</td>
+                                <td>{{ recipe.name |capitalize }}</td>
+                                <td>{{ recipe.category |capitalize }}</td>
                             </tr>
                             {% endfor %}
                          </tbody>
