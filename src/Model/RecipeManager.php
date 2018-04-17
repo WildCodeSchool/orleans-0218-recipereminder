@@ -36,6 +36,18 @@ class RecipeManager extends AbstractManager
         return $this->pdoConnection->query($sql, \PDO::FETCH_ASSOC)->fetchAll();
     }
 
+
+    public function selectLastRecipes()
+    {
+        $sql = "SELECT r.id, r.name, r.img, c.name AS category FROM recipe AS r 
+                LEFT JOIN category AS c 
+                ON r.categoryId = c.id 
+                ORDER BY r.id DESC LIMIT 3;";
+
+        return $this->pdoConnection->query($sql, \PDO::FETCH_ASSOC)->fetchAll();
+    }
+
+
     /**
      * Retrieves all information required for each recipe page
      * @param int $id
@@ -53,4 +65,5 @@ class RecipeManager extends AbstractManager
 
         return $statement->fetch();
     }
+
 }
