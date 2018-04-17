@@ -113,13 +113,19 @@ section:nth-child(even) {
 .comment {
     font-size: 1.5em;
     font-style: italic;
+    max-height: 18em;
+    overflow: auto;
 }
 
-.itemImg {
-    width: 100%;
-    max-height: 25vw;
+.guest {
+    font-size: 1.3em;
+    max-height: 18em;
+    overflow: auto;
 }
 
+.imgEvent {
+    margin-top: 1.5em;
+}
 .refTitle {
     margin-top: 1em;
 }

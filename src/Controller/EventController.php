@@ -74,4 +74,13 @@ class EventController extends AbstractController
         $categories = $categoryManager->selectAll();
         return $this->twig->render('Admin/Event/addEvent.html.twig', ['categories' => $categories, 'errors' => $errors, 'post' => $data]);
     }
+
+    public function showEvent(int $id)
+    {
+        $eventManager = new EventManager();
+        $event = $eventManager->selectOneById($id);
+
+
+        return $this->twig->render('Event/show-one-event.html.twig', ['event' => $event ]);
+    }
 }
