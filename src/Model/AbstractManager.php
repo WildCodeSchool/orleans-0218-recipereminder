@@ -108,6 +108,22 @@ abstract class AbstractManager
      */
     public function update(int $id, array $data)
     {
-        //TODO : Implements SQL UPDATE request
+        $key = array_keys($data);
+        $field = implode(',', $key);
+        $fieldPdo = implode(',:', $key);
+
+        $sql = "INSERT INTO $this->table ($field) VALUES (:$fieldPdo)";
+        $statement = $this->pdoConnection->prepare($sql);
+        $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
+        foreach ($data as $key => $value) {
+
+            $statement->bindValue(':'.$key, $value);
+        }
+
+        $statement->execute();
+
+
+
+
+
     }
-}

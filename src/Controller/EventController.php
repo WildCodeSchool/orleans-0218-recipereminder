@@ -118,4 +118,12 @@ class EventController extends AbstractController
 
         header('Location: /admin/eventList');
     }
+
+    public function updateEvent()
+    {
+        $recipeManager = new RecipeManager();
+        $recipes = $recipeManager->selectAllEvent();
+
+        return $this->twig->render('Recipe/list_recipe.html.twig', ['recipes' => $recipes]);
+    }
 }
