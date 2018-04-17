@@ -84,13 +84,16 @@ section:nth-child(even) {
 }
 
 .admin-nav {
-    background-color: gainsboro;
+    background-color: lightgrey;
+    color: black;
 }
 
 .adminMode {
     font-size: 20px;
-    color: #de8835;
+    color: black;
+    font-family: 'Galada', cursive;
 }
+
 
 .logo-header {
     margin-top: 3px;
