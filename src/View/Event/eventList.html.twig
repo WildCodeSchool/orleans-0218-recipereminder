@@ -1,16 +1,19 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-
+<div class="container>">
     <h1>Liste des événements</h1>
-
+    <div id="list">
+        <div class="row">
     {% for event in events %}
 
         {% include 'thumb-event.html.twig' %}
     {% else %}
         <p> Aucun élément à afficher.</p>
     {% endfor %}
-
+        </div>
+    </div>
+</div>
 
 {% endblock %}
 
