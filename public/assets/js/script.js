@@ -1,13 +1,13 @@
 
 // recherche de recipe dans listRecipe
-$('#formSeekRecipe').submit(function(e){
+$('#formSeekRecipe').submit(function (e) {
     e.preventDefault();
 });
 
-$('#seekRecipe').keyup(function(){
+$('#seekRecipe').keyup(function () {
     let recipe = $(this).val();
     //console.log(recipe);
-    $.post( "/recipe/search", { recipe: recipe }).done(function(html){
+    $.post("/recipe/search", { recipe: recipe }).done(function (html) {
         $('#list').html(html);
     });
 });
