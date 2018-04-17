@@ -15,6 +15,7 @@ $routes = [
     'Homepage' => [
         ['index', '/', 'GET'],
         ['adminIndex', '/admin/', 'GET'],
+
     ],
 
     'Category' => [ // Controller
