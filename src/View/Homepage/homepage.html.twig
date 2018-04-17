@@ -9,9 +9,9 @@
     <div class="container">
         <h2>Les dernières recettes</h2>
         <div class="row">
-            {% include 'thumb-recipe.html.twig' %}
-            {% include 'thumb-recipe.html.twig' %}
-            {% include 'thumb-recipe.html.twig' %}
+            {% for recipe in lastrecipes %}
+                {% include 'thumb-recipe.html.twig' %}
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -20,9 +20,9 @@
     <div class="container">
         <h2>Les derniers évènements</h2>
         <div class="row">
-            {% include 'thumb-event.html.twig' %}
-            {% include 'thumb-event.html.twig' %}
-            {% include 'thumb-event.html.twig' %}
+            {% for event in lastevents %}
+                {% include 'thumb-event.html.twig' %}
+            {% endfor %}
         </div>
     </div>
 </section>
