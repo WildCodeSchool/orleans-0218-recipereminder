@@ -192,11 +192,14 @@ footer a:hover {
 }
 
 /* ----- class pour tout les boutons */
-.btn{
+.btn {
     color: #fff;
     background-color: #ff8533;
     border-color: #e65c00;
     margin:10px;
+    font-family: 'Galada', cursive;
+    font-size: 20px;
+    margin-bottom: 20px;
 }
 .btn:hover {
     color: #fff;
