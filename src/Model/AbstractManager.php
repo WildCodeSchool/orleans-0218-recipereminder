@@ -93,7 +93,7 @@ abstract class AbstractManager
         $statement = $this->pdoConnection->prepare($sql);
         $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
         foreach ($data as $key => $value) {
-            $statement->bindValue(':'.$key, $value);
+            $statement->bindValue($key, $value);
         }
 
         $statement->execute();
