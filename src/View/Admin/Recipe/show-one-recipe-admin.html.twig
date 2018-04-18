@@ -4,6 +4,11 @@
     <div class="container">
         <h1 class="text-center itemHeader">{{ recipe.name|capitalize }}</h1>
         <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                    Supprimer la recette
+                </button>
+            </div>
             <div class="col-xs-12 col-md-6">
                 <h3 class="text-left">{{ recipe.category|capitalize }}</h3>
             </div>
@@ -24,7 +29,29 @@
             <div class="col-xs-12 col-md-6">
                 <p class="comment"><q>{{ recipe.comment }}</q></p>
             </div>
+
         </div>
+
+        <!-- MODAL -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Suppression de la recette</h4>
+                    </div>
+                    <div class="modal-body">
+                        Êtes-vous sûr de vouloir supprimer la recette ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" data-dismiss="modal">Retour</button>
+                        <a href="/admin/recipeList" class="btn" role="button">Supprimer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 
 {% endblock %}

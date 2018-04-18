@@ -82,6 +82,13 @@ class RecipeController extends AbstractController
         return $this->twig->render('Recipe/show-one-recipe.html.twig', ['recipe' => $recipe ]);
     }
 
+    /**
+     * @param int $id
+     * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function showAdminRecipe(int $id)
     {
         $recipeManager = new RecipeManager();
@@ -89,6 +96,14 @@ class RecipeController extends AbstractController
 
 
         return $this->twig->render('Admin/Recipe/show-one-recipe-admin.html.twig', ['recipe' => $recipe ]);
+    }
+
+    public function deleteRecipe(int $id)
+    {
+        $recipeManager = new RecipeManager();
+        $recipeManager->delete($id);
+
+        header('Location: /admin/recipeList');
     }
 
     public function adminListRecipe()
