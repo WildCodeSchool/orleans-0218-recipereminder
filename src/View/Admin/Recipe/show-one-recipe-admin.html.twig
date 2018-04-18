@@ -44,8 +44,11 @@
                         Êtes-vous sûr de vouloir supprimer la recette ?
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn" data-dismiss="modal">Retour</button>
-                        <a href="/recipe/delete/{{ recipe.id }}" class="btn" role="button">Supprimer</a>
+                        <form action="/recipe/delete" method="POST">
+                            <input type="hidden" name="id" value="{{ recipe.id }}">
+                            <button type="button" class="btn" data-dismiss="modal">Retour</button>
+                            <button type="submit" class="btn">Supprimer la recette</button>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -35,7 +35,7 @@ $routes = [
         ['addRecipe', '/admin/addRecipe', ['GET', 'POST']],
         ['adminlistRecipe', '/admin/recipeList', 'GET'], // action, url, method
         ['searchRecipe', '/recipe/search', 'POST'], // action, url, method
-        ['deleteRecipe', '/recipe/delete/{id: \d+}', 'GET'],
+        ['deleteRecipe', '/recipe/delete', 'POST'],
 
     ],
 
