@@ -101,7 +101,7 @@ class RecipeController extends AbstractController
 
         if (empty(trim($_POST['recipe']))) {
             $recipes = $recipeManager->selectAllRecipe();
-        }  else {
+        } else {
             $recipes=$recipeManager->selectRecipesLikeName(trim($_POST['recipe']));
         }
 

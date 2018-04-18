@@ -82,7 +82,7 @@ class EventController extends AbstractController
 
         if (empty(trim($_POST['event']))) {
             $events = $eventManager->selectAll();
-        }  else {
+        } else {
             $events=$eventManager->selectEventLikeName(trim($_POST['event']));
         }
 
