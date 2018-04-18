@@ -49,6 +49,7 @@ figcaption p {
 
 .thumbnail {
     padding: 0;
+    border: 0px;
     box-shadow: -5px 5px 15px #EEE;
     height: 500px;
     overflow: hidden;
