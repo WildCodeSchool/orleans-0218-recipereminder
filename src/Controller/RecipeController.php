@@ -67,7 +67,10 @@ class RecipeController extends AbstractController
         }
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->selectAll();
-        return $this->twig->render('Admin/addRecipe.html.twig', ['categories' => $categories, 'errors' => $errors, 'post' => $data]);
+        return $this->twig->render(
+            'Admin/addRecipe.html.twig',
+            ['categories' => $categories, 'errors' => $errors, 'post' => $data]
+        );
     }
 
     public function showRecipe(int $id)
@@ -90,5 +93,18 @@ class RecipeController extends AbstractController
                 'recipes' => $recipes
             ]
         );
+    }
+
+    public function searchRecipe()
+    {
+        $recipeManager = new RecipeManager();
+
+        if (empty(trim($_POST['recipe']))) {
+            $recipes = $recipeManager->selectAllRecipe();
+        }  else {
+            $recipes=$recipeManager->selectRecipesLikeName(trim($_POST['recipe']));
+        }
+
+        return $this->twig->render('Recipe/inc_listRecipe.html.twig', ['recipes' => $recipes ]);
     }
 }

@@ -29,10 +29,11 @@ $routes = [
       ],
 
     'Recipe' => [ // Controller
-        ['listRecipe', '/recipe', 'GET'], // action, url, method      
+        ['listRecipe', '/recipe', 'GET'], // action, url, method
         ['showRecipe', '/recipe/{id:\d+}', 'GET'],
         ['addRecipe', '/admin/addRecipe', ['GET', 'POST']],
         ['adminlistRecipe', '/admin/recipeList', 'GET'], // action, url, method
+        ['searchRecipe', '/recipe/search', 'POST'], // action, url, method
 
     ],
 
