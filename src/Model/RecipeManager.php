@@ -68,16 +68,25 @@ class RecipeManager extends AbstractManager
         return $statement->fetch();
     }
 
-    public function selectRecipesLikeName($name)
+    public function selectRecipes($name, $categoryId)
     {
-        //$sql="SELECT id FROM $this->table WHERE name LIKE :name";
         $sql = "SELECT r.id, r.name, r.img, r.url, r.book, r.comment, c.name as category
                 FROM recipe AS r
                  LEFT JOIN category AS c ON c.id = r.categoryId 
-                 WHERE r.name LIKE :name";
+                 WHERE r.name LIKE :name ";
+
+        $sqlCategory = "AND r.categoryId = :categoryId";
+
+        if (!empty($categoryId)) {
+            $sql .= $sqlCategory;
+        }
+
         $statement = $this->pdoConnection->prepare($sql);
         $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
-        $statement->bindValue(':name', '%'.$name.'%', \PDO::PARAM_STR);
+        $statement->bindValue('name', '%'.$name.'%', \PDO::PARAM_STR);
+        if (!empty($categoryId)) {
+            $statement->bindValue('categoryId', $categoryId, \PDO::PARAM_STR);
+        }
         $statement->execute();
 
         return $statement->fetchAll();
