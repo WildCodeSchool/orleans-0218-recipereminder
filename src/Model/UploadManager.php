@@ -26,7 +26,7 @@ class UploadManager
             }
             $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
             if ($imageFileType == null) {
-                $filename = null;
+                $filename = '';
                 return $filename;
             }
             $extensionAuth = ["jpg", "png", "gif"];
