@@ -70,7 +70,11 @@ class RecipeManager extends AbstractManager
 
     public function selectRecipesLikeName($name)
     {
-        $sql="SELECT id FROM $this->table WHERE name LIKE :name";
+        //$sql="SELECT id FROM $this->table WHERE name LIKE :name";
+        $sql = "SELECT r.id, r.name, r.img, r.url, r.book, r.comment, c.name as category
+                FROM recipe AS r
+                 LEFT JOIN category AS c ON c.id = r.categoryId 
+                 WHERE r.name LIKE :name";
         $statement = $this->pdoConnection->prepare($sql);
         $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
         $statement->bindValue(':name', '%'.$name.'%', \PDO::PARAM_STR);

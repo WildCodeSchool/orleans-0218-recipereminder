@@ -73,7 +73,7 @@ class EventController extends AbstractController
 
         return $this->twig->render(
             'Admin/Event/addEvent.html.twig',
-            [ 'errors' => $errors, 'post' => $data]
+            [ 'errors' => $errors, 'data' => $data]
         );
     }
 }
