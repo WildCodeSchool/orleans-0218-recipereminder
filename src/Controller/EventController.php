@@ -82,6 +82,19 @@ class EventController extends AbstractController
         $eventManager = new EventManager();
         $event = $eventManager->selectOneById($id);
 
-        return $this->twig->render('Event/show-one-event.html.twig', ['event' => $event ]);
+        return $this->twig->render('Event/show-one-event.html.twig', ['event' => $event]);
+    }
+
+    public function searchEvent()
+    {
+        $eventManager = new EventManager();
+
+        if (empty(trim($_POST['event']))) {
+            $events = $eventManager->selectAll();
+        } else {
+            $events = $eventManager->selectEventLikeName(trim($_POST['event']));
+        }
+
+        return $this->twig->render('Event/inc_listEvent.html.twig', ['events' => $events]);
     }
 }
