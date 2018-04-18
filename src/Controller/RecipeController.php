@@ -106,7 +106,7 @@ class RecipeController extends AbstractController
 
         $recipeManager->delete($id);
 
-       return $this->twig->render();
+       return $this->twig->render('Admin/Recipe/after-delete-recipe.html.twig', ['recipeName' => $recipeName]);
     }
 
     public function adminListRecipe()

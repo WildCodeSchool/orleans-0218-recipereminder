@@ -229,7 +229,14 @@ label {
     font-size: 19px;
 }
 
-.searchEngine{
+.searchEngine {
     margin:20px;
 
+}
+
+.deletedRecipe {
+    font-family: Galada;
+    font-size: 30px;
+    text-align: center;
+    margin: 20px 0px;
 }
