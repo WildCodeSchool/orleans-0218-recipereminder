@@ -18,7 +18,8 @@ $('#categoryId').change(function(){
 function sendForm(){
     let form = $('#formSeekRecipe');
 
-    $.post("/recipe/search", form.serialize()).done(function (html) {
+    // on sérialize les données pour envoyer tout le contenu du formulaire en POST
+    $.post("/recipe/search", form.serialize()).done(function (html) {// ('url de l'action , tous le contenu du form)
         $('#list').html(html);
     });
 }
