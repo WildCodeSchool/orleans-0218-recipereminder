@@ -107,4 +107,17 @@ class RecipeController extends AbstractController
 
         return $this->twig->render('Recipe/inc_listRecipe.html.twig', ['recipes' => $recipes ]);
     }
+
+    public function searchRecipeAdmin()
+    {
+        $recipeManager = new RecipeManager();
+
+        if (empty(trim($_POST['recipe']))) {
+            $recipes = $recipeManager->selectAllRecipe();
+        }  else {
+            $recipes=$recipeManager->selectRecipesLikeName(trim($_POST['recipe']));
+        }
+
+        return $this->twig->render('Admin/Recipe/search_recipeList.html.twig', ['recipes' => $recipes ]);
+    }
 }
