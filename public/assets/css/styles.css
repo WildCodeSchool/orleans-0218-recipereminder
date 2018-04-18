@@ -230,5 +230,8 @@ label {
 
 .searchEngine{
     margin:20px;
+}
 
+.form-inline .form-group{
+    margin-top:10px;
 }

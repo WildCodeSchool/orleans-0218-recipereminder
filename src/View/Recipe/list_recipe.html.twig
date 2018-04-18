@@ -4,15 +4,24 @@
     <div class="container">
         <h1 class="text-center">Recettes</h1>
         <div class="row text-center searchEngine">
-            <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-                <form method="post" action="" id="formSeekRecipe">
-                    <div class="form-group">
-                    <label for="seekRecipe"></label>
-                        <input type="text" name="seekRecipe" id="seekRecipe" class="form-control"
-                               placeholder="Quelles recettes cherchez-vous?">
-                    </div>
-                </form>
-            </div>
+            <form method="post" action="" id="formSeekRecipe" class="form-inline">
+                <div class="form-group">
+                <label for="name">Nom de la recette:</label>
+                    <input type="text" name="name" id="name" class="form-control"
+                           placeholder="Quelles recettes cherchez-vous?">
+
+                </div>
+                <div class="form-group">
+                    <label for="categoryId">Categorie :
+                        <select id="categoryId" name="categoryId" class="form-control">
+                            <option value="" selected>Toutes</option>
+                            {% for category in categories %}
+                                <option value="{{ category.id }}">{{ category.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
+                </div>
+            </form>
         </div>
         <div id="list" class="text-center">
             {% include 'Recipe/inc_listRecipe.html.twig' %}
@@ -21,5 +30,5 @@
 
 {% endblock %}
 {% block javascript %}
-<script src="assets/js/script.js"></script>
+<script src="assets/js/searchRecipe.js"></script>
 {% endblock %}
