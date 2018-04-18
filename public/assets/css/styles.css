@@ -223,3 +223,9 @@ footer a:hover {
     color: #fff;
     text-decoration: none;
 }
+
+
+label {
+    font-family: 'Galada', cursive;
+    font-size: 19px;
+}
