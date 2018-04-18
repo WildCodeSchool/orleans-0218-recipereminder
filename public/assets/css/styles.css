@@ -6,7 +6,7 @@ body {
     background-image: url("../images/bgaffiche.jpg");
     background-size: cover;
     height: 500px;
-    box-shadow: 1px 1px 6px black;
+    box-shadow: 1px 1px 3px black;
 }
 
 .banner h1 {
@@ -17,12 +17,26 @@ body {
     font-family: 'Galada', cursive;
 }
 
-h1, h2 {
+h1 {
     margin: 20px 0px 20px 0px;
 }
 
-.logo-header,.navbar-default,h1,h2, h3, h4{
+h1 {
+    text-shadow: 4px 4px 2px white;
+}
+
+h2 {
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+
+.logo-header, .navbar-default, h1, h2, h4{
     font-family: 'Bangers', cursive;
+}
+
+h3 {
+    font-family: 'Galada', cursive;
+    font-size: 30px;
 }
 
 h1, h2, h3, h4 {
@@ -56,7 +70,7 @@ section:nth-child(odd) {
 }
 
 section:nth-child(even) {
-    background-color: gainsboro;
+    background-color: #ffaa00;
     padding-bottom: 50px;
 }
 
@@ -64,10 +78,22 @@ section:nth-child(even) {
 
 .navbar-default {
     background-color: white;
-    box-shadow: 2px 2px 5px grey;
+    box-shadow: 1px 1px 3px black;
     border-radius: 0;
     padding-left: 30px;
 }
+
+.admin-nav {
+    background-color: lightgrey;
+    color: black;
+}
+
+.adminMode {
+    font-size: 20px;
+    color: black;
+    font-family: 'Galada', cursive;
+}
+
 
 .logo-header {
     margin-top: 3px;
@@ -129,7 +155,22 @@ section:nth-child(even) {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
 }
+
+
+/* Texte Recipe Reminder fin Homepage */
+.recipeText p {
+    font-family: 'Galada', cursive;
+    font-size: 22px;
+
+}
+
+.orange {
+    color: #ffaa00;
+}
+
+
 /*Fin pages pour une recette ou un événement*/
+
 
 /*FOOTER */
 footer {
@@ -163,11 +204,14 @@ footer a:hover {
 }
 
 /* ----- class pour tout les boutons */
-.btn{
+.btn {
     color: #fff;
     background-color: #ff8533;
     border-color: #e65c00;
     margin:10px;
+    font-family: 'Galada', cursive;
+    font-size: 20px;
+    margin-bottom: 20px;
 }
 .btn:hover {
     color: #fff;
@@ -180,6 +224,11 @@ footer a:hover {
     text-decoration: none;
 }
 
+label {
+    font-family: 'Galada', cursive;
+    font-size: 19px;
+
 .searchEngine{
     margin:20px;
+
 }
