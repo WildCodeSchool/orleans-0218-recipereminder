@@ -100,9 +100,7 @@ class RecipeController extends AbstractController
 
     public function deleteRecipe()
     {
-
         $recipeManager = new RecipeManager();
-
         $recipeManager->delete();
 
         header('Location: /admin/recipeList');
