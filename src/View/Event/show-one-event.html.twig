@@ -1,0 +1,17 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="text-center itemHeader">{{ event.name|capitalize }}</h1>
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                {% if event.img is empty %}
+                    <img src="/assets/images/thumbtest3.jpg" alt="event without image" class="itemImg" />
+                {% else %}
+                    <img src="/assets/upload/{{ event.img }}" alt="{{ event.name }}" class="itemImg" />
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

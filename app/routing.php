@@ -26,7 +26,9 @@ $routes = [
         ['listEvent', '/event', 'GET'],
         ['adminListEvent', '/admin/eventList', 'GET'], // action, url, method
         ['addEvent', '/admin/addEvent', ['GET', 'POST']],
-      ],
+        ['searchEvent', '/event/search', 'POST'], // action, url, method
+
+    ],
 
     'Recipe' => [ // Controller
         ['listRecipe', '/recipe', 'GET'], // action, url, method

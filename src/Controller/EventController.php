@@ -76,4 +76,16 @@ class EventController extends AbstractController
             [ 'errors' => $errors, 'data' => $data]
         );
     }
+    public function searchEvent()
+    {
+        $eventManager = new EventManager();
+
+        if (empty(trim($_POST['event']))) {
+            $events = $eventManager->selectAll();
+        }  else {
+            $events=$eventManager->selectEventLikeName(trim($_POST['event']));
+        }
+
+        return $this->twig->render('Event/inc_listEvent.html.twig', ['events' => $events ]);
+    }
 }

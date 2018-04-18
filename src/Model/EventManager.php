@@ -29,5 +29,21 @@ class EventManager extends AbstractManager
 
         return $this->pdoConnection->query($sql, \PDO::FETCH_ASSOC)->fetchAll();
     }
+    /**
+     * @return array
+     */
+
+    public function selectEventLikeName($name)
+    {
+        $sql = "SELECT e.id, e.name, e.img, e.date
+                FROM event AS e
+                 WHERE e.name LIKE :name";
+        $statement = $this->pdoConnection->prepare($sql);
+        $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
+        $statement->bindValue('name', '%'.$name.'%', \PDO::PARAM_STR);
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
 
 }

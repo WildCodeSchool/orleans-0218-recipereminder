@@ -1,0 +1,8 @@
+<div class="row">
+
+    {% for event in events %}
+        {% include 'thumb-event.html.twig' %}
+    {% else %}
+        <p> Aucun élément à afficher.</p>
+    {% endfor %}
+</div>
