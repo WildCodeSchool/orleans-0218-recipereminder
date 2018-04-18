@@ -100,17 +100,12 @@ class RecipeController extends AbstractController
 
     public function deleteRecipe()
     {
-        $id = $_POST['id'];
+
         $recipeManager = new RecipeManager();
-        $recipe = $recipeManager->selectRecipesById($id);
-        $recipeName = $recipe->getName();
-        $recipeImg = $recipe->getImg();
 
         $recipeManager->delete();
 
         header('Location: /admin/recipeList');
-
-       /*return $this->twig->render('Admin/Recipe/after-delete-recipe.html.twig', ['recipeName' => $recipeName]);*/
     }
 
     public function adminListRecipe()
