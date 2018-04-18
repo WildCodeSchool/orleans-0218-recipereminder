@@ -23,6 +23,11 @@ class HomepageController extends AbstractController
 
         return $this->twig->render('Homepage/homepage.html.twig', ['lastrecipes' => $lastRecipes, 'lastevents' => $lastEvents]);
     }
+
+    public function adminIndex()
+    {
+        return $this->twig->render('Admin/adminHomepage.html.twig');
+    }
 }
 
 ?>
