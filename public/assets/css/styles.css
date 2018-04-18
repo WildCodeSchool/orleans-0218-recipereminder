@@ -240,3 +240,7 @@ label {
     text-align: center;
     margin: 20px 0px;
 }
+
+.largeBtn {
+    width: 100%;
+}
