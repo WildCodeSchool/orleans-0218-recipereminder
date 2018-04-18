@@ -50,6 +50,7 @@ figcaption p {
 .thumbnail {
     padding: 0;
     border: 0px;
+    box-shadow: -5px 5px 15px #EEE;
     height: 500px;
     overflow: hidden;
     max-width: 350px;
@@ -69,13 +70,13 @@ section:nth-child(odd) {
     padding-bottom: 50px;
 }
 
-section:nth-child(odd) .thumbnail{
-    box-shadow: -5px 5px 15px #EEE;
-}
-
 section:nth-child(even) {
     background-color: #ffaa00;
     padding-bottom: 50px;
+}
+
+section:nth-child(even) .thumbnail{
+    box-shadow: none;
 }
 
 /* NAVBAR */
