@@ -36,21 +36,57 @@ class RecipeManager extends AbstractManager
         return $this->pdoConnection->query($sql, \PDO::FETCH_ASSOC)->fetchAll();
     }
 
+
+    public function selectLastRecipes()
+    {
+        $sql = "SELECT r.id, r.name, r.img, c.name AS category FROM recipe AS r 
+                LEFT JOIN category AS c 
+                ON r.categoryId = c.id 
+                ORDER BY r.id DESC LIMIT 3;";
+
+        return $this->pdoConnection->query($sql, \PDO::FETCH_ASSOC)->fetchAll();
+    }
+
+
     /**
      * Retrieves all information required for each recipe page
      * @param int $id
      * @return mixed
      */
-    public function selectOneRecipe(int $id)
+    public function selectRecipesById(int $id)
     {
         $sql = "SELECT r.id, r.name, r.img, r.url, r.book, r.comment, c.name as category
                 FROM recipe AS r
-                 LEFT JOIN category AS c ON c.id = r.categoryId WHERE r.id=:id";
+                 LEFT JOIN category AS c ON c.id = r.categoryId 
+                 WHERE r.id=:id
+                 ";
         $statement = $this->pdoConnection->prepare($sql);
         $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
         return $statement->fetch();
+    }
+
+    public function selectRecipes($name, $categoryId)
+    {
+        $sql = "SELECT r.id, r.name, r.img, r.url, r.book, r.comment, c.name as category
+                FROM recipe AS r
+                 LEFT JOIN category AS c ON c.id = r.categoryId 
+                 WHERE r.name LIKE :name ";
+
+        if (!empty($categoryId)) {
+            $sql .= "AND r.categoryId = :categoryId";
+        }
+
+        $statement = $this->pdoConnection->prepare($sql);
+        $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
+        $statement->bindValue('name', '%'.$name.'%', \PDO::PARAM_STR);
+        if (!empty($categoryId)) {
+            $statement->bindValue('categoryId', $categoryId, \PDO::PARAM_INT);
+        }
+        $statement->execute();
+
+        return $statement->fetchAll();
     }
 }

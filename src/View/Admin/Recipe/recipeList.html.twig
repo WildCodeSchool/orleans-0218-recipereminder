@@ -1,10 +1,25 @@
 {% extends 'Admin/admin_layout.html.twig' %}
 
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/tables.css">
+{% endblock %}
+
 {% block content %}
     <h1>Administration des recettes</h1>
 
         <div class="text-center">
             <a href="addRecipe"><button class="btn">Ajouter une recette</button></a>
+        </div>
+        <div class="row text-center searchEngine">
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                <form method="post" action="" id="formSeekRecipe">
+                    <div class="form-group">
+                        <label for="seekRecipe"></label>
+                        <input type="text" name="seekRecipe" id="seekRecipe" class="form-control"
+                               placeholder="Quelles recettes cherchez-vous?">
+                    </div>
+                </form>
+            </div>
         </div>
         <div class="container">
             <div class="row">
@@ -13,17 +28,17 @@
                          <thead>
                              <tr>
                                  <th>Recettes</th>
+                                 <th>Catégories</th>
                              </tr>
                          </thead>
-                         <tbody>
-                         {% for recipe in recipes %}
-                            <tr>
-                                <td>{{ recipe.name }}</td>
-                            </tr>
-                            {% endfor %}
+                         <tbody id="list">
+                            {% include 'Admin/Recipe/search_recipeList.html.twig' %}
                          </tbody>
                      </table>
                 </div>
             </div>
         </div>
+{% endblock %}
+{% block javascript %}
+<script src="/assets/js/scriptRecipeAdmin.js"></script>
 {% endblock %}

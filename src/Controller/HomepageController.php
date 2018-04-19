@@ -8,10 +8,24 @@
 
 namespace Controller;
 
+use Model\EventManager;
+use Model\RecipeManager;
+
 class HomepageController extends AbstractController
 {
     public function index()
     {
-        return $this->twig->render('Homepage/homepage.html.twig');
+        $recipeManager = new RecipeManager();
+        $lastRecipes = $recipeManager->selectLastRecipes();
+
+        $eventManager = new EventManager();
+        $lastEvents = $eventManager->selectLastEvents();
+
+        return $this->twig->render('Homepage/homepage.html.twig', ['lastrecipes' => $lastRecipes, 'lastevents' => $lastEvents]);
+    }
+
+    public function adminIndex()
+    {
+        return $this->twig->render('Admin/adminHomepage.html.twig');
     }
 }
