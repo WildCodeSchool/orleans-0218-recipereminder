@@ -72,11 +72,11 @@ abstract class AbstractManager
      *
      * @param int $id
      */
-    public function delete()
+    public function delete($id)
     {
         $sql = "DELETE FROM $this->table WHERE id=:id";
         $exec = $this->pdoConnection->prepare($sql);
-        $exec->bindValue('id', $_POST['id'], \PDO::PARAM_INT);
+        $exec->bindValue('id', $id, \PDO::PARAM_INT);
         $exec->execute();
     }
 
