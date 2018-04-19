@@ -1,0 +1,6 @@
+{% for recipe in recipes %}
+    <tr>
+        <td>{{ recipe.name |capitalize }}</td>
+        <td>{{ recipe.category |capitalize }}</td>
+    </tr>
+{% endfor %}

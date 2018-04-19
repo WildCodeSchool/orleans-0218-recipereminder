@@ -76,4 +76,12 @@ class EventController extends AbstractController
             [ 'errors' => $errors, 'data' => $data]
         );
     }
+
+    public function showEvent(int $id)
+    {
+        $eventManager = new EventManager();
+        $event = $eventManager->selectOneById($id);
+
+        return $this->twig->render('Event/show-one-event.html.twig', ['event' => $event ]);
+    }
 }

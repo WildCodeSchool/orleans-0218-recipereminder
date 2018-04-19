@@ -24,6 +24,7 @@ $routes = [
 
     'Event' => [
         ['listEvent', '/event', 'GET'],
+        ['showEvent', '/event/{id:\d+}', 'GET'],
         ['adminListEvent', '/admin/eventList', 'GET'], // action, url, method
         ['addEvent', '/admin/addEvent', ['GET', 'POST']],
       ],
@@ -36,6 +37,7 @@ $routes = [
         ['adminlistRecipe', '/admin/recipeList', 'GET'], // action, url, method
         ['searchRecipe', '/recipe/search', 'POST'], // action, url, method
         ['deleteRecipe', '/recipe/delete', 'POST'],
+        ['searchRecipeAdmin', '/admin/recipeList/search', 'POST'], // action, url, method
 
     ],
 

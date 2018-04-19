@@ -29,6 +29,3 @@ class HomepageController extends AbstractController
         return $this->twig->render('Admin/adminHomepage.html.twig');
     }
 }
-
-?>
-
