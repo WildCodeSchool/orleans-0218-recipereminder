@@ -75,17 +75,15 @@ class RecipeManager extends AbstractManager
                  LEFT JOIN category AS c ON c.id = r.categoryId 
                  WHERE r.name LIKE :name ";
 
-        $sqlCategory = "AND r.categoryId = :categoryId";
-
         if (!empty($categoryId)) {
-            $sql .= $sqlCategory;
+            $sql .= "AND r.categoryId = :categoryId";
         }
 
         $statement = $this->pdoConnection->prepare($sql);
         $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
         $statement->bindValue('name', '%'.$name.'%', \PDO::PARAM_STR);
         if (!empty($categoryId)) {
-            $statement->bindValue('categoryId', $categoryId, \PDO::PARAM_STR);
+            $statement->bindValue('categoryId', $categoryId, \PDO::PARAM_INT);
         }
         $statement->execute();
 
