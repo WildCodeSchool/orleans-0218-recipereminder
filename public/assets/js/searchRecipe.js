@@ -1,4 +1,3 @@
-
 // recherche de recipe dans listRecipe
 $('#formSeekRecipe').submit(function (e) {
     e.preventDefault();
