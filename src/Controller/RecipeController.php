@@ -29,7 +29,16 @@ class RecipeController extends AbstractController
         $recipeManager = new RecipeManager();
         $recipes = $recipeManager->selectAllRecipe();
 
-        return $this->twig->render('Recipe/list_recipe.html.twig', ['recipes' => $recipes]);
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll();
+
+        return $this->twig->render(
+            'Recipe/list_recipe.html.twig',
+            [
+                'recipes' => $recipes ,
+                'categories' => $categories
+            ]
+        );
     }
 
 
@@ -99,10 +108,10 @@ class RecipeController extends AbstractController
     {
         $recipeManager = new RecipeManager();
 
-        if (empty(trim($_POST['recipe']))) {
+        if (empty(trim($_POST['name'])) && empty($_POST['categoryId'])) {
             $recipes = $recipeManager->selectAllRecipe();
         } else {
-            $recipes=$recipeManager->selectRecipesLikeName(trim($_POST['recipe']));
+            $recipes=$recipeManager->selectRecipes(trim($_POST['name']), $_POST['categoryId']);
         }
 
         return $this->twig->render('Recipe/inc_listRecipe.html.twig', ['recipes' => $recipes ]);
