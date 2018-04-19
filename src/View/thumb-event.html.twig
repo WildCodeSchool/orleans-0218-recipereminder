@@ -2,7 +2,7 @@
 
     <figure class="thumbnail">
         {% if event.img is empty %}
-            <img src="assets/images/popartcook.jpg" alt="recipe without image" class="">
+            <img src="assets/images/eventPlaceHolder.jpg" alt="recipe without image" class="">
         {% else %}
             <img src="assets/upload/{{ event.img }}" alt="{{ event.name }}" class="">
         {% endif %}
