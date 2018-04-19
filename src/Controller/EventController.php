@@ -59,7 +59,7 @@ class EventController extends AbstractController
                 }
                 if (isset($_FILES)) {
                     $upload = new UploadManager();
-                    $filename = $upload->upload($_FILES);
+                    $filename = $upload->upload($_FILES['img']);
                     $data['img'] = $filename;
                 }
 
@@ -71,9 +71,7 @@ class EventController extends AbstractController
             }
         }
 
-        return $this->twig->render(
-            'Admin/Event/addEvent.html.twig',
-            [ 'errors' => $errors, 'data' => $data]
+        return $this->twig->render('Admin/Event/addEvent.html.twig', [ 'errors' => $errors, 'data' => $data]
         );
     }
 
