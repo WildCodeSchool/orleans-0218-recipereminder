@@ -123,6 +123,10 @@ section:nth-child(even) {
     overflow: auto;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 .imgEvent {
     margin-top: 1.5em;
 }
@@ -136,6 +140,7 @@ section:nth-child(even) {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
 }
+
 /*Fin pages pour une recette ou un événement*/
 
 /*FOOTER */
