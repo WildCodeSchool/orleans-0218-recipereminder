@@ -12,6 +12,7 @@ use Model\Event;
 use Model\EventManager;
 use Model\CategoryManager;
 use Model\UploadManager;
+use Model\UpdateManager;
 
 class EventController extends AbstractController
 {
@@ -119,11 +120,21 @@ class EventController extends AbstractController
         header('Location: /admin/eventList');
     }
 
-    public function updateEvent()
+    public function updateEvent(int $id)
     {
-        $recipeManager = new RecipeManager();
-        $recipes = $recipeManager->selectAllEvent();
+        $post = $_POST;
+        if (!empty($_POST)) {
 
-        return $this->twig->render('Recipe/list_recipe.html.twig', ['recipes' => $recipes]);
+            $update = new UpdateManager();
+            $update->update($post);
+            header('Location:/admin/eventList');
+        }
+
+        $eventManager = new EventManager();
+        $event = $eventManager->selectOneById($id);
+
+        return $this->twig->render('Admin/Event/updateEvent.html.twig', ['data' => $event, 'post' => $post]);
     }
+
 }
+
