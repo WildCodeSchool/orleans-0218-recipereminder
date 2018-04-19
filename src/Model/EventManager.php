@@ -37,7 +37,7 @@ class EventManager extends AbstractManager
     {
         $sql = "SELECT e.id, e.name, e.img, e.date
                 FROM event AS e
-                 WHERE e.name LIKE :name";
+                 WHERE e.name LIKE :name OR e.guest LIKE :name";
         $statement = $this->pdoConnection->prepare($sql);
         $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
         $statement->bindValue('name', '%'.$name.'%', \PDO::PARAM_STR);
