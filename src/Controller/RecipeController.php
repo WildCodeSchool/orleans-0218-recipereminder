@@ -54,7 +54,7 @@ class RecipeController extends AbstractController
                 }
                 if (isset($_FILES)) {
                     $upload = new UploadManager();
-                    $filename = $upload->upload($_FILES);
+                    $filename = $upload->upload($_FILES['img']);
                     $data['img'] = $filename;
                 }
                 $recipeManager = new RecipeManager();
