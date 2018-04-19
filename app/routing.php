@@ -32,9 +32,11 @@ $routes = [
     'Recipe' => [ // Controller
         ['listRecipe', '/recipe', 'GET'], // action, url, method
         ['showRecipe', '/recipe/{id:\d+}', 'GET'],
+        ['showAdminRecipe', '/admin/recipe/{id: \d+}', 'GET'],
         ['addRecipe', '/admin/addRecipe', ['GET', 'POST']],
         ['adminlistRecipe', '/admin/recipeList', 'GET'], // action, url, method
         ['searchRecipe', '/recipe/search', 'POST'], // action, url, method
+        ['deleteRecipe', '/recipe/delete', 'POST'],
         ['searchRecipeAdmin', '/admin/recipeList/search', 'POST'], // action, url, method
 
     ],

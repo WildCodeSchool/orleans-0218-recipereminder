@@ -63,7 +63,7 @@ class RecipeController extends AbstractController
                 }
                 if (isset($_FILES)) {
                     $upload = new UploadManager();
-                    $filename = $upload->upload($_FILES);
+                    $filename = $upload->upload($_FILES['img']);
                     $data['img'] = $filename;
                 }
                 $recipeManager = new RecipeManager();
@@ -91,17 +91,40 @@ class RecipeController extends AbstractController
         return $this->twig->render('Recipe/show-one-recipe.html.twig', ['recipe' => $recipe ]);
     }
 
+    /**
+     * @param int $id
+     * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function showAdminRecipe(int $id)
+    {
+        $recipeManager = new RecipeManager();
+        $recipe = $recipeManager->selectRecipesById($id);
+
+
+        return $this->twig->render('Admin/Recipe/show-one-recipe-admin.html.twig', ['recipe' => $recipe ]);
+    }
+
+    public function deleteRecipe()
+    {
+        $recipeManager = new RecipeManager();
+        if (!empty($_POST)) {
+            $id = $_POST['id'];
+        }
+
+        $recipeManager->delete($id);
+
+        header('Location: /admin/recipeList');
+    }
+
     public function adminListRecipe()
     {
         $recipeManager = new RecipeManager();
         $recipes = $recipeManager->selectAllRecipe();
 
-        return $this->twig->render(
-            'Admin/Recipe/recipeList.html.twig',
-            [
-                'recipes' => $recipes
-            ]
-        );
+        return $this->twig->render('Admin/Recipe/recipeList.html.twig', ['recipes' => $recipes]);
     }
 
     public function searchRecipe()

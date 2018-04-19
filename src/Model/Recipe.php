@@ -77,9 +77,9 @@ class Recipe
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getImg(): string
+    public function getImg(): ?string
     {
         return $this->img;
     }
