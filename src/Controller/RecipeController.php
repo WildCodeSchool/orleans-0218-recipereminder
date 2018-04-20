@@ -163,11 +163,6 @@ class RecipeController extends AbstractController
         }
     }
 
-    public function updateRecipe()
-    {
-        $recipeManager = new RecipeManager();
-        $recipes = $recipeManager->selectAllRecipe();
 
-        return $this->twig->render('Recipe/updateRecipe.html.twig', ['recipes' => $recipes]);
-    }
+
 }

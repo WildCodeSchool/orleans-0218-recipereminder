@@ -104,9 +104,13 @@ abstract class AbstractManager
         $statement->execute();
     }
 
+
     /**
-     * @param int $id Id of the row to update
-     * @param array $data $data to update
+     *
      */
+    public function update(int $id, array $post)
+    {
+        //TODO : Implements SQL update request
+    }
 
 }

@@ -8,13 +8,16 @@
             <div class="alert alert-danger">{{ errors }}</div>
         {% endif %}
         <form method="post" action="" enctype="multipart/form-data">
+
+            <input type="hidden" id="id" name="id" value="{{ data.id }}">
+
             <div class="form-group">
                 <label for="name">Nom événement</label>
                 <input type="name" class="form-control" id="name" name="name" value="{{ data.name }}"
                        placeholder="ex: Mariage">
             </div>
             <div class="form-group">
-                <label for="img">Ajouter image : </label>
+                <label for="img">Ajouter une image (image actuelle: {{ data.img }}): </label>
                 <input type="file" name="img" id="img" value="{{ data.img }}">
             </div>
             <div class="form-group">

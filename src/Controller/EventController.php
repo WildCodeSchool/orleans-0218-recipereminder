@@ -122,18 +122,17 @@ class EventController extends AbstractController
 
     public function updateEvent(int $id)
     {
-        $post = $_POST;
+        $eventManager = new EventManager();
         if (!empty($_POST)) {
 
-            $update = new UpdateManager();
-            $update->update($post);
-            header('Location:/admin/eventList');
+            $eventManager->update($id, $_POST);
+            //header('Location:/admin/eventList');
         }
 
-        $eventManager = new EventManager();
+
         $event = $eventManager->selectOneById($id);
 
-        return $this->twig->render('Admin/Event/updateEvent.html.twig', ['data' => $event, 'post' => $post]);
+        return $this->twig->render('Admin/Event/updateEvent.html.twig', ['data' => $event]);
     }
 
 }
