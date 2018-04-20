@@ -93,7 +93,7 @@ section:nth-child(even) {
     padding-bottom: 50px;
 }
 
-section:nth-child(even) .thumbnail {
+section:nth-child(even) .thumbnail{
     box-shadow: none;
 }
 
