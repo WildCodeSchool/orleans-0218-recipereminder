@@ -101,6 +101,7 @@ section:nth-child(even) .thumbnail{
 
 .navbar-default {
     background-color: white;
+    border: 0px;
     box-shadow: 1px 1px 3px black;
     border-radius: 0;
     padding-left: 30px;
@@ -133,7 +134,7 @@ section:nth-child(even) .thumbnail{
     font-size: 26px;
     margin-top: 5px;
     margin-left: 20px;
-    color: #de8835;
+    color: orange;
 }
 
 .navbar-default .navbar-nav > li > a:hover {
