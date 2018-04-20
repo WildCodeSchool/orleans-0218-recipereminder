@@ -21,6 +21,8 @@
                 </form>
             </div>
         </div>
+
+        {% if recipes is not empty %}
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12">
@@ -39,6 +41,10 @@
                 </div>
             </div>
         </div>
+    {% else %}
+    <h2>Aucune recette à afficher</h2>
+    {% endif %}
+
 {% endblock %}
 {% block javascript %}
 <script src="/assets/js/scriptRecipeAdmin.js"></script>

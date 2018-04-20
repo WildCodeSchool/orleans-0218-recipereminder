@@ -77,7 +77,7 @@ class RecipeController extends AbstractController
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->selectAll();
         return $this->twig->render(
-            'Admin/addRecipe.html.twig',
+            'Admin/Recipe/addRecipe.html.twig',
             ['categories' => $categories, 'errors' => $errors, 'post' => $data]
         );
     }
@@ -147,7 +147,7 @@ class RecipeController extends AbstractController
         if (empty(trim($_POST['recipe']))) {
             $recipes = $recipeManager->selectAllRecipe();
         } else {
-            $recipes=$recipeManager->selectRecipesLikeName(trim($_POST['recipe']));
+            $recipes=$recipeManager->selectRecipes(trim($_POST['recipe']));
         }
 
         return $this->twig->render('Admin/Recipe/search_recipeList.html.twig', ['recipes' => $recipes ]);
