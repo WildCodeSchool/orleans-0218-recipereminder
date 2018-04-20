@@ -107,13 +107,19 @@ section:nth-child(even) .thumbnail{
 }
 
 .admin-nav {
-    background-color: lightgrey;
-    color: black;
+    background-color: darkslategrey;
+    color: white;
+    border: 0px;
+}
+.logo-header-admin {
+    margin-top: 3px;
+    font-size: 30px;
+    color: orange;
 }
 
 .adminMode {
     font-size: 20px;
-    color: black;
+    color: white;
     font-family: 'Galada', cursive;
 }
 
@@ -205,7 +211,7 @@ section:nth-child(even) .thumbnail{
 
 /*FOOTER */
 footer {
-    background-color: #fffcf9;
+    background-color: #ffaa00;
     padding: 30px;
     font-size: 15px;
     text-align: center;
