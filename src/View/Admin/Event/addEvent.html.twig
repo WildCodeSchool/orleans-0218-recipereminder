@@ -7,10 +7,10 @@
         {% if errors is not empty %}
             <div class="alert alert-danger">{{ errors }}</div>
         {% endif %}
-        <form method="post" action="" enctype="multipart/form-data">
+        <form method="POST" action="" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="name">Nom événement</label>
-                <input type="name" class="form-control" id="name" name="name" value="{{ post.name }}"
+                <input type="name" class="form-control" id="name" name="name" value="{{ data.name }}"
                        placeholder="ex: Mariage">
             </div>
             <div class="form-group">
@@ -19,16 +19,16 @@
             </div>
             <div class="form-group">
                 <label for="date">La date de l'événement : </label>
-                <input type="date" name="date" min="1900-01-01" id="date" value="{{ post.date }}">
+                <input class="input-append date" type="date" name="date" min="1900-01-01" id="date" value="{{ data.date }}">
             </div>
             <div class="form-group">
                 <label for="guest">Convives</label>
-                <input type="text" class="form-control" id="guest" name="guest" value="{{ post.guest }}"
+                <input type="text" class="form-control" id="guest" name="guest" value="{{ data.guest }}"
                        placeholder="ex: Martine, Pierre...">
             </div>
             <div class="form-group">
                 <label for="comment">Commentaire</label>
-                <textarea class="form-control" id="comment" name="comment" rows="5">{{ post.comment }}</textarea>
+                <textarea class="form-control" id="comment" name="comment" rows="5">{{ data.comment }}</textarea>
             </div>
             <button type="submit" class="btn">Ajouter événement</button>
         </form>

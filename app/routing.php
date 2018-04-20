@@ -14,6 +14,8 @@ $routes = [
 
     'Homepage' => [
         ['index', '/', 'GET'],
+        ['adminIndex', '/admin/', 'GET'],
+
     ],
 
     'Category' => [ // Controller
@@ -22,15 +24,22 @@ $routes = [
 
     'Event' => [
         ['listEvent', '/event', 'GET'],
+        ['showEvent', '/event/{id:\d+}', 'GET'],
         ['adminListEvent', '/admin/eventList', 'GET'], // action, url, method
         ['addEvent', '/admin/addEvent', ['GET', 'POST']],
-      ],
+        ['searchEvent', '/event/search', 'POST'], // action, url, method
+
+    ],
 
     'Recipe' => [ // Controller
-        ['listRecipe', '/recipe', 'GET'], // action, url, method      
+        ['listRecipe', '/recipe', 'GET'], // action, url, method
         ['showRecipe', '/recipe/{id:\d+}', 'GET'],
+        ['showAdminRecipe', '/admin/recipe/{id: \d+}', 'GET'],
         ['addRecipe', '/admin/addRecipe', ['GET', 'POST']],
         ['adminlistRecipe', '/admin/recipeList', 'GET'], // action, url, method
+        ['searchRecipe', '/recipe/search', 'POST'], // action, url, method
+        ['deleteRecipe', '/recipe/delete', 'POST'],
+        ['searchRecipeAdmin', '/admin/recipeList/search', 'POST'], // action, url, method
 
     ],
 

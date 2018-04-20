@@ -59,7 +59,7 @@ class EventController extends AbstractController
                 }
                 if (isset($_FILES)) {
                     $upload = new UploadManager();
-                    $filename = $upload->upload($_FILES);
+                    $filename = $upload->upload($_FILES['img']);
                     $data['img'] = $filename;
                 }
 
@@ -70,8 +70,31 @@ class EventController extends AbstractController
                 $errors = $e->getMessage();
             }
         }
-        $categoryManager = new CategoryManager();
-        $categories = $categoryManager->selectAll();
-        return $this->twig->render('Admin/Event/addEvent.html.twig', ['categories' => $categories, 'errors' => $errors, 'post' => $data]);
+
+        return $this->twig->render('Admin/Event/addEvent.html.twig', [ 'errors' => $errors, 'data' => $data]
+        );
+    }
+
+    public function showEvent(int $id)
+    {
+        $eventManager = new EventManager();
+        $event = $eventManager->selectOneById($id);
+
+        return $this->twig->render('Event/show-one-event.html.twig', ['event' => $event]);
+    }
+
+    public function searchEvent()
+    {
+        $eventManager = new EventManager();
+
+        if (empty(trim($_POST['event']))) {
+            $events = $eventManager->selectAll();
+        } else {
+            $events = $eventManager->selectEventLikeName(trim($_POST['event']));
+        }
+
+        return $this->twig->render('Event/inc_listEvent.html.twig', ['events' => $events]);
+
+
     }
 }

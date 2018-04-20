@@ -1,0 +1,8 @@
+{% for recipe in recipes %}
+    <tr>
+        <td>
+            <a href="/admin/recipe/{{ recipe.id }}">{{ recipe.name |capitalize }}</a>
+        </td>
+        <td>{{ recipe.category |capitalize }}</td>
+    </tr>
+{% endfor %}

@@ -1,20 +1,28 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-<div class="container>">
-    <h1>Liste des événements</h1>
-    <div id="list">
-        <div class="row">
-    {% for event in events %}
-
-        {% include 'thumb-event.html.twig' %}
-    {% else %}
-        <p> Aucun élément à afficher.</p>
-    {% endfor %}
+    <div class="container">
+        <h1>Liste des événements</h1>
+        <div class="row text-center searchEngine">
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                <form method="post" action="" id="formSeekEvent">
+                    <div class="form-group">
+                        <label for="seekEvent">
+                        <input type="text" name="seekEvent" id="seekEvent" class="form-control"
+                               placeholder="Quels événements cherchez-vous?">
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="list" class="text-center">
+            {% include 'Event/inc_listEvent.html.twig' %}
         </div>
     </div>
-</div>
 
+{% endblock %}
+{% block javascript %}
+<script src="assets/js/searchEvent.js"></script>
 {% endblock %}
 
 

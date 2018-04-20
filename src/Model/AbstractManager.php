@@ -72,9 +72,12 @@ abstract class AbstractManager
      *
      * @param int $id
      */
-    public function delete(int $id)
+    public function delete($id)
     {
-        //TODO : Implements SQL DELETE request
+        $sql = "DELETE FROM $this->table WHERE id=:id";
+        $exec = $this->pdoConnection->prepare($sql);
+        $exec->bindValue('id', $id, \PDO::PARAM_INT);
+        $exec->execute();
     }
 
 
@@ -93,8 +96,7 @@ abstract class AbstractManager
         $statement = $this->pdoConnection->prepare($sql);
         $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
         foreach ($data as $key => $value) {
-
-            $statement->bindValue(':'.$key, $value);
+            $statement->bindValue($key, $value);
         }
 
         $statement->execute();

@@ -1,12 +1,14 @@
 body {
     margin: 0;
+    margin-top: 50px;
+
 }
 
 .banner {
     background-image: url("../images/bgaffiche.jpg");
     background-size: cover;
     height: 500px;
-    box-shadow: 1px 1px 6px black;
+    box-shadow: 1px 1px 3px black;
 }
 
 .banner h1 {
@@ -17,12 +19,27 @@ body {
     font-family: 'Galada', cursive;
 }
 
-h1, h2 {
-    margin: 20px 0px 20px 0px;
+a:hover {
+    text-decoration: none;
 }
 
-.logo-header,.navbar-default,h1,h2, h3, h4{
-    font-family: 'Fascinate Inline', cursive;
+h1 {
+    margin: 20px 0px 20px 0px;
+    text-shadow: 4px 4px 2px white;
+}
+
+h2 {
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+
+.logo-header, .navbar-default, h1, h2, h4 {
+    font-family: 'Bangers', cursive;
+}
+
+h3 {
+    font-family: 'Galada', cursive;
+    font-size: 30px;
 }
 
 h1, h2, h3, h4 {
@@ -35,12 +52,28 @@ figcaption p {
 
 .thumbnail {
     padding: 0;
-    border: 1px solid black;
+    border: 0px;
+    box-shadow: -5px 5px 15px #EEE;
     height: 500px;
     overflow: hidden;
     max-width: 350px;
     margin: auto;
     margin-bottom: 20px;
+    -webkit-transition-property: box-shadow;
+    -webkit-transition-duration: 1s;
+}
+
+.thumbnail:hover {
+    padding: 0;
+    border: 0px;
+    box-shadow: -5px 5px 15px darkgrey;
+    height: 500px;
+    overflow: hidden;
+    max-width: 350px;
+    margin: auto;
+    margin-bottom: 20px;
+    -webkit-transition-property: box-shadow;
+    -webkit-transition-duration: 0.5s;
 }
 
 .thumbnail img {
@@ -56,46 +89,68 @@ section:nth-child(odd) {
 }
 
 section:nth-child(even) {
-    background-color: gainsboro;
+    background-color: #ffaa00;
     padding-bottom: 50px;
+}
+
+section:nth-child(even) .thumbnail{
+    box-shadow: none;
 }
 
 /* NAVBAR */
 
 .navbar-default {
     background-color: white;
-    box-shadow: 2px 2px 5px grey;
+    border: 0px;
+    box-shadow: 1px 1px 3px black;
     border-radius: 0;
     padding-left: 30px;
+}
+
+.admin-nav {
+    background-color: darkslategrey;
+    color: white;
+    border: 0px;
+}
+.logo-header-admin {
+    margin-top: 3px;
+    font-size: 30px;
+    color: orange;
+}
+
+.adminMode {
+    font-size: 20px;
+    color: white;
+    font-family: 'Galada', cursive;
 }
 
 .logo-header {
     margin-top: 3px;
     font-size: 30px;
-    color:#1f212f;
+    color: #1f212f;
 }
 
 .navbar-default .navbar-nav > li > a {
     font-size: 26px;
     margin-top: 5px;
     margin-left: 20px;
-    color:#de8835;
+    color: orange;
 }
 
 .navbar-default .navbar-nav > li > a:hover {
-    color:#ff8008;
+    color: #ff8008;
 }
 
 .btn.btn-default.btn-outline.btn-circle.collapsed {
     font-weight: bold;
     border: 0;
     font-size: 18px;
-    color:#1f212f;
+    color: #1f212f;
     font-family: 'Galada', cursive;
 }
 
 .btn.btn-default.btn-outline.btn-circle.collapsed:hover {
-    color:#ff8008;
+    color: #ff8008;
 }
 
 .navbar {
@@ -113,11 +168,22 @@ section:nth-child(even) {
 .comment {
     font-size: 1.5em;
     font-style: italic;
+    max-height: 18em;
+    overflow: auto;
 }
 
-.itemImg {
-    width: 100%;
-    max-height: 25vw;
+.guest {
+    font-size: 1.3em;
+    max-height: 18em;
+    overflow: auto;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.imgEvent {
+    margin-top: 1.5em;
 }
 
 .refTitle {
@@ -129,12 +195,25 @@ section:nth-child(even) {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
 }
+
+
+/* Texte Recipe Reminder fin Homepage */
+.recipeText p {
+    font-family: 'Galada', cursive;
+    font-size: 22px;
+
+}
+
+.orange {
+    color: #ffaa00;
+}
+
 /*Fin pages pour une recette ou un événement*/
 
 /*FOOTER */
 footer {
-    background-color:#fffcf9;
-    padding: 70px;
+    background-color: #ffaa00;
+    padding: 30px;
     font-size: 15px;
     text-align: center;
     box-shadow: 2px 0 1px grey;
@@ -142,11 +221,11 @@ footer {
 }
 
 footer a {
-    color:dimgrey;
+    color: floralwhite;
 }
 
 footer a:hover {
-    color:black;
+    color: black;
     text-decoration: none;
 }
 
@@ -154,28 +233,57 @@ footer a:hover {
     padding-top: -20px;
     font-family: 'Galada', cursive;
     font-size: 25px;
-    color:#1f212f;
+    color: #1f212f;
 }
+
 /*FIN FOOTER*/
 
-.table-center, .table-center th{
+.table-center, .table-center th {
     text-align: center;
+    margin-top: 20px;
 }
 
 /* ----- class pour tout les boutons */
-.btn{
+.btn {
     color: #fff;
     background-color: #ff8533;
     border-color: #e65c00;
-    margin:10px;
+    font-family: 'Galada', cursive;
+    font-size: 20px;
+
 }
+
 .btn:hover {
     color: #fff;
     background-color: #ff6600;
-    border-color:#e65c00;
+    border-color: #e65c00;
 }
 
 .btn.focus, .btn:focus, .btn:hover {
     color: #fff;
     text-decoration: none;
+}
+
+label {
+    font-family: 'Galada', cursive;
+    font-size: 19px;
+}
+
+.searchEngine {
+    margin:20px;
+}
+
+.deletedRecipe {
+    font-family: Galada;
+    font-size: 30px;
+    text-align: center;
+    margin: 20px 0px;
+}
+
+.largeBtn {
+    width: 100%;
+}
+
+.form-inline .form-group{
+    margin-top:10px;
 }
