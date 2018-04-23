@@ -8,6 +8,24 @@
                 <h3 class="text-left">{{ recipe.category|capitalize }}</h3>
             </div>
         </div>
+        <div class="starBlock">
+            <p>
+                {% if recipe.note != 0 %}
+                    {% for i in 1..recipe.note %}
+                         <span class="note glyphicon glyphicon-star" data-recipeId="{{ recipe.id }}" data-note="{{ i }}"></span>
+                    {% endfor %}
+
+                    {% for i in recipe.note..4 %}
+                         <span class="note glyphicon glyphicon-star-empty" data-recipeId="{{ recipe.id }}" data-note="{{ i+recipe.note }}"></span>
+                    {% endfor %}
+                {% else %}
+                    {% for i in 1..5 %}
+                        <span class="note glyphicon glyphicon-star-empty" data-recipeId="{{ recipe.id }}" data-note="{{ i }}"></span>
+                    {% endfor %}
+               {% endif %}
+
+            </p>
+        </div>
         <div class="row">
             <div class="col-xs-12 col-md-6">
                 {% if recipe.img is empty %}
@@ -28,4 +46,7 @@
         </div>
     </div>
 
+{% endblock %}
+{% block javascript %}
+<script src="/assets/js/note.js"></script>
 {% endblock %}

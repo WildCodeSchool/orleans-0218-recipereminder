@@ -45,6 +45,26 @@ class Recipe
     private $comment;
 
     /**
+     * @var int
+     */
+    private $note;
+
+    /**
+     * @return int
+     */
+    public function getNote(): int
+    {
+        return $this->note;
+    }
+
+    /**
+     * @param int $note
+     */
+    public function setNote(int $note): void
+    {
+        $this->note = $note;
+    }
+    /**
      * @return int
      */
     public function getId(): int

@@ -287,3 +287,16 @@ label {
 .form-inline .form-group{
     margin-top:10px;
 }
+
+/*  ------- notes -------- */
+.starBlock{
+    color:#fecc00;
+    font-size:20px;
+}
+
+.starBlock:hover {
+    cursor: pointer ;
+}
+
+
+
