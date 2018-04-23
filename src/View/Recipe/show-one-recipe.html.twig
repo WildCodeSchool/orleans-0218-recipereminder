@@ -10,20 +10,19 @@
         </div>
         <div class="starBlock">
             <p>
-                {% if recipe.note != 0 %}
-                    {% for i in 1..recipe.note %}
-                         <span class="note glyphicon glyphicon-star" data-recipeId="{{ recipe.id }}" data-note="{{ i }}"></span>
-                    {% endfor %}
-
-                    {% for i in recipe.note..4 %}
-                         <span class="note glyphicon glyphicon-star-empty" data-recipeId="{{ recipe.id }}" data-note="{{ i+recipe.note }}"></span>
-                    {% endfor %}
-                {% else %}
                     {% for i in 1..5 %}
-                        <span class="note glyphicon glyphicon-star-empty" data-recipeId="{{ recipe.id }}" data-note="{{ i }}"></span>
+                        {% if i <= recipe.note %}
+                        <span class="note glyphicon glyphicon-star"
+                              data-recipeId="{{ recipe.id }}"
+                              data-note="{{ i }}">
+                        </span>
+                        {% else %}
+                            <span class="note glyphicon glyphicon-star-empty"
+                                  data-recipeId="{{ recipe.id }}"
+                                  data-note="{{ i }}">
+                        </span>
+                        {% endif %}
                     {% endfor %}
-               {% endif %}
-
             </p>
         </div>
         <div class="row">

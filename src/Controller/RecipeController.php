@@ -155,13 +155,12 @@ class RecipeController extends AbstractController
 
     public function setNote()
     {
-        if(!empty($_POST['recipeId']) && !empty($_POST['note'])){
+        if (!empty($_POST['recipeId']) && !empty($_POST['note'])) {
             $recipeId = trim($_POST['recipeId']);
             $note = trim($_POST['note']);
 
             $recipeManager = new recipeManager();
-            $recipeManager->updateNote($recipeId,$note);
-
+            $recipeManager->updateNote($recipeId, $note);
         }
     }
 }
