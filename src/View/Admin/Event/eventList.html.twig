@@ -22,7 +22,9 @@
                          <tbody>
                          {% for event in events  %}
                             <tr>
-                                <td>{{ event.name |capitalize }}</td>
+                                <td>
+                                    <a href="/admin/event/{{ event.id }}">{{ event.name |capitalize }}</a>
+                                </td>
                                 <td>{{ event.date|date("d / m / Y") }}</td>
                             </tr>
                             {% endfor %}
