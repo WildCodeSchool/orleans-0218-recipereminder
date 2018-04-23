@@ -1,6 +1,7 @@
 body {
     margin: 0;
     margin-top: 50px;
+    height: 80vh;
 
 }
 
@@ -100,7 +101,7 @@ section:nth-child(even) .thumbnail{
 /* NAVBAR */
 
 .navbar-default {
-    background-color: #28191e;
+    background-color: #28191e
     border: 0;
     box-shadow: 1px 1px 3px black;
     border-radius: 0;
@@ -217,11 +218,14 @@ section:nth-child(even) .thumbnail{
 /*FOOTER */
 footer {
     background-color: #ffaa00;
-    padding: 30px;
+    position: absolute;
+    bottom: 0;
+    padding: 20px;
     font-size: 15px;
     text-align: center;
     box-shadow: 2px 0 1px grey;
     margin-top: 30px;
+    width: 100%;
 }
 
 footer a {
