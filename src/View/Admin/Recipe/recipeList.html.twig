@@ -25,18 +25,18 @@
         {% if recipes is not empty %}
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12">
+                {#< class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12">
                      <table class="table table-hover table-bordered table-center">
                          <thead>
                              <tr>
                                  <th>Recettes</th>
                                  <th>Catégories</th>
                              </tr>
-                         </thead>
+                         </thead>#}
 
-                         <tbody id="list">
+
                             {% include 'Admin/Recipe/search_recipeList.html.twig' %}
-                         </tbody>
+
                      </table>
                 </div>
             </div>
