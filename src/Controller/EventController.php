@@ -85,6 +85,13 @@ class EventController extends AbstractController
     public function searchEvent()
     {
         $eventManager = new EventManager();
+        try {
+            // j'instancie des dates pour les tester
+            $start = new \DateTime($_POST['dateStart']);
+            $end = new \DateTime($_POST['dateEnd']);
+        } catch (\Exception $e) {
+            exit();
+        }
         $events = $eventManager->selectEventLikeName(trim($_POST['event']), $_POST['dateStart'], $_POST['dateEnd']);
 
         return $this->twig->render('Event/inc_listEvent.html.twig', ['events' => $events]);

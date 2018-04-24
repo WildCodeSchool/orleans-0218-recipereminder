@@ -35,6 +35,7 @@ class EventManager extends AbstractManager
 
     public function selectEventLikeName($name = null, $dateStart = null, $dateEnd = null)
     {
+
         $sql = "SELECT e.id, e.name, e.img, e.date
                 FROM event AS e
                  WHERE (e.name LIKE :name OR e.guest LIKE :name)";
@@ -46,6 +47,7 @@ class EventManager extends AbstractManager
         $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
         $statement->bindValue('name', '%'.$name.'%', \PDO::PARAM_STR);
         if (!empty($dateStart) && !empty($dateEnd)) {
+
             $statement->bindValue('dateStart', $dateStart, \PDO::PARAM_STR);
             $statement->bindValue('dateEnd', $dateEnd, \PDO::PARAM_STR);
         }
