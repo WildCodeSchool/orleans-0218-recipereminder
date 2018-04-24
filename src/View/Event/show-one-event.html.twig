@@ -35,7 +35,6 @@
                     <h4>Aucune recette à afficher</h4>
                 {% else %}
                     {% for recipe in showRecipes %}
-                        {{ recipe.category }}
                         {% include 'thumb-recipe.html.twig' %}
                     {% endfor %}
                 {% endif %}
