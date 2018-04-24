@@ -29,6 +29,7 @@ class EventController extends AbstractController
         return $this->twig->render('Event/eventList.html.twig', ['events' => $events]);
     }
 
+
     public function adminListEvent()
     {
         $eventManager = new EventManager();
@@ -81,6 +82,14 @@ class EventController extends AbstractController
         $event = $eventManager->selectOneById($id);
 
         return $this->twig->render('Event/show-one-event.html.twig', ['event' => $event]);
+    }
+
+    public function showAdminEvent(int $id)
+    {
+        $eventManager = new EventManager();
+        $event =  $eventManager->selectOneById($id);
+
+        return $this->twig->render('Admin/Event/show-one-event-admin.html.twig', ['event' => $event]);
     }
 
     public function searchEvent()
