@@ -6,41 +6,31 @@
 
 {% block content %}
     <div class="container">
-    <h1>Administration des recettes</h1>
-        <div class="text-center">
-            <a href="addRecipe"><button class="btn">Ajouter une recette</button></a>
-        </div>
-        <div class="row text-center searchEngine">
-            <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-                <form method="post" action="" id="formSeekRecipe">
-                    <div class="form-group">
-                        <label for="seekRecipe"></label>
-                        <input type="text" name="seekRecipe" id="seekRecipe" class="form-control"
-                               placeholder="Quelles recettes cherchez-vous?">
-                    </div>
-                </form>
+        <h1>Administration des recettes</h1>
+            <div class="text-center">
+                <a href="addRecipe"><button class="btn">Ajouter une recette</button></a>
             </div>
-        </div>
-
-        {% if recipes is not empty %}
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12">
-                     <table class="table table-hover table-bordered table-center">
-                         <thead>
-                             <tr>
-                                 <th>Recettes</th>
-                                 <th>Catégories</th>
-                             </tr>
-                         </thead>
-
-                         <tbody id="list">
-                            {% include 'Admin/Recipe/search_recipeList.html.twig' %}
-                         </tbody>
-                     </table>
+            <div class="row text-center searchEngine">
+                <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                    <form method="post" action="" id="formSeekRecipe">
+                        <div class="form-group">
+                            <label for="seekRecipe"></label>
+                            <input type="text" name="seekRecipe" id="seekRecipe" class="form-control"
+                                   placeholder="Quelles recettes cherchez-vous?">
+                        </div>
+                    </form>
                 </div>
             </div>
-        </div>
+
+            {% if recipes is not empty %}
+            <div class="container">
+                <div class="row">
+                    <div id="list">
+                        {% include 'Admin/Recipe/search_recipeList.html.twig' %}
+                    </div>
+                </div>
+            </div>
+    </div>
     {% else %}
     <h2>Aucune recette à afficher</h2>
     {% endif %}

@@ -100,8 +100,8 @@ section:nth-child(even) .thumbnail{
 /* NAVBAR */
 
 .navbar-default {
-    background-color: white;
-    border: 0px;
+    background-color: #28191e;
+    border: 0;
     box-shadow: 1px 1px 3px black;
     border-radius: 0;
     padding-left: 30px;
@@ -110,7 +110,7 @@ section:nth-child(even) .thumbnail{
 .admin-nav {
     background-color: darkslategrey;
     color: white;
-    border: 0px;
+    border: 0;
 }
 .logo-header-admin {
     margin-top: 3px;
@@ -127,7 +127,7 @@ section:nth-child(even) .thumbnail{
 .logo-header {
     margin-top: 3px;
     font-size: 30px;
-    color: #1f212f;
+    color: white;
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -196,6 +196,10 @@ section:nth-child(even) .thumbnail{
     margin-bottom: 0.5em;
 }
 
+.backBtn {
+    margin-top: 1em;
+    margin-bottom: -1em;
+}
 
 /* Texte Recipe Reminder fin Homepage */
 .recipeText p {
@@ -302,6 +306,25 @@ label {
     color:orange;
 }
 
+/* Media object list */
+img.media-object {
+    height: 120px;
+    width: 120px;
+    object-fit: cover;
+    border: 1px solid black;
+}
 
+h4.media-heading {
+    text-align: left;
+    font-size: 25px;
+}
 
+.media {
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+.listed {
+    margin-top: 40px;
+}
 
