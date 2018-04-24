@@ -291,3 +291,7 @@ label {
 .form-inline .form-group{
     margin-top:10px;
 }
+
+.glyphicon-remove{
+    color:red;
+}
