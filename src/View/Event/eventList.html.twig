@@ -4,16 +4,22 @@
     <div class="container">
         <h1>Liste des événements</h1>
         <div class="row text-center searchEngine">
-            <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-                <form method="post" action="" id="formSeekEvent">
+                <form method="post" action="" id="formSeekEvent" class="form-inline">
                     <div class="form-group">
                         <label for="seekEvent">
-                        <input type="text" name="seekEvent" id="seekEvent" class="form-control"
+                        <input type="text" name="event" id="event" class="form-control"
                                placeholder="Quels événements cherchez-vous?">
                         </label>
                     </div>
+                    <div class="form-group">
+                        <label for="dateStart">de :</label>
+                        <input type="date" name="dateStart" id="dateStart" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="dateEnd">à :</label>
+                        <input type="date" name="dateEnd" id="dateEnd" class="form-control">
+                    </div>
                 </form>
-            </div>
         </div>
         <div id="list" class="text-center">
             {% include 'Event/inc_listEvent.html.twig' %}

@@ -68,7 +68,7 @@ class RecipeManager extends AbstractManager
         return $statement->fetch();
     }
 
-    public function selectRecipes($name, $categoryId=null)
+    public function selectRecipes($name, $categoryId = null)
     {
         $sql = "SELECT r.id, r.name, r.img, r.url, r.book, r.comment, c.name as category
                 FROM recipe AS r
