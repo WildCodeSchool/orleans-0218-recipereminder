@@ -16,12 +16,12 @@
         <div class="row">
             <div class="col-xs-12 col-md-6">
                 {% if recipe.img is empty %}
-                    <img src="/assets/images/recipePlaceHolder.jpg" alt="recipe without image" class="itemImg" />
+                    <img src="/assets/images/recipePlaceHolder.jpg" alt="recipe without image" class="img-responsive" />
                 {% else %}
-                    <img src="/assets/upload/{{ recipe.img }}" alt="{{ recipe.name }}" class="itemImg" />
+                    <img src="/assets/upload/{{ recipe.img }}" alt="{{ recipe.name }}" class="img-responsive" />
                 {% endif %}
                 {% if recipe.url is not empty %}
-                    <a class="btn btn-info itemRef" href="{{ recipe.url }}" role="button" target="_blank"><b>Ma recette sur le web</b></a>
+                    <a class="btn itemRef" href="{{ recipe.url }}" role="button" target="_blank"><b>Ma recette sur le web</b></a>
                 {% elseif recipe.book is not empty %}
                     <p class="text-left itemRef"><b>Référence:</b> {{ recipe.book }}</p>
                 {% endif %}
