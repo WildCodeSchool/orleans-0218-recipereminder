@@ -196,6 +196,10 @@ section:nth-child(even) .thumbnail{
     margin-bottom: 0.5em;
 }
 
+.backBtn {
+    margin-top: 1em;
+    margin-bottom: -1em;
+}
 
 /* Texte Recipe Reminder fin Homepage */
 .recipeText p {
