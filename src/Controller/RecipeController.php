@@ -153,14 +153,15 @@ class RecipeController extends AbstractController
         return $this->twig->render('Admin/Recipe/search_recipeList.html.twig', ['recipes' => $recipes ]);
     }
 
-    public function setNote()
+    public function setNote($recipeId, $note)
     {
-        if (!empty($_POST['recipeId']) && !empty($_POST['note'])) {
-            $recipeId = trim($_POST['recipeId']);
-            $note = trim($_POST['note']);
+        if (!empty($recipeId) && !empty($note)) {
+            $recipeId = trim($recipeId);
+            $note = trim($note);
 
             $recipeManager = new recipeManager();
             $recipeManager->updateNote($recipeId, $note);
+            header('Location: /recipe/'.$recipeId);
         }
     }
 }

@@ -11,17 +11,10 @@
         <div class="starBlock">
             <p>
                     {% for i in 1..5 %}
-                        {% if i <= recipe.note %}
-                        <span class="note glyphicon glyphicon-star"
+                       <a href="/recipe/{{ recipe.id }}/setNote/{{ i }}"> <span class="note glyphicon glyphicon-star{{ i > recipe.note ? '-empty' }}"
                               data-recipeId="{{ recipe.id }}"
                               data-note="{{ i }}">
-                        </span>
-                        {% else %}
-                            <span class="note glyphicon glyphicon-star-empty"
-                                  data-recipeId="{{ recipe.id }}"
-                                  data-note="{{ i }}">
-                        </span>
-                        {% endif %}
+                        </span></a>
                     {% endfor %}
             </p>
         </div>
@@ -47,5 +40,4 @@
 
 {% endblock %}
 {% block javascript %}
-<script src="/assets/js/note.js"></script>
 {% endblock %}
