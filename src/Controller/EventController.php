@@ -103,7 +103,5 @@ class EventController extends AbstractController
         }
 
         return $this->twig->render('Event/inc_listEvent.html.twig', ['events' => $events]);
-
     }
-
 }
