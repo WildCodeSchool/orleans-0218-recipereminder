@@ -90,7 +90,7 @@ class RecipeManager extends AbstractManager
         return $statement->fetch();
     }
 
-    public function selectRecipes($name, $categoryId=null)
+    public function selectRecipes($name, $categoryId = null)
     {
         $sql = "SELECT r.id, r.name, r.img, r.url, r.book, r.comment, c.name as category
                 FROM recipe AS r
@@ -112,7 +112,7 @@ class RecipeManager extends AbstractManager
         return $statement->fetchAll();
     }
 
-    public function selectRecipesLimit($name = null, $categoryId=null,$page=0)
+    public function selectRecipesLimit($name = null, $categoryId = null, $page = 0)
     {
         $offset = $page * THUMB_LIMIT;
         $sql = "SELECT r.id, r.name, r.img, r.url, r.book, r.comment, c.name as category
