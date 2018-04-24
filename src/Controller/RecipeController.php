@@ -130,11 +130,7 @@ class RecipeController extends AbstractController
     public function searchRecipe()
     {
         $recipeManager = new RecipeManager();
-       /* if (empty(trim($_POST['name'])) && empty($_POST['categoryId'])) {
-            $recipes = $recipeManager->selectAllRecipeLimit($_POST['page']);
-        } else {*/
-            $recipes=$recipeManager->selectRecipesLimit(trim($_POST['name']), $_POST['categoryId'], $_POST['page']);
-      /*  }*/
+        $recipes=$recipeManager->selectRecipesLimit(trim($_POST['name']), $_POST['categoryId'], $_POST['page']);
 
         return $this->twig->render('Recipe/inc_listRecipe.html.twig', ['recipes' => $recipes ]);
     }
