@@ -72,16 +72,16 @@ class EventController extends AbstractController
             }
         }
 
-        return $this->twig->render('Admin/Event/addEvent.html.twig', [ 'errors' => $errors, 'data' => $data]
-        );
+        return $this->twig->render('Admin/Event/addEvent.html.twig', [ 'errors' => $errors, 'data' => $data]);
     }
 
     public function showEvent(int $id)
     {
         $eventManager = new EventManager();
         $event = $eventManager->selectOneById($id);
+        $showRecipes = $eventManager->showLinkedRecipes($id);
 
-        return $this->twig->render('Event/show-one-event.html.twig', ['event' => $event]);
+        return $this->twig->render('Event/show-one-event.html.twig', ['event' => $event, 'showRecipes' => $showRecipes]);
     }
 
     public function showAdminEvent(int $id)
@@ -104,6 +104,6 @@ class EventController extends AbstractController
 
         return $this->twig->render('Event/inc_listEvent.html.twig', ['events' => $events]);
 
-
     }
+
 }

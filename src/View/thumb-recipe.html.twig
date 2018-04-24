@@ -2,9 +2,9 @@
 <a href="recipe/{{ recipe.id }}">
     <figure class="thumbnail">
         {% if recipe.img is empty %}
-        <img src="assets/images/recipePlaceHolder.jpg" alt="recipe without image" class="">
+        <img src="/assets/images/recipePlaceHolder.jpg" alt="recipe without image" class="">
         {% else %}
-        <img src="assets/upload/{{ recipe.img }}" alt="{{ recipe.name }}" class="">
+        <img src="/assets/upload/{{ recipe.img }}" alt="{{ recipe.name }}" class="">
         {% endif %}
         <figcaption class="caption">
             <h3>{{ recipe.name |capitalize }}</h3>
