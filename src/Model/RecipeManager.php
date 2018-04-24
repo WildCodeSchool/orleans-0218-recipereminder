@@ -36,27 +36,6 @@ class RecipeManager extends AbstractManager
         return $this->pdoConnection->query($sql, \PDO::FETCH_ASSOC)->fetchAll();
     }
 
-    /**
-     * @param int $limit
-     * @param int $offset
-     * @return array
-     */
-   /* public function selectAllRecipeLimit(int $page=0)
-    {
-        $offset = $page * THUMB_LIMIT;
-        $sql = "SELECT r.id,r.name,img,c.name as category
-                FROM recipe as r
-                LEFT JOIN category as c ON c.id = r.categoryId
-                ORDER BY r.name
-                LIMIT :offset , :limit ";
-        $statement = $this->pdoConnection->prepare($sql);
-        $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
-        $statement->bindValue('limit', THUMB_LIMIT, \PDO::PARAM_INT);
-        $statement->bindValue('offset', $offset, \PDO::PARAM_INT);
-        $statement->execute();
-
-        return $statement->fetchAll();
-    }*/
 
 
     public function selectLastRecipes()
