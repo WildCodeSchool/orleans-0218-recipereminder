@@ -103,7 +103,17 @@ class EventController extends AbstractController
         }
 
         return $this->twig->render('Event/inc_listEvent.html.twig', ['events' => $events]);
+    }
 
+    public function deleteEvent()
+    {
+        $eventManager = new EventManager();
+        if (!empty($_POST)) {
+            $id = $_POST['id'];
+        }
 
+        $eventManager->delete($id);
+
+        header('Location: /admin/eventList');
     }
 }
