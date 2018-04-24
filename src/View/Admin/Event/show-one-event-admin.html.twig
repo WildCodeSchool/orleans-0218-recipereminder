@@ -5,6 +5,7 @@
         <h1 class="text-center itemHeader">{{ event.name }}</h1>
         <div class="row">
             <div class="col-xs-12 col-md-12">
+                <!-- Trigger the modal with a button -->
                 <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
                     Associer une recette
                 </button>
@@ -29,7 +30,27 @@
                 </figure>
             </div>
         </div>
-
+        <!-- MODAL -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Sélectionnez la recette à associer à cet événement</h4>
+                    </div>
+                    <div class="modal-body">
+                       <div id="searchRecipeToLink"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <form action="/recipe/delete" method="POST">
+                            <input type="hidden" name="id" value="{{ recipe.id }}">
+                            <button type="button" class="btn" data-dismiss="modal">Retour</button>
+                            <button type="submit" class="btn">Ajouter cette recette</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 {% endblock %}
