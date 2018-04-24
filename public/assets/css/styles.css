@@ -298,5 +298,10 @@ label {
     cursor: pointer ;
 }
 
+.glyphicon-star, .glyphicon-star-empty{
+    color:orange;
+}
+
+
 
 
