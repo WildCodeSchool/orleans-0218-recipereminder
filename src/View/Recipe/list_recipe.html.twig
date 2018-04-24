@@ -5,6 +5,7 @@
         <h1 class="text-center">Recettes</h1>
         <div class="row text-center searchEngine">
             <form method="post" action="" id="formSeekRecipe" class="form-inline">
+                <input type="hidden" value="0" id="page" name="page">
                 <div class="form-group">
                 <label for="name">Nom de la recette :</label>
                     <input type="text" name="name" id="name" class="form-control"
@@ -24,7 +25,6 @@
             </form>
         </div>
         <div id="list" class="text-center">
-            {% include 'Recipe/inc_listRecipe.html.twig' %}
         </div>
     </div>
 
