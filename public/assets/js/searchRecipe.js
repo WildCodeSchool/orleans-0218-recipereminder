@@ -46,7 +46,7 @@ function infiniteScroll(){
         if ($(window).data('ajaxready') == false) return;
 
         if(($(window).scrollTop() + $(window).height()) == $(document).height()
-            || agentID && ($(window).scrollTop() + $(window).height()) + 150 > $(document).height()) {
+            || agentID && ($(window).scrollTop() + $(window).height()) + 200 > $(document).height()) {
             // lorsqu'on commence un traitement, on met ajaxready à false
             $(window).data('ajaxready', false);
             sendForm();
