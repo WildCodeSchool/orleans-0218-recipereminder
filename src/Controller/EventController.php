@@ -124,11 +124,14 @@ class EventController extends AbstractController
     {
 
         $eventManager = new EventManager();
-        if (file_exists($ex)===true) {
+        if (!empty($_POST)){
+            $data = $_POST;
+            if(empty($_FILES['name'])){
+                $eventManager->update($id, $data);
+            }
 
 
-            $eventManager->update($id, $_POST);
-            //header('Location:/admin/eventList');
+                //header('Location:/admin/eventList');
         }
 
 

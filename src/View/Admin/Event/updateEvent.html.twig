@@ -18,8 +18,9 @@
             </div>
             <div class="form-group">
                 <label for="img">Ajouter une image (image actuelle: {{ data.img }}): </label>
-                <input type="file" name="img" id="img" value="{{ data.img }}">
+                <input type="file" name="img" id="img">
             </div>
+            <div> <img src= "/assets/upload/{{ data.img }}"></div>
             <div class="form-group">
                 <label for="date">La date de l'événement : </label>
                 <input type="date" name="date" min="1900-01-01" id="date" value="{{ data.date }}">
