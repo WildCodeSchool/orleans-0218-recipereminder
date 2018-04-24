@@ -4,6 +4,13 @@
     <div class="container">
         <h1 class="text-center itemHeader">{{ event.name }}</h1>
         <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                    Associer une recette
+                </button>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-xs-12 col-md-6">
                 <p class="comment">" {{ event.comment }} "</p>
             </div>
@@ -22,6 +29,7 @@
                 </figure>
             </div>
         </div>
+
     </div>
 
 {% endblock %}
