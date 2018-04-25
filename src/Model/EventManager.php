@@ -29,6 +29,7 @@ class EventManager extends AbstractManager
 
         return $this->pdoConnection->query($sql, \PDO::FETCH_ASSOC)->fetchAll();
     }
+
     /**
      * @return array
      */
@@ -45,7 +46,7 @@ class EventManager extends AbstractManager
 
         $statement = $this->pdoConnection->prepare($sql);
         $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
-        $statement->bindValue('name', '%'.$name.'%', \PDO::PARAM_STR);
+        $statement->bindValue('name', '%' . $name . '%', \PDO::PARAM_STR);
         if (!empty($dateStart) && !empty($dateEnd)) {
 
             $statement->bindValue('dateStart', $dateStart, \PDO::PARAM_STR);
@@ -55,32 +56,6 @@ class EventManager extends AbstractManager
 
         return $statement->fetchAll();
     }
-    /**
-     * @param int $id
-     * @param array $data
-     */
-    public function update(int $id, array $data)
-    {
-        if (!isset($data['img'])){
-            $query = "UPDATE event SET name=:name, guest=:guest, comment=:comment, date=:date WHERE id=:id";
-        }
-        else{
-            $query = "UPDATE event SET name=:name, img=:img, guest=:guest, comment=:comment, date=:date WHERE id=:id";
-        }
-
-        $statement = $this->pdoConnection->prepare($query);
-        $statement->bindValue(':id', $data['id'], \PDO::PARAM_INT);
-        $statement->bindValue(':name', $data['name'], \PDO::PARAM_STR);
-        if (isset($data['img'])) {
-            $statement->bindValue(':img', $data['img'], \PDO::PARAM_STR);
-        }
-        $statement->bindValue(':guest', $data['guest'], \PDO::PARAM_STR);
-        $statement->bindValue(':comment', $data['comment'], \PDO::PARAM_STR);
-        $statement->bindValue(':date', $data['date'], \PDO::PARAM_STR);
-
-
-        $statement->execute();
-    }
-
-
 }
+
+

@@ -122,27 +122,27 @@ class EventController extends AbstractController
 
     public function updateEvent(int $id)
     {
-
         $eventManager = new EventManager();
         if (!empty($_POST)){
             $data = $_POST;
-            if(empty($_FILES['img'])){
+            if(empty($_FILES['filename']['name'])){
                 $eventManager->update($id, $data);
+                header('Location:/admin/eventList');
             } else {
                 $event = $eventManager->selectOneById($id);
                 $imageName = $event->getImg();
                 $fileRoot = '/assets/upload/'. $imageName;
+                print_r($_FILES);
+                // upload du fichier
+                    $upload = new UploadManager();
+                    $filename = $upload->upload($_FILES['filename']);
+                    $data['img'] = $filename;
 
                 // supprimer l'ancien fichier s'il existe
                 if (file_exists($fileRoot))
                 {
                     unlink($fileRoot);
                 }
-
-                // upload du fichier
-                    $upload = new UploadManager();
-                    $filename = $upload->upload($_FILES['img']);
-                    $data['img'] = $filename;
 
                 // update de tous les champs
 

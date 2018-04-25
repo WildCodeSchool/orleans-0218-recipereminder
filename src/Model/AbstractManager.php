@@ -108,9 +108,21 @@ abstract class AbstractManager
     /**
      *
      */
-    public function update(int $id, array $post)
+    public function update(int $id, array $data)
     {
-        //TODO : Implements SQL update request
+        $key = array_keys($data);
+        foreach ($key as $value){
+            $fieldTab[]= $value.'=:'.$value;
+        }
+        $field= implode(',',$fieldTab);
+        $query = "UPDATE $this->table SET $field WHERE id=:id";
+        $statement = $this->pdoConnection->prepare($query);
+        foreach($data as $key => $value){
+            $statement->bindValue($key, $value);
+        }
+
+        $statement->execute();
     }
+
 
 }
