@@ -4,15 +4,15 @@
     <div class="container">
         <h1 class="text-center itemHeader">{{ event.name }}</h1>
         <div class="row">
-            <div class="col-xs-12 col-md-6">
+            <div class="col-md-6">
                 <p class="comment">" {{ event.comment }} "</p>
             </div>
-            <div class="col-xs-12 col-md-6">
+            <div class="col-md-6">
                 <p class="guest"><span class="bold">Convives: </span>{{ event.guest }}</p>
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+            <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
                 <figure>
                     {% if event.img is empty %}
                         <img src="/assets/images/eventPlaceHolder.jpg" alt="Image par défaut: cuisinier" class="img-responsive center-block imgEvent" />

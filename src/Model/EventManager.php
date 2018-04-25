@@ -55,7 +55,7 @@ class EventManager extends AbstractManager
                 JOIN category as ca ON r.categoryId = ca.id
                 WHERE eventId = :id";
         $statement = $this->pdoConnection->prepare($sql);
-        $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
+        $statement->setFetchMode(\PDO::FETCH_ASSOC);
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
