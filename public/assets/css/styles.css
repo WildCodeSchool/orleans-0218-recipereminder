@@ -216,7 +216,7 @@ section:nth-child(even) .thumbnail{
 /*FOOTER */
 footer {
     background-color: #ffaa00;
-    box-shadow: 0px 1px 25px #ffaa00;
+    box-shadow: 0 2px 7px #000;
     position: fixed;
     bottom: 0;
     height: 30px;
@@ -224,17 +224,6 @@ footer {
     font-size: 15px;
     text-align: center;
     width: 100%;
-    -webkit-transition-property: height;
-    -webkit-transition-duration: 1s;
-    -webkit-transition-property: padding;
-    -webkit-transition-duration: 1s;
-}
-
-footer:hover {
-    line-height: 50px;
-    padding-bottom: 50px;
-    -webkit-transition-property: line-height;
-    -webkit-transition-duration: 1s;
 }
 
 footer a {
