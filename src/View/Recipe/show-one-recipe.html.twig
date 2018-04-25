@@ -6,10 +6,10 @@
 
 {% block content %}
     <div class="container">
-        <h1 class="text-center itemHeader">{{ recipe.name|capitalize }}</h1>
-        <hr>
-        <a class="btn backBtn" href="/recipe" role="button"><span class="glyphicon glyphicon-chevron-left"></span> Liste des recettes</a>
         <div class="row">
+            <h1 class="text-center itemHeader">{{ recipe.name|capitalize }}</h1>
+            <hr>
+
             <div class="col-xs-12 col-md-6">
                 <h3 class="text-left">{{ recipe.category|capitalize }}</h3>
             </div>
@@ -31,17 +31,20 @@
                 {% else %}
                     <img src="/assets/upload/{{ recipe.img }}" alt="{{ recipe.name }}" />
                 {% endif %}
-
-                {% if recipe.url is not empty %}
-                    <a class="btn itemRef bold" href="{{ recipe.url }}" role="button" target="_blank">Ma recette sur le web</a>
-                {% elseif recipe.book is not empty %}
-                    <p class="text-left itemRef"><span class="bold">Référence:</span> {{ recipe.book }}</p>
-                {% endif %}
             </div>
             <div class="col-xs-12 col-md-6">
                 <p class="comment">"{{ recipe.comment }}"</p>
             </div>
         </div>
+
+
+            <a class="btn backBtn" href="/recipe" role="button"><span class="glyphicon glyphicon-chevron-left"></span> Liste des recettes</a>
+            {% if recipe.url is not empty %}
+                <a class="btn backBtn" href="/{{ recipe.url }}" role="button" target="_blank">Ma recette sur le web</a>
+            {% elseif recipe.book is not empty %}
+                <p class="text-left itemRef"><span class="bold">Référence:</span> {{ recipe.book }}</p>
+            {% endif %}
+
     </div>
 
 {% endblock %}
