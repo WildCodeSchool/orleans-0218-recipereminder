@@ -13,14 +13,12 @@
         <div class="row">
             <div class="col-xs-12 col-md-6">
                 <p class="guest"><span class="bold">Cet événement a eu lieu le {{ event.date|date("d / m / Y") }}</span> </p>
-
             </div>
         </div>
 
 
         <div class="row">
             <div class="col-xs-12 col-md-6">
-
                 <figure>
                     {% if event.img is empty %}
                         <img src="/assets/images/eventPlaceHolder.jpg" alt="Image par défaut: cuisinier" />
@@ -38,6 +36,7 @@
                 <p class="comment">" {{ event.comment |capitalize }} "</p>
             </div>
         </div>
+
 
         <!-- MODAL -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
