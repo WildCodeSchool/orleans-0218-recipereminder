@@ -73,6 +73,7 @@ class EventController extends AbstractController
         }
 
         return $this->twig->render('Admin/Event/addEvent.html.twig', [ 'errors' => $errors, 'data' => $data]);
+
     }
 
     public function showEvent(int $id)
@@ -95,13 +96,29 @@ class EventController extends AbstractController
     public function searchEvent()
     {
         $eventManager = new EventManager();
-
-        if (empty(trim($_POST['event']))) {
-            $events = $eventManager->selectAll();
-        } else {
-            $events = $eventManager->selectEventLikeName(trim($_POST['event']));
+        try {
+            // j'instancie des dates pour les tester
+            $start = new \DateTime($_POST['dateStart']);
+            $end = new \DateTime($_POST['dateEnd']);
+        } catch (\Exception $e) {
+            exit();
         }
+        $events = $eventManager->selectEventLikeName(trim($_POST['event']), $_POST['dateStart'], $_POST['dateEnd']);
 
         return $this->twig->render('Event/inc_listEvent.html.twig', ['events' => $events]);
+
+    }
+
+    public function deleteEvent()
+    {
+        $eventManager = new EventManager();
+        if (!empty($_POST)) {
+            $id = $_POST['id'];
+        }
+
+        $eventManager->delete($id);
+
+        header('Location: /admin/eventList');
+
     }
 }

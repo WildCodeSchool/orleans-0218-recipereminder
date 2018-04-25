@@ -1,7 +1,6 @@
 body {
     margin: 0;
     margin-top: 50px;
-
 }
 
 .banner {
@@ -217,11 +216,14 @@ section:nth-child(even) .thumbnail{
 /*FOOTER */
 footer {
     background-color: #ffaa00;
-    padding: 30px;
+    box-shadow: 0 2px 7px #000;
+    position: fixed;
+    bottom: 0;
+    height: 30px;
+    line-height: 30px;
     font-size: 15px;
     text-align: center;
-    box-shadow: 2px 0 1px grey;
-    margin-top: 30px;
+    width: 100%;
 }
 
 footer a {
@@ -292,6 +294,20 @@ label {
     margin-top:10px;
 }
 
+/*  ------- notes -------- */
+.starBlock{
+    color:#fecc00;
+    font-size:20px;
+}
+
+.starBlock:hover {
+    cursor: pointer ;
+}
+
+.glyphicon-star, .glyphicon-star-empty{
+    color:orange;
+}
+
 /* Media object list */
 img.media-object {
     height: 120px;
@@ -313,3 +329,4 @@ h4.media-heading {
 .listed {
     margin-top: 40px;
 }
+
