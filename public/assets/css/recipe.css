@@ -40,3 +40,18 @@ h1 {
     font-family: Galada;
     padding-top: 10px;
 }
+
+.btnBlack {
+
+    background-color: #ff6052;
+}
+
+.btnBlack:hover {
+    color: white;
+    background-color: #ff251e;
+}
+
+.bold {
+    font-family: Galada;
+    font-size: 25px;
+}

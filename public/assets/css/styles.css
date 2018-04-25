@@ -175,7 +175,6 @@ section:nth-child(even) .thumbnail{
 .guest {
     font-size: 1.3em;
     max-height: 18em;
-    overflow: auto;
 }
 
 .bold {
