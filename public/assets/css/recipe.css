@@ -20,6 +20,13 @@ img {
     }
 }
 
+@media screen and (max-width: 992px) {
+    p.comment {
+        margin-top: 18px;
+    }
+}
+
+
 
 .btn {
     margin-bottom: 10px;
