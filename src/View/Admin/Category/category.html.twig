@@ -33,7 +33,7 @@
                          {% for category in categories %}
 
                             <tr>
-                                <td>{{ category.name |capitalize}}</td>
+                                <td class="editable" contenteditable="true">{{ category.name |capitalize}}</td>
                             </tr>
                         {% endfor %}
                         </tbody>
@@ -77,4 +77,28 @@
     </div>
 
 
+{% endblock %}
+{% block javascript %}
+<script>
+
+// rend possible l'event Onchange de javascript
+$('body').on('focus', '[contenteditable]', function() {
+    var $this = $(this);
+    $this.data('before', $this.html());
+    return $this;
+}).on('blur paste', '[contenteditable]', function() {
+    var $this = $(this);
+    if ($this.data('before') !== $this.html()) {
+        $this.data('before', $this.html());
+        $this.trigger('change');
+    }
+    return $this;
+});
+
+// En cas de changement
+$('.editable').change(function(){
+
+   alert($(this).html());
+});
+</script>
 {% endblock %}
