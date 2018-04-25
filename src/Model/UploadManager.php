@@ -20,7 +20,6 @@ class UploadManager
     public function upload($file) : ?string
     {
         if (!empty($file['name'])) {
-
             $uploadFile = APP_UPLOADDIR . basename($file['name']);
             if ($file["size"] > self::MAXSIZE) {
                 throw new \Exception('Votre image devrait faire moins de '. self::MAXSIZE . 'ko');

@@ -72,8 +72,7 @@ class EventController extends AbstractController
             }
         }
 
-        return $this->twig->render('Admin/Event/addEvent.html.twig', [ 'errors' => $errors, 'data' => $data]
-        );
+        return $this->twig->render('Admin/Event/addEvent.html.twig', [ 'errors' => $errors, 'data' => $data]);
     }
 
     public function showEvent(int $id)
@@ -103,7 +102,5 @@ class EventController extends AbstractController
         }
 
         return $this->twig->render('Event/inc_listEvent.html.twig', ['events' => $events]);
-
-
     }
 }
