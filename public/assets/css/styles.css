@@ -295,3 +295,7 @@ label {
 .glyphicon-remove{
     color:red;
 }
+
+.btn-link{
+    margin:0;
+}

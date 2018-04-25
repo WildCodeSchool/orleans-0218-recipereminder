@@ -65,6 +65,7 @@ class CategoryController extends AbstractController
             $id= trim($_POST['categoryId']);
             $categoryManager = new CategoryManager();
             $categoryManager->delete($id);
+            header('location:/admin/category');
         }
     }
 }
