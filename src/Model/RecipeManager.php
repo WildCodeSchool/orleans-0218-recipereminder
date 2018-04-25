@@ -55,7 +55,7 @@ class RecipeManager extends AbstractManager
      */
     public function selectRecipesById(int $id)
     {
-        $sql = "SELECT r.id, r.name, r.img, r.url, r.book, r.comment, c.name as category
+        $sql = "SELECT r.id, r.name, r.img, r.url, r.book, r.comment,r.note, c.name as category
                 FROM recipe AS r
                  LEFT JOIN category AS c ON c.id = r.categoryId 
                  WHERE r.id=:id
@@ -88,5 +88,15 @@ class RecipeManager extends AbstractManager
         $statement->execute();
 
         return $statement->fetchAll();
+    }
+
+    public function updateNote(int $recipeId, int $note)
+    {
+        $sql='UPDATE recipe SET note = :note WHERE id = :id';
+        $statement = $this->pdoConnection->prepare($sql);
+        $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
+        $statement->bindValue('note', $note, \PDO::PARAM_INT);
+        $statement->bindValue('id', $recipeId, \PDO::PARAM_INT);
+        $statement->execute();
     }
 }
