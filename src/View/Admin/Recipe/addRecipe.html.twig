@@ -11,7 +11,7 @@
             <div class="form-group">
                 <label for="name">Recette nom</label>
                 <input type="name" class="form-control" id="name" name="name" value="{{ post.name }}"
-                       placeholder="ex: Boeuf Bourguignon">
+                       placeholder="ex: Boeuf Bourguignon" required>
             </div>
             <div class="form-group">
                 <label for="categoryId">Catégorie</label>
@@ -37,7 +37,7 @@
             </div>
             <div class="form-group">
                 <label for="comment">Commentaire</label>
-                <textarea class="form-control" id="comment" name="comment" rows="5">{{ post.comment }}</textarea>
+                <textarea class="form-control" id="comment" name="comment" rows="5" required>{{ post.comment }}</textarea>
             </div>
             <button type="submit" class="btn">Ajouter recette</button>
         </form>
