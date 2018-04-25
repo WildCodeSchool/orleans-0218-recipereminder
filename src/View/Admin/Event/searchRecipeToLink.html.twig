@@ -14,6 +14,7 @@
         <div class="media-body">
             <h4 class="media-heading">{{ recipe.name |capitalize }}</h4>
             <p>{{ recipe.category |capitalize }}</p>
+            <button type="button" class="btn pull-right linkBtn" data-recipeId="{{ recipe.id }}"><span class="glyphicon glyphicon-plus"></span></button>
         </div>
     </div>
 {% endfor %}

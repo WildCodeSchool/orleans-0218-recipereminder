@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-xs-12 col-md-12">
                 <!-- Trigger the modal with a button -->
-                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                <button type="button" class="btn  btn-lg" data-toggle="modal" data-target="#myModal">
                     Associer une recette
                 </button>
             </div>
@@ -36,14 +36,23 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Sélectionnez la recette à associer à cet événement</h4>
+                        <h4 class="modal-title" id="myModalLabel">Sélectionnez la recette à associer à l'événement: {{ event.name }}</h4>
                     </div>
                     <div class="modal-body">
                         <form method="post" action="" id="formFindRecipe">
                             <div class="form-group">
-                                <label for="findRecipe"></label>
+                                <label for="findRecipe">Entrez le nom de la recette à associer:</label>
                                 <input type="text" name="findRecipe" id="findRecipe" class="form-control"
                                        placeholder="Quelle recette cherchez-vous?">
+                            </div>
+                            <div class="form-group">
+                                <label for="categoryId">Ou selectionnez une catégorie de recette:</label>
+                                    <select id="categoryId" name="categoryId" class="form-control">
+                                        <option value="" selected>Toutes</option>
+                                        {% for category in categories %}
+                                            <option value="{{ category.id }}">{{ category.name }}</option>
+                                        {% endfor %}
+                                    </select>
                             </div>
                         </form>
                         <div class="row" id="list">
@@ -54,7 +63,6 @@
                         <form action="/recipe/delete" method="POST">
                             <input type="hidden" name="id" value="{{ recipe.id }}">
                             <button type="button" class="btn" data-dismiss="modal">Retour</button>
-                            <button type="submit" class="btn">Ajouter cette recette</button>
                         </form>
                     </div>
                 </div>

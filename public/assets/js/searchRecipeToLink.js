@@ -4,11 +4,21 @@ $('#formFindRecipe').submit(function (e) {
 });
 
 $('#findRecipe').keyup(function () {
-    // on lance la fonction seulement si au moins 2 lettre dans le input, ou 0
+    // on lance la fonction seulement si au moins 2 lettres dans le input, ou 0
     if($(this).val().length > 2 || $(this).val().length === 0) {
-        let recipe = $(this).val();
-        $.post("/admin/event/searchRecipeToLink", {recipe: recipe}).done(function (html) {
-            $('#list').html(html);
-        });
+        sendForm();
     }
 });
+
+$('#categoryId').change(function(){
+    sendForm();
+});
+
+function sendForm(){
+    let form = $('#formFindRecipe');
+
+    // on sérialize les données pour envoyer tout le contenu du formulaire en POST
+    $.post("/admin/event/searchRecipeToLink", form.serialize()).done(function (html) {// ('url de l'action , tous le contenu du form)
+        $('#list').html(html);
+    });
+}

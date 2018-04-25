@@ -90,7 +90,14 @@ class EventController extends AbstractController
         $eventManager = new EventManager();
         $event =  $eventManager->selectOneById($id);
 
-        return $this->twig->render('Admin/Event/show-one-event-admin.html.twig', ['event' => $event,]);
+        $recipeManager = new RecipeManager();
+        $lastRecipes = $recipeManager->selectLastRecipes();
+
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll();
+
+
+        return $this->twig->render('Admin/Event/show-one-event-admin.html.twig', ['event' => $event, 'recipes' => $lastRecipes , 'categories' => $categories]);
     }
 
     public function searchEvent()
@@ -112,10 +119,10 @@ class EventController extends AbstractController
     {
         $recipeManager = new RecipeManager();
 
-        if (empty(trim($_POST['recipe']))) {
-            $recipes = $recipeManager->selectAllRecipe();
+        if (empty(trim($_POST['findRecipe'])) && empty($_POST['categoryId'])) {
+            $recipes = $recipeManager->selectLastRecipes();
         } else {
-            $recipes=$recipeManager->selectRecipes(trim($_POST['recipe']));
+            $recipes=$recipeManager->selectRecipes(trim($_POST['findRecipe']), $_POST['categoryId']);
         }
 
         return $this->twig->render('Admin/Event/searchRecipeToLink.html.twig', ['recipes' => $recipes]);
