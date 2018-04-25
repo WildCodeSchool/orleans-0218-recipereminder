@@ -35,9 +35,8 @@
 
                             <tr>
                                 <td>{{ category.name |capitalize}}</td>
-                                <td><a href="/admin/category/{{ category.id }}/delete">
-                                        <span class="glyphicon glyphicon-remove"></span>
-                                    </a>
+                                <td data-delete="{{ category.id }}" class="delete">
+                                    <span class="glyphicon glyphicon-remove"></span>
                                 </td>
                             </tr>
                         {% endfor %}
@@ -83,3 +82,15 @@
 
 
 {% endblock %}
+{% block javascript %}
+<script>
+$('.delete').click(function(){
+    let categoryId = $(this).attr('data-delete');
+    let $this = $(this);
+    $.post('/admin/category/delete',{categoryId:categoryId}).done(function () {
+        $this.parent().hide();
+    });
+});
+</script>
+{% endblock %}
+

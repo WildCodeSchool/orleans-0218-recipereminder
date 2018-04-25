@@ -59,12 +59,12 @@ class CategoryController extends AbstractController
         );
     }
 
-    public function delete($id)
+    public function delete()
     {
-        if (!empty($id)){
+        if (!empty($_POST['categoryId'])){
+            $id= trim($_POST['categoryId']);
             $categoryManager = new CategoryManager();
             $categoryManager->delete($id);
-            header('location: /admin/category');
         }
     }
 }
