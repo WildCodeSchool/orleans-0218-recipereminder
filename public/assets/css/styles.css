@@ -1,8 +1,6 @@
 body {
     margin: 0;
     margin-top: 50px;
-    height: 80vh;
-
 }
 
 .banner {
@@ -101,7 +99,7 @@ section:nth-child(even) .thumbnail{
 /* NAVBAR */
 
 .navbar-default {
-    background-color: #28191e
+    background-color: #28191e;
     border: 0;
     box-shadow: 1px 1px 3px black;
     border-radius: 0;
@@ -218,14 +216,25 @@ section:nth-child(even) .thumbnail{
 /*FOOTER */
 footer {
     background-color: #ffaa00;
-    position: absolute;
+    box-shadow: 0px 1px 25px #ffaa00;
+    position: fixed;
     bottom: 0;
-    padding: 20px;
+    height: 30px;
+    line-height: 30px;
     font-size: 15px;
     text-align: center;
-    box-shadow: 2px 0 1px grey;
-    margin-top: 30px;
     width: 100%;
+    -webkit-transition-property: height;
+    -webkit-transition-duration: 1s;
+    -webkit-transition-property: padding;
+    -webkit-transition-duration: 1s;
+}
+
+footer:hover {
+    line-height: 50px;
+    padding-bottom: 50px;
+    -webkit-transition-property: line-height;
+    -webkit-transition-duration: 1s;
 }
 
 footer a {
