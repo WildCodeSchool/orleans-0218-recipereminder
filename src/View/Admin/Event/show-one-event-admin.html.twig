@@ -39,7 +39,16 @@
                         <h4 class="modal-title" id="myModalLabel">Sélectionnez la recette à associer à cet événement</h4>
                     </div>
                     <div class="modal-body">
-                       <div id="searchRecipeToLink"></div>
+                        <form method="post" action="" id="formFindRecipe">
+                            <div class="form-group">
+                                <label for="findRecipe"></label>
+                                <input type="text" name="findRecipe" id="findRecipe" class="form-control"
+                                       placeholder="Quelle recette cherchez-vous?">
+                            </div>
+                        </form>
+                        <div class="row" id="list">
+                            {% include 'Admin/Event/searchRecipeToLink.html.twig' %}
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <form action="/recipe/delete" method="POST">
@@ -53,4 +62,7 @@
         </div>
     </div>
 
+{% endblock %}
+{% block javascript %}
+<script src="/assets/js/searchRecipeToLink.js"></script>
 {% endblock %}

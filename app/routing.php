@@ -30,10 +30,11 @@ $routes = [
     'Event' => [
         ['listEvent', '/event', 'GET'],
         ['showEvent', '/event/{id:\d+}', 'GET'],
-        ['showAdminEvent', '/admin/event/{id: \d+}', 'GET'],
+        ['showAdminEvent', '/admin/event/{id: \d+}', ['GET', 'POST']],
         ['adminListEvent', '/admin/eventList', 'GET'], // action, url, method
         ['addEvent', '/admin/addEvent', ['GET', 'POST']],
         ['searchEvent', '/event/search', 'POST'], // action, url, method
+        ['searchRecipeToLink', '/admin/event/searchRecipeToLink', 'POST'], // action, url, method
 
     ],
 

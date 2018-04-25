@@ -12,6 +12,7 @@ use Model\Event;
 use Model\EventManager;
 use Model\CategoryManager;
 use Model\UploadManager;
+use Model\RecipeManager;
 
 class EventController extends AbstractController
 {
@@ -89,7 +90,7 @@ class EventController extends AbstractController
         $eventManager = new EventManager();
         $event =  $eventManager->selectOneById($id);
 
-        return $this->twig->render('Admin/Event/show-one-event-admin.html.twig', ['event' => $event]);
+        return $this->twig->render('Admin/Event/show-one-event-admin.html.twig', ['event' => $event,]);
     }
 
     public function searchEvent()
@@ -105,5 +106,18 @@ class EventController extends AbstractController
         return $this->twig->render('Event/inc_listEvent.html.twig', ['events' => $events]);
 
 
+    }
+
+    public function searchRecipeToLink()
+    {
+        $recipeManager = new RecipeManager();
+
+        if (empty(trim($_POST['recipe']))) {
+            $recipes = $recipeManager->selectAllRecipe();
+        } else {
+            $recipes=$recipeManager->selectRecipes(trim($_POST['recipe']));
+        }
+
+        return $this->twig->render('Admin/Event/searchRecipeToLink.html.twig', ['recipes' => $recipes]);
     }
 }
