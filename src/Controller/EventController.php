@@ -91,6 +91,12 @@ class EventController extends AbstractController
         return $this->twig->render('Admin/Event/show-one-event-admin.html.twig', ['event' => $event]);
     }
 
+    /**
+     * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function searchEvent()
     {
         $eventManager = new EventManager();
@@ -101,7 +107,7 @@ class EventController extends AbstractController
         } catch (\Exception $e) {
             exit();
         }
-        $events = $eventManager->selectEventLikeName(trim($_POST['event']), $_POST['dateStart'], $_POST['dateEnd']);
+        $events = $eventManager->selectEventLimit(trim($_POST['event']), $_POST['dateStart'], $_POST['dateEnd'],$_POST['page']);
 
         return $this->twig->render('Event/inc_listEvent.html.twig', ['events' => $events]);
 

@@ -5,6 +5,7 @@
         <h1>Liste des événements</h1>
         <div class="row text-center searchEngine">
                 <form method="post" action="" id="formSeekEvent" class="form-inline">
+                    <input type="hidden" value="0" id="page" name="page">
                     <div class="form-group">
                         <label for="seekEvent">
                         <input type="text" name="event" id="event" class="form-control"
@@ -22,7 +23,6 @@
                 </form>
         </div>
         <div id="list" class="text-center">
-            {% include 'Event/inc_listEvent.html.twig' %}
         </div>
     </div>
 
