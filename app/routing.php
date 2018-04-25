@@ -33,6 +33,7 @@ $routes = [
         ['showAdminEvent', '/admin/event/{id: \d+}', 'GET'],
         ['adminListEvent', '/admin/eventList', 'GET'], // action, url, method
         ['addEvent', '/admin/addEvent', ['GET', 'POST']],
+        ['deleteEvent', '/event/delete', 'POST'],
         ['searchEvent', '/event/search', 'POST'], // action, url, method
 
     ],
