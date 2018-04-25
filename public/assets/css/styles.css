@@ -201,6 +201,9 @@ section:nth-child(even) .thumbnail{
     margin-bottom: -1em;
 }
 
+.success {
+    color: lightseagreen;
+}
 /* Texte Recipe Reminder fin Homepage */
 .recipeText p {
     font-family: 'Galada', cursive;
