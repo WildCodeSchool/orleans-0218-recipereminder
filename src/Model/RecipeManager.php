@@ -37,6 +37,7 @@ class RecipeManager extends AbstractManager
     }
 
 
+
     public function selectLastRecipes()
     {
         $sql = "SELECT r.id, r.name, r.img, c.name AS category FROM recipe AS r 
@@ -90,6 +91,33 @@ class RecipeManager extends AbstractManager
         return $statement->fetchAll();
     }
 
+    public function selectRecipesLimit($name = null, $categoryId = null, $page = 0)
+    {
+        $offset = $page * THUMB_LIMIT;
+        $sql = "SELECT r.id, r.name, r.img, r.url, r.book, r.comment, c.name as category
+                FROM recipe AS r
+                 LEFT JOIN category AS c ON c.id = r.categoryId
+                 WHERE r.name LIKE :name ";
+
+        if (!empty($categoryId)) {
+            $sql .= "AND r.categoryId = :categoryId";
+        }
+
+        $sql.=" ORDER BY r.name LIMIT :offset , :limit";
+
+        $statement = $this->pdoConnection->prepare($sql);
+        $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
+        $statement->bindValue('name', '%' . $name . '%', \PDO::PARAM_STR);
+        if (!empty($categoryId)) {
+            $statement->bindValue('categoryId', $categoryId, \PDO::PARAM_INT);
+        }
+        $statement->bindValue('offset', $offset, \PDO::PARAM_INT);
+        $statement->bindValue('limit', THUMB_LIMIT, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
+  
     public function updateNote(int $recipeId, int $note)
     {
         $sql='UPDATE recipe SET note = :note WHERE id = :id';
