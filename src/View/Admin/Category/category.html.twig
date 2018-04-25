@@ -35,8 +35,13 @@
 
                             <tr>
                                 <td>{{ category.name |capitalize}}</td>
-                                <td data-delete="{{ category.id }}" class="delete">
-                                    <span class="glyphicon glyphicon-remove"></span>
+                                <td>
+                                    <form method="POST" action="/admin/category/delete">
+                                        <input type="hidden" name="categoryId" id="categoryId" value="{{ category.id }}">
+                                        <div class="form-group">
+                                          <input type="submit" value="X">
+                                        </div>
+                                    </form>
                                 </td>
                             </tr>
                         {% endfor %}
@@ -82,15 +87,5 @@
 
 
 {% endblock %}
-{% block javascript %}
-<script>
-$('.delete').click(function(){
-    let categoryId = $(this).attr('data-delete');
-    let $this = $(this);
-    $.post('/admin/category/delete',{categoryId:categoryId}).done(function () {
-        $this.parent().hide();
-    });
-});
-</script>
-{% endblock %}
+
 
