@@ -1,7 +1,7 @@
 {% extends 'Admin/admin_layout.html.twig' %}
 
 {% block stylesheet %}
-    <link rel="stylesheet" href="/assets/css/recipe.css">
+    <link rel="stylesheet" href="/assets/css/recipe-event.css">
 {% endblock %}
 
 {% block content %}
@@ -18,9 +18,9 @@
         <div class="row">
             <div class="col-xs-12 col-md-6">
                 {% if recipe.img is empty %}
-                    <img src="/assets/images/recipePlaceHolder.jpg" alt="recipe without image" class="img-responsive" />
+                    <img src="/assets/images/recipePlaceHolder.jpg" alt="recipe without image" />
                 {% else %}
-                    <img src="/assets/upload/{{ recipe.img }}" alt="{{ recipe.name }}" class="img-responsive" />
+                    <img src="/assets/upload/{{ recipe.img }}" alt="{{ recipe.name }}" />
                 {% endif %}
             </div>
 
@@ -30,7 +30,7 @@
         </div>
 
         <div>
-            <a class="btn backBtn" href="/recipe" role="button"><span class="glyphicon glyphicon-chevron-left"></span> Liste des recettes</a>
+            <a class="btn backBtn" href="/admin/recipeList" role="button"><span class="glyphicon glyphicon-chevron-left"></span> Liste des recettes</a>
             <button type="button" class="btn backBtn btnBlack" data-toggle="modal" data-target="#myModal">
                 Supprimer la recette
             </button>
@@ -39,8 +39,6 @@
             {% elseif recipe.book is not empty %}
                 <p class="text-left itemRef"><b>Référence:</b> {{ recipe.book }}</p>
             {% endif %}
-
-
         </div>
 
 
