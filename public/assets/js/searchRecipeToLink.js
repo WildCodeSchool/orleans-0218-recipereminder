@@ -22,3 +22,5 @@ function sendForm(){
         $('#list').html(html);
     });
 }
+
+sendForm();

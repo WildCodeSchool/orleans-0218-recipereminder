@@ -11,6 +11,7 @@ namespace Controller;
 use Model\Event;
 use Model\EventManager;
 use Model\CategoryManager;
+use Model\RecipeEventManager;
 use Model\UploadManager;
 use Model\RecipeManager;
 
@@ -126,5 +127,19 @@ class EventController extends AbstractController
         }
 
         return $this->twig->render('Admin/Event/searchRecipeToLink.html.twig', ['recipes' => $recipes]);
+    }
+
+    public function linkRecipeToEvent()
+    {
+        $data = $_POST;
+        $errors = null;
+
+        $recipeEventManager = new RecipeEventManager();
+
+        if(!empty($_POST['recipeId']) && !empty($_POST['eventId'])) {
+            //$recipeId = $_POST['recipeId'];
+            //$eventId = $_POST['eventId'];
+            $recipeEventManager->insert($data);
+        }
     }
 }

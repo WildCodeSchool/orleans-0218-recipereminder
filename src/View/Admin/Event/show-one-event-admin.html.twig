@@ -55,8 +55,7 @@
                                     </select>
                             </div>
                         </form>
-                        <div class="row" id="list">
-                            {% include 'Admin/Event/searchRecipeToLink.html.twig' %}
+                        <div class="row" id="list" data-eventId="{{ event.id }}">
                         </div>
                     </div>
                     <div class="modal-footer">
