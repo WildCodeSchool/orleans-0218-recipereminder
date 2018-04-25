@@ -39,13 +39,18 @@
             </div>
         </div>
 
+        <div>
 
-            <a class="btn backBtn" href="/recipe" role="button"><span class="glyphicon glyphicon-chevron-left"></span> Liste des recettes</a>
+                <a class="btn backBtn" href="/recipe" role="button"><span class="glyphicon glyphicon-chevron-left"></span> Liste des recettes</a>
+
+
             {% if recipe.url is not empty %}
                 <a class="btn backBtn" href="/{{ recipe.url }}" role="button" target="_blank">Ma recette sur le web</a>
             {% elseif recipe.book is not empty %}
                 <p class="text-left itemRef"><span class="bold">Référence:</span> {{ recipe.book }}</p>
             {% endif %}
+
+        </div>
 
     </div>
 

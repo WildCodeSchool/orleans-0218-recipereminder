@@ -31,15 +31,16 @@
 
         <div>
             <a class="btn backBtn" href="/recipe" role="button"><span class="glyphicon glyphicon-chevron-left"></span> Liste des recettes</a>
+            <button type="button" class="btn backBtn btnBlack" data-toggle="modal" data-target="#myModal">
+                Supprimer la recette
+            </button>
             {% if recipe.url is not empty %}
                 <a class="btn backBtn" href="{{ recipe.url }}" role="button" target="_blank">Ma recette sur le web</a>
             {% elseif recipe.book is not empty %}
                 <p class="text-left itemRef"><b>Référence:</b> {{ recipe.book }}</p>
             {% endif %}
 
-                <button type="button" class="btn backBtn " data-toggle="modal" data-target="#myModal">
-                    Supprimer la recette
-                </button>
+
         </div>
 
 
