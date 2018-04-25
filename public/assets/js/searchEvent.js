@@ -34,7 +34,6 @@ function searchEvent(reset=false){
     let page = parseInt($('#page').val());
     $.post("/event/search", form.serialize()).done(function (html) {
         if(reset === false) {
-            console.log('ef');
             $('#list').append(html);
         }else{
             $('#list').html(html);
