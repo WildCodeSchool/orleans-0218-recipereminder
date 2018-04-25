@@ -14,6 +14,7 @@
                 <h3 class="text-left">{{ recipe.category|capitalize }}</h3>
             </div>
         </div>
+
         <div class="starBlock">
             <p>
                     {% for i in 1..5 %}
@@ -24,6 +25,7 @@
                     {% endfor %}
             </p>
         </div>
+
         <div class="row">
             <div class="col-xs-12 col-md-6">
                 {% if recipe.img is empty %}
