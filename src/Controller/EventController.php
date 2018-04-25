@@ -89,8 +89,9 @@ class EventController extends AbstractController
     {
         $eventManager = new EventManager();
         $event =  $eventManager->selectOneById($id);
+        $showRecipes = $eventManager->showLinkedRecipes($id);
 
-        return $this->twig->render('Admin/Event/show-one-event-admin.html.twig', ['event' => $event]);
+        return $this->twig->render('Admin/Event/show-one-event-admin.html.twig', ['event' => $event, 'showRecipes' => $showRecipes]);
     }
 
     public function searchEvent()
