@@ -10,8 +10,8 @@ namespace Controller;
 
 use Model\EventManager;
 use Model\RecipeManager;
-use Model\AccrocheManager;
-use Model\Accroche;
+use Model\CatchPhraseManager;
+use Model\CatchPhrase;
 
 class HomepageController extends AbstractController
 {
@@ -23,20 +23,20 @@ class HomepageController extends AbstractController
         $eventManager = new EventManager();
         $lastEvents = $eventManager->selectLastEvents();
 
-        $accrocheManager= new AccrocheManager();
-        $accroche = $accrocheManager->selectAccroche();
+        $catchPhraseManager= new CatchPhraseManager();
+        $catchPhrase = $catchPhraseManager->selectCatchPhrase();
 
         return $this->twig->render(
             'Homepage/homepage.html.twig',
-            ['lastrecipes' => $lastRecipes, 'lastevents' => $lastEvents,'accroche'=> $accroche]
+            ['lastrecipes' => $lastRecipes, 'lastevents' => $lastEvents,'catchPhrase'=> $catchPhrase]
         );
     }
 
     public function adminIndex()
     {
-        $accrocheManager= new AccrocheManager();
-        $accroche = $accrocheManager->selectAccroche();
+        $catchPhraseManager= new catchPhraseManager();
+        $catchPhrase = $catchPhraseManager->selectcatchPhrase();
 
-        return $this->twig->render('Admin/adminHomepage.html.twig', ['accroche'=> $accroche]);
+        return $this->twig->render('Admin/adminHomepage.html.twig', ['catchPhrase'=> $catchPhrase]);
     }
 }

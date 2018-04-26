@@ -8,7 +8,7 @@
 
 namespace Model;
 
-class Accroche
+class CatchPhrase
 {
     /**
      * @var int
