@@ -27,7 +27,7 @@
                          <thead>
                              <tr>
                                  <th>CATÉGORIES</th>
-                                 <th></th>
+                                 <th>Modifier</th>
                              </tr>
                          </thead>
                          <tbody>
@@ -36,10 +36,12 @@
                             <tr>
                                 <td>{{ category.name |capitalize}}</td>
                                 <td>
-                                    <form method="POST" action="/admin/category/delete">
-                                        <input type="hidden" name="categoryId" id="categoryId" value="{{ category.id }}">
-                                            <button type="submit" class="btn-link"><span class="glyphicon glyphicon-remove"></span></button>
-                                    </form>
+                                    <button data-categoryName="{{ category.name }}"
+                                            data-categoryId="{{ category.id }}"
+                                            type="button" class="btn-link updateCategory" data-toggle="modal"
+                                            data-target="#updateCategory">
+                                        <span class="glyphicon glyphicon-wrench"></span>
+                                    </button>
                                 </td>
                             </tr>
                         {% endfor %}
@@ -78,12 +80,43 @@
                 </div>
             </div>
 
+        <!-- Modal -->
+        <div id="updateCategory" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modifier une catégorie</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="/admin/category/update">
+                            <input type="hidden" value="" name="categoryId" id="categoryId">
+                            <div class="form-group">
+                                <label for="newName">Nom de la catégorie : </label>
+                                <input class="form-control" type="text" name="newName" id="newName">
+                            </div>
+                            <div class="form-group">
+                                <input class="btn" type="submit">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
         </div>
     </div>
 
     </div>
 
-
 {% endblock %}
-
+{% block javascript %}
+  <script src="/assets/js/updateCategory.js"></script>
+{% endblock %}
 
