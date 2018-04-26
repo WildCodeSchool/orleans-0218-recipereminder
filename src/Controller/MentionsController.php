@@ -8,12 +8,10 @@
 
 namespace Controller;
 
-
 class MentionsController extends AbstractController
 {
     public function mentionsLegales()
     {
         return $this->twig->render('MentionsLegales/mentions-legales.html.twig');
     }
-
 }
