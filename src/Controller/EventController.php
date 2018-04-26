@@ -87,7 +87,7 @@ class EventController extends AbstractController
     public function showAdminEvent(int $id)
     {
         $eventManager = new EventManager();
-        $event =  $eventManager->selectOneById($id);
+        $event = $eventManager->selectOneById($id);
 
         return $this->twig->render('Admin/Event/show-one-event-admin.html.twig', ['event' => $event]);
     }
@@ -123,30 +123,26 @@ class EventController extends AbstractController
     public function updateEvent(int $id)
     {
         $eventManager = new EventManager();
-        if (!empty($_POST)){
+        if (!empty($_POST)) {
             $data = $_POST;
-            if(empty($_FILES['filename']['name'])){
+            if (empty($_FILES['filename']['name'])) {
                 $eventManager->update($id, $data);
                 header('Location:/admin/eventList');
             } else {
                 $event = $eventManager->selectOneById($id);
                 $imageName = $event->getImg();
-                $fileRoot = '/assets/upload/'. $imageName;
-                print_r($_FILES);
+
                 // upload du fichier
-                    $upload = new UploadManager();
-                    $filename = $upload->upload($_FILES['filename']);
-                    $data['img'] = $filename;
+                $upload = new UploadManager();
+                $filename = $upload->upload($_FILES['filename']);
+                $data['img'] = $filename;
 
                 // supprimer l'ancien fichier s'il existe
-                if (file_exists($fileRoot))
-                {
-                    unlink($fileRoot);
-                }
+                $upload->unlink($imageName);
 
                 // update de tous les champs
 
-                    $eventManager->update($id, $data);
+                $eventManager->update($id, $data);
                 header('Location:/admin/eventList');
                 exit();
             }
