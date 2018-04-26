@@ -74,7 +74,6 @@ class EventController extends AbstractController
         }
 
         return $this->twig->render('Admin/Event/addEvent.html.twig', [ 'errors' => $errors, 'data' => $data]);
-
     }
 
     public function showEvent(int $id)
@@ -108,7 +107,6 @@ class EventController extends AbstractController
         $events = $eventManager->selectEventLikeName(trim($_POST['event']), $_POST['dateStart'], $_POST['dateEnd']);
 
         return $this->twig->render('Event/inc_listEvent.html.twig', ['events' => $events]);
-
     }
 
     public function deleteEvent()
@@ -121,7 +119,6 @@ class EventController extends AbstractController
         $eventManager->delete($id);
 
         header('Location: /admin/eventList');
-
     }
 
     public function updateEvent(int $id)

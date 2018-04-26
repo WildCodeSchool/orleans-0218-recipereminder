@@ -12,30 +12,39 @@
             </div>
             <div class="row text-center searchEngine">
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-                    <form method="post" action="" id="formSeekRecipe">
+                    <form method="post" action="/admin/recipeList/search" id="formSeekRecipe" class="form-inline">
+                        <input type="hidden" value="0" id="page" name="page">
                         <div class="form-group">
-                            <label for="seekRecipe"></label>
-                            <input type="text" name="seekRecipe" id="seekRecipe" class="form-control"
+                            <label for="name">Nom de la recette :</label>
+                            <input type="text" name="name" id="name" class="form-control"
                                    placeholder="Quelles recettes cherchez-vous?">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="categoryId">Categorie :
+                                <select id="categoryId" name="categoryId" class="form-control">
+                                    <option value="" selected>Toutes</option>
+                                    {% for category in categories %}
+                                        <option value="{{ category.id }}">{{ category.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </label>
                         </div>
                     </form>
                 </div>
             </div>
 
-            {% if recipes is not empty %}
+
             <div class="container">
                 <div class="row">
                     <div id="list">
-                        {% include 'Admin/Recipe/search_recipeList.html.twig' %}
                     </div>
                 </div>
             </div>
     </div>
-    {% else %}
-    <h2>Aucune recette à afficher</h2>
-    {% endif %}
-    </div>
+
+
 {% endblock %}
 {% block javascript %}
-<script src="/assets/js/scriptRecipeAdmin.js"></script>
+<script src="/assets/js/searchRecipe.js"></script>
 {% endblock %}

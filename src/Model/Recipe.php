@@ -62,7 +62,7 @@ class Recipe
      */
     public function setNote(int $note): void
     {
-        if($note < 0 || $note > 5) {
+        if ($note < 0 || $note > 5) {
             throw new \Exception('la note doit etre comprise entre 0 et 5');
         }
         $this->note = $note;

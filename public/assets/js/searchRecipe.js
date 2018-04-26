@@ -19,9 +19,9 @@ $('#categoryId').change(function(){
 function sendForm(reset = false){
     let form = $('#formSeekRecipe');
     let page = parseInt($('#page').val());
-
+    let action = form.attr('action');
     // on sérialize les données pour envoyer tout le contenu du formulaire en POST
-    $.post("/recipe/search", form.serialize()).done(function (html) {// ('url de l'action , tous le contenu du form)
+    $.post(action, form.serialize()).done(function (html) {// ('url de l'action , tous le contenu du form)
         if(reset === false) {
             $('#list').append(html);
         }else{
