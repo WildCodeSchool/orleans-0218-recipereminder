@@ -18,8 +18,8 @@ $routes = [
 
     ],
 
-    'Mentions' => [
-        ['mentionsLegales', '/mentions', 'GET'],
+    'GeneralConditions' => [
+        ['generalConditions', '/mentions', 'GET'],
 
     ],
 

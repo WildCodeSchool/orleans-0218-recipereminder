@@ -43,13 +43,11 @@
             <hr>
             <h2>Recettes associées</h2>
             <div class="row">
-                {% if showRecipes is empty %}
-                    <h4>Aucune recette à afficher</h4>
+                {% for recipe in showRecipes %}
+                    {% include 'thumb-recipe.html.twig' %}
                 {% else %}
-                    {% for recipe in showRecipes %}
-                        {% include 'thumb-recipe.html.twig' %}
-                    {% endfor %}
-                {% endif %}
+                    <h4>Aucune recette à afficher</h4>
+                {% endfor %}
             </div>
         </div>
     </section>
