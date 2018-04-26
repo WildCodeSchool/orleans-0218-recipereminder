@@ -102,9 +102,9 @@ class RecipeController extends AbstractController
     {
         $recipeManager = new RecipeManager();
         $recipe = $recipeManager->selectRecipesById($id);
+        $showEvents = $recipeManager->showLinkedEvent($id);
 
-
-        return $this->twig->render('Admin/Recipe/show-one-recipe-admin.html.twig', ['recipe' => $recipe ]);
+        return $this->twig->render('Admin/Recipe/show-one-recipe-admin.html.twig', ['recipe' => $recipe, "showEvents" => $showEvents]);
     }
 
     public function deleteRecipe()
