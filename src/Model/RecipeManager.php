@@ -89,4 +89,5 @@ class RecipeManager extends AbstractManager
 
         return $statement->fetchAll();
     }
+
 }
