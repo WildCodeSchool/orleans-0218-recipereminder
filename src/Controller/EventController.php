@@ -93,16 +93,13 @@ class EventController extends AbstractController
         $eventManager = new EventManager();
         $event = $eventManager->selectOneById($id);
 
-        $recipeManager = new RecipeManager();
-        $lastRecipes = $recipeManager->selectLastRecipes();
-
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->selectAll();
 
 
         return $this->twig->render(
             'Admin/Event/show-one-event-admin.html.twig',
-            ['event' => $event, 'recipes' => $lastRecipes, 'categories' => $categories]
+            ['event' => $event, 'categories' => $categories]
         );
     }
 
@@ -117,10 +114,16 @@ class EventController extends AbstractController
         }
 
         return $this->twig->render('Event/inc_listEvent.html.twig', ['events' => $events]);
-
-
     }
 
+    /**
+     * Send all the recipes that can be linked to one event (not already linked) and corresponding
+     * to the  requested name /category to the modal view in admin/event/id
+     * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function searchRecipeToLink()
     {
         $eventRecipeManager = new EventRecipeManager();
@@ -130,19 +133,21 @@ class EventController extends AbstractController
         } else {
             $recipes = $eventRecipeManager->selectNotLinkedRecipes(
                 trim($_POST['findRecipe']),
-                $_POST['categoryId'],
-                $_POST['eventId']
+                $_POST['eventId'],
+                $_POST['categoryId']
             );
         }
 
         return $this->twig->render('Admin/Event/searchRecipeToLink.html.twig', ['recipes' => $recipes]);
     }
 
+    /**
+     * Link one recipe to one event (new entry in the table event_recipe)
+     * only if this link (event/recipe pair) does not already exist.
+     */
     public function linkRecipeToEvent()
     {
         if (!empty($_POST['recipeId']) && !empty($_POST['eventId'])) {
-
-
             $data = $_POST;
 
             $eventRecipeManager = new EventRecipeManager();

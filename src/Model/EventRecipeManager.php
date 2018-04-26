@@ -20,7 +20,12 @@ class EventRecipeManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
-
+    /**
+     * Test returning true is a recipe is already linked to one event
+     * @param $recipeId
+     * @param $eventId
+     * @return bool
+     */
     public function testNoLink($recipeId, $eventId): bool
     {
         // prepared request
@@ -33,14 +38,21 @@ class EventRecipeManager extends AbstractManager
         $statement->execute();
 
         $result = $statement->fetch();
-        if ($result[0] === 0) {
+        if ($result[0] == 0) {
             return true;
         }
 
         return false;
     }
 
-    public function selectNotLinkedRecipes($name, $categoryId = null, $eventId)
+    /**
+     * Return all the recipes corresponding to the searched name ($name) and not already linked to one event ($eventId)
+     * @param $name
+     * @param null $categoryId
+     * @param $eventId
+     * @return array
+     */
+    public function selectNotLinkedRecipes($name, $eventId, $categoryId = null): array
     {
 
         $sql = "SELECT DISTINCT r.id, r.name, r.img, r.url, r.book, r.comment, c.name as category
@@ -65,7 +77,12 @@ class EventRecipeManager extends AbstractManager
         return $statement->fetchAll();
     }
 
-    public function selectNotLinkedLastRecipes($eventId)
+    /**
+     * Return the 5 last-entered recipes that are not already linked to one event ($eventId)
+     * @param $eventId
+     * @return array
+     */
+    public function selectNotLinkedLastRecipes($eventId): array
     {
         $sql = "SELECT DISTINCT r.id, r.name, r.img, c.name AS category FROM recipe AS r 
                 LEFT JOIN category AS c ON r.categoryId = c.id
