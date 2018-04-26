@@ -61,7 +61,7 @@ class CategoryController extends AbstractController
 
     public function delete()
     {
-        if (!empty($_POST['categoryId'])){
+        if (!empty($_POST['categoryId'])) {
             $id= trim($_POST['categoryId']);
             $categoryManager = new CategoryManager();
             $categoryManager->delete($id);
