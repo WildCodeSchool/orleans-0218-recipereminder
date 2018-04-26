@@ -121,10 +121,22 @@ class EventController extends AbstractController
     }
 
     public function updateEvent(int $id)
-    {
+    {   $data = $_POST;
+        $errors = null;
         $eventManager = new EventManager();
+        try {
         if (!empty($_POST)) {
-            $data = $_POST;
+
+                if (empty(trim($_POST['comment']))) {
+                    throw new \Exception('Merci d\'ajouter un commentaire!');
+                }
+            if (empty(trim($_POST['name']))) {
+                throw new \Exception('Le champ nom ne doit pas etre vide !');
+            }
+            if (empty(trim($_POST['date']))) {
+                throw new \Exception('Le champ date doit être renseigné !');
+            }
+
             if (empty($_FILES['filename']['name'])) {
                 $eventManager->update($id, $data);
                 header('Location:/admin/eventList');
@@ -150,7 +162,10 @@ class EventController extends AbstractController
 
         $event = $eventManager->selectOneById($id);
 
-        return $this->twig->render('Admin/Event/updateEvent.html.twig', ['data' => $event]);
+        } catch (\Exception $e) {
+            $errors = $e->getMessage();
+        }
+        return $this->twig->render('Admin/Event/updateEvent.html.twig', ['data' => $event, 'errors'=>$errors]);
     }
 
 }

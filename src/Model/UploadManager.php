@@ -34,6 +34,10 @@ class UploadManager
 
             $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
             $filename = "Image" . uniqid() . '.' . $extension;
+
+            if (empty($filename)) {
+                throw new \Exception('erreur création fichier');
+            }
             move_uploaded_file($file['tmp_name'], 'assets/upload/' . $filename);
         }
         return $filename ?? null;
@@ -46,9 +50,10 @@ class UploadManager
     {
         $fileName = 'assets/upload/' . $file;
 
-        if (file_exists($fileName)) {
-            unlink($fileName);
+        if (!file_exists($fileName)) {
+            throw new \Exception('fichier introuvable');
         }
+        unlink($fileName);
 
     }
 }
