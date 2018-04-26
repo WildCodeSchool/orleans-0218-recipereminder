@@ -105,9 +105,7 @@ abstract class AbstractManager
     }
 
 
-    /**
-     *
-     */
+
     public function update(int $id, array $data)
     {
         $key = array_keys($data);
