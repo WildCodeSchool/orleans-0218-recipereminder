@@ -147,7 +147,7 @@ class EventController extends AbstractController
 
             $eventRecipeManager = new EventRecipeManager();
 
-            if (!$eventRecipeManager->testNoLink($_POST['recipeId'], $_POST['eventId'])) {
+            if ($eventRecipeManager->testNoLink($_POST['recipeId'], $_POST['eventId'])) {
                 $eventRecipeManager->insert($data);
             }
         }

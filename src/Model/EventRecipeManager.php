@@ -43,7 +43,7 @@ class EventRecipeManager extends AbstractManager
     public function selectNotLinkedRecipes($name, $categoryId = null, $eventId)
     {
 
-        $sql = "SELECT r.id, r.name, r.img, r.url, r.book, r.comment, c.name as category
+        $sql = "SELECT DISTINCT r.id, r.name, r.img, r.url, r.book, r.comment, c.name as category
                 FROM recipe AS r
                  LEFT JOIN category AS c ON c.id = r.categoryId
                   LEFT JOIN event_recipe AS er ON er.recipeId =r.id  
@@ -67,7 +67,7 @@ class EventRecipeManager extends AbstractManager
 
     public function selectNotLinkedLastRecipes($eventId)
     {
-        $sql = "SELECT r.id, r.name, r.img, c.name AS category FROM recipe AS r 
+        $sql = "SELECT DISTINCT r.id, r.name, r.img, c.name AS category FROM recipe AS r 
                 LEFT JOIN category AS c ON r.categoryId = c.id
                 LEFT JOIN event_recipe AS er ON r.id = er.recipeId
                 WHERE r.id NOT IN (SELECT recipeId FROM event_recipe WHERE eventId = :eventId)  
