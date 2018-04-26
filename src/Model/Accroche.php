@@ -8,7 +8,6 @@
 
 namespace Model;
 
-
 class Accroche
 {
     /**
@@ -71,5 +70,4 @@ class Accroche
     {
         $this->value = $value;
     }
-
 }

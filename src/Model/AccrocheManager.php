@@ -8,7 +8,6 @@
 
 namespace Model;
 
-
 class AccrocheManager extends AbstractManager
 {
     const TABLE = 'accroche';
@@ -28,8 +27,12 @@ class AccrocheManager extends AbstractManager
         $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
         $statement->bindValue(':accroche', $text);
         $statement->execute();
-
     }
 
-
+    public function selectAccroche():string
+    {
+        $sql = "SELECT value FROM accroche WHERE name='accroche'";
+        $accroche = $this->pdoConnection->query($sql, \PDO::FETCH_CLASS, $this->className)->fetch();
+        return $accroche->getValue();
+    }
 }

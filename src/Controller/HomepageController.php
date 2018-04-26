@@ -10,6 +10,8 @@ namespace Controller;
 
 use Model\EventManager;
 use Model\RecipeManager;
+use Model\AccrocheManager;
+use Model\Accroche;
 
 class HomepageController extends AbstractController
 {
@@ -21,11 +23,20 @@ class HomepageController extends AbstractController
         $eventManager = new EventManager();
         $lastEvents = $eventManager->selectLastEvents();
 
-        return $this->twig->render('Homepage/homepage.html.twig', ['lastrecipes' => $lastRecipes, 'lastevents' => $lastEvents]);
+        $accrocheManager= new AccrocheManager();
+        $accroche = $accrocheManager->selectAccroche();
+
+        return $this->twig->render(
+            'Homepage/homepage.html.twig',
+            ['lastrecipes' => $lastRecipes, 'lastevents' => $lastEvents,'accroche'=> $accroche]
+        );
     }
 
     public function adminIndex()
     {
-        return $this->twig->render('Admin/adminHomepage.html.twig');
+        $accrocheManager= new AccrocheManager();
+        $accroche = $accrocheManager->selectAccroche();
+
+        return $this->twig->render('Admin/adminHomepage.html.twig', ['accroche'=> $accroche]);
     }
 }

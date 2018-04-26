@@ -345,3 +345,19 @@ h4.media-heading {
     margin-bottom: 20px;
 }
 
+.editable{
+    background-color: black;
+    color:white;
+    display:inline-block;
+    border-radius:5px;
+    padding:10px;
+    text-shadow:none;
+}
+
+.info {
+    font-size:16px;
+    font-weight:normal;
+    margin-top:-50px;
+    margin-bottom:30px;
+    font-family: normal;
+}

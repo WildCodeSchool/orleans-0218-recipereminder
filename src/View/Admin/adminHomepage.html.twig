@@ -2,12 +2,16 @@
 
 {% block content %}
     <div class="container recipeText">
-        <h2 class="orange">Bienvenue dans la partie Administrateur !</h2>
+        <h1 class="orange">Bienvenue dans la partie Administrateur !</h1>
         <p align="center">Ici vous pourrez modifier ou ajouter des recettes et des événements.</p>
     </div>
+    <section>
     <div class="banner">
-        <h1><span contenteditable="true" id="accroche">Recipe Reminder : la recette pour gérer vos recettes !</span></h1>
+        <h1><p class="info">Vous pouvez modifier le texte ici :</p>
+            <p class="editable"><span contenteditable="true" id="accroche" data-toggle="tooltip" title="Vous pouvez modifier le texte ici!">{{ accroche }}</span></p>
+        </h1>
     </div>
+    </section>
 
 
 
@@ -27,9 +31,23 @@ $('body').on('focus', '[contenteditable]', function() {
     return $this;
 });
 
+$('body *[contenteditable]').keydown(function(e) {
+    // trap the return key being pressed
+    if (e.keyCode === 13) {
+        // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
+       // document.execCommand('insertHTML', false, '<br><br>');
+        // prevent the default behaviour of return key pressed
+        return false;
+    }
+});
+
 $('#accroche').change(function(){
     let accroche = $(this).text();
    $.post('/admin/changeAccroche',{accroche: accroche});
+});
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
 });
 </script>
 {% endblock %}

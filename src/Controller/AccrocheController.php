@@ -8,7 +8,6 @@
 
 namespace Controller;
 
-
 use Model\AccrocheManager;
 use Model\Accroche;
 
@@ -19,6 +18,4 @@ class AccrocheController extends AbstractController
         $accroche = new AccrocheManager();
         $accroche->changeAccroche(trim($_POST['accroche']));
     }
-
-
 }
