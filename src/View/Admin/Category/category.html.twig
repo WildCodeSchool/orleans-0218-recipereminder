@@ -118,13 +118,5 @@
 
 {% endblock %}
 {% block javascript %}
-<script>
-$('.updateCategory').click(function(){
-    let categoryId = $(this).attr('data-categoryId');
-    let categoryName = $(this).attr('data-categoryName');
-
-    $('#categoryId').val(categoryId);
-    $('#newName').val(categoryName);
-});
-</script>
+<script src="/assets/js/updateCategory.js"></script>
 {% endblock %}
