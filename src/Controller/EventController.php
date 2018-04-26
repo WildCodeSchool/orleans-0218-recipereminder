@@ -14,6 +14,7 @@ use Model\CategoryManager;
 use Model\EventRecipeManager;
 use Model\UploadManager;
 use Model\RecipeManager;
+use Model\UpdateManager;
 
 class EventController extends AbstractController
 {
@@ -94,11 +95,9 @@ class EventController extends AbstractController
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->selectAll();
 
+        $showRecipes = $eventManager->showLinkedRecipes($id);
 
-        return $this->twig->render(
-            'Admin/Event/show-one-event-admin.html.twig',
-            ['event' => $event, 'categories' => $categories]
-        );
+        return $this->twig->render('Admin/Event/show-one-event-admin.html.twig', ['event' => $event, 'showRecipes' => $showRecipes, 'categories' => $categories]);
     }
 
     public function searchEvent()
@@ -169,4 +168,54 @@ class EventController extends AbstractController
             }
         }
     }
+
+    public function updateEvent(int $id)
+    {   $data = $_POST;
+        $errors = null;
+        $eventManager = new EventManager();
+        try {
+        if (!empty($_POST)) {
+
+                if (empty(trim($_POST['comment']))) {
+                    throw new \Exception('Merci d\'ajouter un commentaire!');
+                }
+            if (empty(trim($_POST['name']))) {
+                throw new \Exception('Le champ nom ne doit pas etre vide !');
+            }
+            if (empty(trim($_POST['date']))) {
+                throw new \Exception('Le champ date doit être renseigné !');
+            }
+
+            if (empty($_FILES['filename']['name'])) {
+                $eventManager->update($id, $data);
+                header('Location:/admin/eventList');
+            } else {
+                $event = $eventManager->selectOneById($id);
+                $imageName = $event->getImg();
+
+                // upload du fichier
+                $upload = new UploadManager();
+                $filename = $upload->upload($_FILES['filename']);
+                $data['img'] = $filename;
+
+                // supprimer l'ancien fichier s'il existe
+                $upload->unlink($imageName);
+
+                // update de tous les champs
+
+                $eventManager->update($id, $data);
+                header('Location:/admin/eventList');
+                exit();
+            }
+        }
+
+        $event = $eventManager->selectOneById($id);
+
+        } catch (\Exception $e) {
+            $errors = $e->getMessage();
+        }
+        return $this->twig->render('Admin/Event/updateEvent.html.twig', ['data' => $event, 'errors'=>$errors]);
+    }
+
 }
+

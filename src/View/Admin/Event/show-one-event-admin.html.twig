@@ -34,9 +34,21 @@
                 </figure>
             </div>
         </div>
+        <div class="container">
+            <h2>Recettes associées</h2>
+            <div class="row">
+                {% if showRecipes is empty %}
+                    <h4>Aucune recette à afficher</h4>
+                {% else %}
+                    {% for recipe in showRecipes %}
+                        {% include 'Admin/thumb-recipe-admin.html.twig' %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
         
         <!-- MODAL1 -->
-        <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -73,7 +85,7 @@
             </div>
         </div>
         
-<!-- MODAL2 -->
+        <!-- MODAL2 -->
         <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">

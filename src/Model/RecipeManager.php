@@ -127,4 +127,18 @@ class RecipeManager extends AbstractManager
         $statement->bindValue('id', $recipeId, \PDO::PARAM_INT);
         $statement->execute();
     }
+
+    public function showLinkedEvent(int $id)
+    {
+        $sql = "SELECT e.id, e.name, e.date, e.img, e.guest, e.comment, eventId, recipeId 
+                FROM event as e
+                JOIN event_recipe as er ON e.id = er.eventId
+                WHERE recipeId = :id";
+        $statement = $this->pdoConnection->prepare($sql);
+        $statement->setFetchMode(\PDO::FETCH_ASSOC);
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
 }
