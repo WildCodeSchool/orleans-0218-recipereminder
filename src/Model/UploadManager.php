@@ -22,7 +22,7 @@ class UploadManager
         if (!empty($file['name'])) {
             $uploadFile = APP_UPLOADDIR . basename($file['name']);
             if ($file["size"] > self::MAXSIZE) {
-                throw new \Exception('Votre image devrait faire moins de ' . self::MAXSIZE . 'ko');
+                throw new \Exception('Votre image devrait faire moins de '. self::MAXSIZE / 1000000 . 'Mo');
             }
 
             $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));

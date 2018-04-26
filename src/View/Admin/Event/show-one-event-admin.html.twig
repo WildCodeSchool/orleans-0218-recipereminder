@@ -1,45 +1,50 @@
 {% extends 'Admin/admin_layout.html.twig' %}
 
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/recipe-event.css">
+{% endblock %}
+
 {% block content %}
     <div class="container">
-        <h1 class="text-center itemHeader">{{ event.name }}</h1>
+
+        <h1 class="text-center itemHeader">{{ event.name |capitalize }}</h1>
+        <hr>
+
         <div class="row">
-
-            <div class="col-xs-12 col-md-12">
-                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                    Supprimer cet événement
-                </button>
-            </div>
-
-            <div class="col-xs-12 col-md-6">            
-                <p class="comment">" {{ event.comment }} "</p>
-            </div>
-            <div class="col-md-6">
-                <p class="guest"><span class="bold">Convives: </span>{{ event.guest }}</p>
+            <div class="col-xs-12 col-md-6">
+                <p class="guest"><span class="bold">Cet événement a eu lieu le {{ event.date|date("d / m / Y") }}</span> </p>
             </div>
         </div>
+
+
         <div class="row">
-            <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+            <div class="col-xs-12 col-md-6">
                 <figure>
                     {% if event.img is empty %}
-                        <img src="/assets/images/eventPlaceHolder.jpg" alt="Image par défaut: cuisinier" class="img-responsive center-block imgEvent" />
+                        <img src="/assets/images/eventPlaceHolder.jpg" alt="Image par défaut: cuisinier" />
                     {% else %}
-                        <img src="/assets/upload/{{ event.img }}" alt="{{ event.name }}" class="img-responsive imgEvent" />
+                        <img src="/assets/upload/{{ event.img }}" alt="{{ event.name |capitalize }}" />
                     {% endif %}
                 </figure>
+            </div>
+
+            <div class="col-xs-12 col-md-6">
+                <p class="guest"><span class="bold">Convives: </span>{{ event.guest |capitalize }}</p>
+            </div>
+
+            <div class="col-xs-12 col-md-6">
+                <p class="comment">" {{ event.comment |capitalize }} "</p>
             </div>
         </div>
 
             <div class="container">
                 <h2>Recettes associées</h2>
                 <div class="row">
-                    {% if showRecipes is empty %}
-                        <h4>Aucune recette à afficher</h4>
+                    {% for recipe in showRecipes %}
+                        {% include 'Admin/thumb-recipe-admin.html.twig' %}
                     {% else %}
-                        {% for recipe in showRecipes %}
-                            {% include 'Admin/thumb-recipe-admin.html.twig' %}
-                        {% endfor %}
-                    {% endif %}
+                        <h4>Aucune recette à afficher</h4>
+                    {% endfor %}
                 </div>
             </div>
 
@@ -64,6 +69,8 @@
                 </div>
             </div>
         </div>
+
+        <a class="btn backBtn" href="/admin/eventList" role="button"><span class="glyphicon glyphicon-chevron-left"></span> Liste des événements</a>
 
     </div>
 

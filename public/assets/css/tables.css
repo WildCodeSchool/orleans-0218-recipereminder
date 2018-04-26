@@ -1,4 +1,9 @@
-thead {
+.form-control {
+    height: 50px;
+}
+
+
+th {
     background-color: black;
     color: white;
 }
