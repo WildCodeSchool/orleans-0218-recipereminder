@@ -86,14 +86,19 @@ class EventController extends AbstractController
     {
         $eventManager = new EventManager();
         try {
+            if ((empty($_POST['dateStart']) && !empty($_POST['dateEnd']))
+                || (!empty($_POST['dateStart']) && empty($_POST['dateEnd']))) {
+                throw new \Exception('les 2 dates doivent être renseignées, ou aucunes');
+            }
             // j'instancie des dates pour les tester
             $start = new \DateTime($_POST['dateStart']);
             $end = new \DateTime($_POST['dateEnd']);
+
+            $events = $eventManager->selectEventLikeName(trim($_POST['event']), $_POST['dateStart'], $_POST['dateEnd']);
+            return $this->twig->render('Event/inc_listEvent.html.twig', ['events' => $events]);
+
         } catch (\Exception $e) {
             exit();
         }
-        $events = $eventManager->selectEventLikeName(trim($_POST['event']), $_POST['dateStart'], $_POST['dateEnd']);
-
-        return $this->twig->render('Event/inc_listEvent.html.twig', ['events' => $events]);
     }
 }
