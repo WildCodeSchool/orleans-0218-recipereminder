@@ -20,22 +20,27 @@ class EventRecipeManager extends AbstractManager
         parent::__construct(self::TABLE);
     }
 
-    /**
-     * @param int $eventId
-     * @return mixed
-     */
-    public function selectRecipesLinkedToOneEvent(int $eventId)
+
+    public function testNoLink($recipeId, $eventId): bool
     {
         // prepared request
-        $statement = $this->pdoConnection->prepare("SELECT recipeId FROM $this->table WHERE eventId=:eventId");
+        $statement = $this->pdoConnection->prepare(
+            "SELECT COUNT(recipeId) FROM $this->table WHERE recipeId= :recipeId AND eventId=:eventId"
+        );
         $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
+        $statement->bindValue('recipeId', $recipeId, \PDO::PARAM_INT);
         $statement->bindValue('eventId', $eventId, \PDO::PARAM_INT);
         $statement->execute();
 
-        return $statement->fetch();
+        $result = $statement->fetch();
+        if ($result[0] === 0) {
+            return true;
+        }
+
+        return false;
     }
 
-    public function selectNotLinkedRecipes($name, $categoryId=null, $eventId)
+    public function selectNotLinkedRecipes($name, $categoryId = null, $eventId)
     {
 
         $sql = "SELECT r.id, r.name, r.img, r.url, r.book, r.comment, c.name as category

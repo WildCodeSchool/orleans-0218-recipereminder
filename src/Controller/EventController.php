@@ -40,7 +40,7 @@ class EventController extends AbstractController
         return $this->twig->render(
             'Admin/Event/eventList.html.twig',
             [
-                'events' => $events
+                'events' => $events,
             ]
         );
     }
@@ -74,7 +74,9 @@ class EventController extends AbstractController
             }
         }
 
-        return $this->twig->render('Admin/Event/addEvent.html.twig', [ 'errors' => $errors, 'data' => $data]
+        return $this->twig->render(
+            'Admin/Event/addEvent.html.twig',
+            ['errors' => $errors, 'data' => $data]
         );
     }
 
@@ -89,7 +91,7 @@ class EventController extends AbstractController
     public function showAdminEvent(int $id)
     {
         $eventManager = new EventManager();
-        $event =  $eventManager->selectOneById($id);
+        $event = $eventManager->selectOneById($id);
 
         $recipeManager = new RecipeManager();
         $lastRecipes = $recipeManager->selectLastRecipes();
@@ -98,7 +100,10 @@ class EventController extends AbstractController
         $categories = $categoryManager->selectAll();
 
 
-        return $this->twig->render('Admin/Event/show-one-event-admin.html.twig', ['event' => $event, 'recipes' => $lastRecipes , 'categories' => $categories]);
+        return $this->twig->render(
+            'Admin/Event/show-one-event-admin.html.twig',
+            ['event' => $event, 'recipes' => $lastRecipes, 'categories' => $categories]
+        );
     }
 
     public function searchEvent()
@@ -118,12 +123,16 @@ class EventController extends AbstractController
 
     public function searchRecipeToLink()
     {
-        $recipeManager = new EventRecipeManager();
+        $eventRecipeManager = new EventRecipeManager();
 
         if (empty(trim($_POST['findRecipe'])) && empty($_POST['categoryId'])) {
-            $recipes = $recipeManager->selectNotLinkedLastRecipes($_POST['eventId']);
+            $recipes = $eventRecipeManager->selectNotLinkedLastRecipes($_POST['eventId']);
         } else {
-            $recipes=$recipeManager->selectNotLinkedRecipes(trim($_POST['findRecipe']), $_POST['categoryId'], $_POST['eventId']);
+            $recipes = $eventRecipeManager->selectNotLinkedRecipes(
+                trim($_POST['findRecipe']),
+                $_POST['categoryId'],
+                $_POST['eventId']
+            );
         }
 
         return $this->twig->render('Admin/Event/searchRecipeToLink.html.twig', ['recipes' => $recipes]);
@@ -131,13 +140,16 @@ class EventController extends AbstractController
 
     public function linkRecipeToEvent()
     {
-        $data = $_POST;
-        $errors = null;
+        if (!empty($_POST['recipeId']) && !empty($_POST['eventId'])) {
 
-        $eventRecipeManager = new EventRecipeManager();
 
-        if(!empty($_POST['recipeId']) && !empty($_POST['eventId'])) {
-            $eventRecipeManager->insert($data);
+            $data = $_POST;
+
+            $eventRecipeManager = new EventRecipeManager();
+
+            if (!$eventRecipeManager->testNoLink($_POST['recipeId'], $_POST['eventId'])) {
+                $eventRecipeManager->insert($data);
+            }
         }
     }
 }
