@@ -21,3 +21,6 @@ define('APP_UPLOADDIR', __DIR__ .'/assets/upload/');
 //Controller
 define('APP_CONTROLLER_NAMESPACE', '\Controller\\');
 define('APP_CONTROLLER_SUFFIX', 'Controller');
+
+define('THUMB_LIMIT',9);
+define('MEDIA_LIMIT',15);

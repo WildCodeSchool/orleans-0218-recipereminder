@@ -1,0 +1,77 @@
+{% extends 'Admin/admin_layout.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/recipe-event.css">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+        <h1 class="text-center itemHeader">{{ event.name |capitalize }}</h1>
+        <hr>
+
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <p class="guest"><span class="bold">Cet événement a eu lieu le {{ event.date|date("d / m / Y") }}</span> </p>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <figure>
+                    {% if event.img is empty %}
+                        <img src="/assets/images/eventPlaceHolder.jpg" alt="Image par défaut: cuisinier" />
+                    {% else %}
+                        <img src="/assets/upload/{{ event.img }}" alt="{{ event.name |capitalize }}" />
+                    {% endif %}
+                </figure>
+            </div>
+
+            <div class="col-xs-12 col-md-6">
+                <p class="guest"><span class="bold">Convives: </span>{{ event.guest |capitalize }}</p>
+            </div>
+
+            <div class="col-xs-12 col-md-6">
+                <p class="comment">" {{ event.comment |capitalize }} "</p>
+            </div>
+        </div>
+
+            <div class="container">
+                <h2>Recettes associées</h2>
+                <div class="row">
+                    {% for recipe in showRecipes %}
+                        {% include 'Admin/thumb-recipe-admin.html.twig' %}
+                    {% else %}
+                        <h4>Aucune recette à afficher</h4>
+                    {% endfor %}
+                </div>
+            </div>
+
+        <!-- MODAL -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Suppression de l'événement</h4>
+                    </div>
+                    <div class="modal-body">
+                        Êtes-vous sûr de vouloir supprimer cet événement ?
+                    </div>
+                    <div class="modal-footer">
+                        <form action="/event/delete" method="POST">
+                            <input type="hidden" name="id" value="{{ event.id }}">
+                            <button type="button" class="btn" data-dismiss="modal">Retour</button>
+                            <button type="submit" class="btn">Supprimer l'événement</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a class="btn backBtn" href="/admin/eventList" role="button"><span class="glyphicon glyphicon-chevron-left"></span> Liste des événements</a>
+
+    </div>
+
+{% endblock %}

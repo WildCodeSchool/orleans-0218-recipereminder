@@ -1,8 +1,20 @@
 {% for recipe in recipes %}
-    <tr>
-        <td>
-            <a href="/admin/recipe/{{ recipe.id }}">{{ recipe.name |capitalize }}</a>
-        </td>
-        <td>{{ recipe.category |capitalize }}</td>
-    </tr>
+<div class="media col-xs-4">
+    <div class="media-left">
+        <a href="/admin/recipe/{{ recipe.id }}">
+
+            {% if recipe.img is empty %}
+                <img class="media-object" src="/assets/images/recipePlaceHolder.jpg" alt="recipe without image" class="">
+            {% else %}
+                <img class="media-object" src="/assets/upload/{{ recipe.img }}" alt="{{ recipe.name }}" class="">
+            {% endif %}
+
+        </a>
+    </div>
+    <div class="media-body">
+        <h4 class="media-heading">{{ recipe.name |capitalize }}</h4>
+        <p>{{ recipe.category |capitalize }}</p>
+    </div>
+</div>
+
 {% endfor %}

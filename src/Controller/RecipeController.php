@@ -27,8 +27,7 @@ class RecipeController extends AbstractController
     public function listRecipe()
     {
         $recipeManager = new RecipeManager();
-        $recipes = $recipeManager->selectAllRecipe();
-
+        $recipes = $recipeManager->selectRecipesLimit();
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->selectAll();
 
@@ -86,10 +85,11 @@ class RecipeController extends AbstractController
     {
         $recipeManager = new RecipeManager();
         $recipe = $recipeManager->selectRecipesById($id);
+        $showEvents = $recipeManager->showLinkedEvent($id);
 
-
-        return $this->twig->render('Recipe/show-one-recipe.html.twig', ['recipe' => $recipe ]);
+        return $this->twig->render('Recipe/show-one-recipe.html.twig', ['recipe' => $recipe, "showEvents" => $showEvents]);
     }
+
 
     /**
      * @param int $id
@@ -119,23 +119,19 @@ class RecipeController extends AbstractController
         header('Location: /admin/recipeList');
     }
 
+
     public function adminListRecipe()
     {
-        $recipeManager = new RecipeManager();
-        $recipes = $recipeManager->selectAllRecipe();
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll();
 
-        return $this->twig->render('Admin/Recipe/recipeList.html.twig', ['recipes' => $recipes]);
+        return $this->twig->render('Admin/Recipe/recipeList.html.twig', ['categories' => $categories]);
     }
 
     public function searchRecipe()
     {
         $recipeManager = new RecipeManager();
-
-        if (empty(trim($_POST['name'])) && empty($_POST['categoryId'])) {
-            $recipes = $recipeManager->selectAllRecipe();
-        } else {
-            $recipes=$recipeManager->selectRecipes(trim($_POST['name']), $_POST['categoryId']);
-        }
+        $recipes=$recipeManager->selectRecipesLimit(trim($_POST['name']), $_POST['categoryId'], $_POST['page'], THUMB_LIMIT);
 
         return $this->twig->render('Recipe/inc_listRecipe.html.twig', ['recipes' => $recipes ]);
     }
@@ -143,13 +139,24 @@ class RecipeController extends AbstractController
     public function searchRecipeAdmin()
     {
         $recipeManager = new RecipeManager();
-
-        if (empty(trim($_POST['recipe']))) {
-            $recipes = $recipeManager->selectAllRecipe();
-        } else {
-            $recipes=$recipeManager->selectRecipes(trim($_POST['recipe']));
-        }
+        $recipes=$recipeManager->selectRecipesLimit(trim($_POST['name']), $_POST['categoryId'], $_POST['page'], MEDIA_LIMIT);
 
         return $this->twig->render('Admin/Recipe/search_recipeList.html.twig', ['recipes' => $recipes ]);
     }
+
+
+    public function setNote($recipeId, $note)
+    {
+        if (!empty($recipeId) && !empty($note)) {
+            $recipeId = trim($recipeId);
+            $note = trim($note);
+
+            $recipeManager = new recipeManager();
+            $recipeManager->updateNote($recipeId, $note);
+            header('Location: /recipe/' . $recipeId);
+        }
+    }
+
+
+
 }
