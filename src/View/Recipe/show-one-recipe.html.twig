@@ -17,12 +17,13 @@
 
         <div class="starBlock">
             <p>
-                    {% for i in 1..5 %}
-                       <a href="/recipe/{{ recipe.id }}/setNote/{{ i }}"> <span class="note glyphicon glyphicon-star{{ i > recipe.note ? '-empty' }}"
-                              data-recipeId="{{ recipe.id }}"
-                              data-note="{{ i }}">
+                {% for i in 1..5 %}
+                    <a href="/recipe/{{ recipe.id }}/setNote/{{ i }}"> <span
+                                class="note glyphicon glyphicon-star{{ i > recipe.note ? '-empty' }}"
+                                data-recipeId="{{ recipe.id }}"
+                                data-note="{{ i }}">
                         </span></a>
-                    {% endfor %}
+                {% endfor %}
             </p>
         </div>
 
@@ -53,6 +54,21 @@
         </div>
 
     </div>
+
+    <section>
+        <div class="container">
+            <h2>Événement associés</h2>
+            <div class="row">
+                {% if showEvents is empty %}
+                    <h4>Aucun événement à afficher</h4>
+                {% else %}
+                    {% for event in showEvents %}
+                        {% include 'thumb-event.html.twig' %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </section>
 
 {% endblock %}
 {% block javascript %}

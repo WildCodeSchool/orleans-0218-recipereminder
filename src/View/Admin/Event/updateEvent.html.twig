@@ -1,0 +1,51 @@
+{% extends 'Admin/admin_layout.html.twig' %}
+
+{% block content %}
+
+    <div class="container">
+        <h1>Administration des événements</h1>
+        {% if errors is not empty %}
+            <div class="alert alert-danger">{{ errors }}</div>
+        {% endif %}
+        <form method="post" action="" enctype="multipart/form-data">
+
+            <input type="hidden" id="id" name="id" value="{{ data.id }}">
+
+            <div class="form-group">
+                <label for="name">Nom événement</label>
+                <input type="name" class="form-control" id="name" name="name" value="{{ data.name }}"
+                       placeholder="ex: Mariage">
+            </div>
+            <div class="form-group">
+                <label for="img">Ajouter une image : </label>
+                <input type="hidden" name="img" value= "{{ data.img }}">
+                <input type="file" name="filename" id="filename">
+            </div>
+            <div>
+
+                <label>Photo précédente :</label>
+                {% if data.img is not empty %}
+                <figure class="imgEvent">
+                    <img class="img-responsive" src= "/assets/upload/{{ data.img }}">
+                </figure>
+                    {% else %}
+                    <p>Aucune photo enregistrée</p>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="date">La date de l'événement : </label>
+                <input type="date" name="date" min="1900-01-01" id="date" value="{{ data.date }}"required>
+            </div>
+            <div class="form-group">
+                <label for="guest">Convives</label>
+                <input type="text" class="form-control" id="guest" name="guest" value="{{ data.guest }}"required
+                       placeholder="ex: Martine, Pierre...">
+            </div>
+            <div class="form-group">
+                <label for="comment">Commentaire</label>
+                <textarea   class="form-control" id="comment" name="comment" rows="5" required>{{ data.comment }}</textarea>
+            </div>
+            <button type="submit" class="btn">Ajouter événement</button>
+        </form>
+    </div>
+{% endblock %}
