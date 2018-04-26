@@ -44,16 +44,11 @@ class UploadManager
      */
     public function unlink(string $file)
     {
-        $fileName = 'assets/upload/' . $file; echo $fileName;
+        $fileName = 'assets/upload/' . $file;
+
         if (file_exists($fileName)) {
             unlink($fileName);
-        } else {
-
-            echo 'error';
-
-        exit();
-
-
         }
+
     }
 }
