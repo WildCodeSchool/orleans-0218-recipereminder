@@ -31,17 +31,23 @@ class EventManager extends AbstractManager
     }
 
     /**
+     * @param null $name
+     * @param null $dateStart
+     * @param null $dateEnd
+     * @param int $page
      * @return array
      */
-
-    public function selectEventLikeName($name = null, $dateStart = null, $dateEnd = null)
+    public function selectEventLimit($name = null, $dateStart = null, $dateEnd = null, $page = 0)
     {
+
+        $offset = $page * THUMB_LIMIT;
         $sql = "SELECT e.id, e.name, e.img, e.date
                 FROM event AS e
                  WHERE (e.name LIKE :name OR e.guest LIKE :name)";
         if (!empty($dateStart) && !empty($dateEnd)) {
             $sql .= " AND date BETWEEN :dateStart AND :dateEnd";
         }
+        $sql.=" ORDER BY e.name LIMIT :offset , :limit";
 
         $statement = $this->pdoConnection->prepare($sql);
         $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
@@ -50,7 +56,9 @@ class EventManager extends AbstractManager
             $statement->bindValue('dateStart', $dateStart, \PDO::PARAM_STR);
             $statement->bindValue('dateEnd', $dateEnd, \PDO::PARAM_STR);
         }
-          $statement->execute();
+        $statement->bindValue('offset', $offset, \PDO::PARAM_INT);
+        $statement->bindValue('limit', THUMB_LIMIT, \PDO::PARAM_INT);
+        $statement->execute();
 
         return $statement->fetchAll();
     }
