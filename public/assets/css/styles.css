@@ -203,6 +203,12 @@ section:nth-child(even) .thumbnail{
 .success {
     color: lightseagreen;
 }
+
+.modalBtn {
+    margin-bottom: 15px;
+    margin-right: 5px;
+}
+
 /* Texte Recipe Reminder fin Homepage */
 .recipeText p {
     font-family: 'Galada', cursive;
@@ -213,8 +219,6 @@ section:nth-child(even) .thumbnail{
 .orange {
     color: #ffaa00;
 }
-
-/*Fin pages pour une recette ou un événement*/
 
 /*FOOTER */
 footer {
@@ -341,7 +345,6 @@ h4.media-heading {
 }
 
 .imgEvent {
-    width : 200px;
     margin-bottom: 20px;
 }
 
