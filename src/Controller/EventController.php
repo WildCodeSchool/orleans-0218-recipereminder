@@ -12,6 +12,7 @@ use Model\Event;
 use Model\EventManager;
 use Model\CategoryManager;
 use Model\UploadManager;
+use Model\UpdateManager;
 
 class EventController extends AbstractController
 {
@@ -72,23 +73,26 @@ class EventController extends AbstractController
             }
         }
 
-        return $this->twig->render('Admin/Event/addEvent.html.twig', ['errors' => $errors, 'data' => $data]);
+        return $this->twig->render('Admin/Event/addEvent.html.twig', [ 'errors' => $errors, 'data' => $data]);
+
     }
 
     public function showEvent(int $id)
     {
         $eventManager = new EventManager();
         $event = $eventManager->selectOneById($id);
+        $showRecipes = $eventManager->showLinkedRecipes($id);
 
-        return $this->twig->render('Event/show-one-event.html.twig', ['event' => $event]);
+        return $this->twig->render('Event/show-one-event.html.twig', ['event' => $event, 'showRecipes' => $showRecipes]);
     }
 
     public function showAdminEvent(int $id)
     {
         $eventManager = new EventManager();
         $event =  $eventManager->selectOneById($id);
+        $showRecipes = $eventManager->showLinkedRecipes($id);
 
-        return $this->twig->render('Admin/Event/show-one-event-admin.html.twig', ['event' => $event]);
+        return $this->twig->render('Admin/Event/show-one-event-admin.html.twig', ['event' => $event, 'showRecipes' => $showRecipes]);
     }
 
     /**
@@ -123,5 +127,56 @@ class EventController extends AbstractController
         $eventManager->delete($id);
 
         header('Location: /admin/eventList');
+
     }
+
+    public function updateEvent(int $id)
+    {   $data = $_POST;
+        $errors = null;
+        $eventManager = new EventManager();
+        try {
+        if (!empty($_POST)) {
+
+                if (empty(trim($_POST['comment']))) {
+                    throw new \Exception('Merci d\'ajouter un commentaire!');
+                }
+            if (empty(trim($_POST['name']))) {
+                throw new \Exception('Le champ nom ne doit pas etre vide !');
+            }
+            if (empty(trim($_POST['date']))) {
+                throw new \Exception('Le champ date doit être renseigné !');
+            }
+
+            if (empty($_FILES['filename']['name'])) {
+                $eventManager->update($id, $data);
+                header('Location:/admin/eventList');
+            } else {
+                $event = $eventManager->selectOneById($id);
+                $imageName = $event->getImg();
+
+                // upload du fichier
+                $upload = new UploadManager();
+                $filename = $upload->upload($_FILES['filename']);
+                $data['img'] = $filename;
+
+                // supprimer l'ancien fichier s'il existe
+                $upload->unlink($imageName);
+
+                // update de tous les champs
+
+                $eventManager->update($id, $data);
+                header('Location:/admin/eventList');
+                exit();
+            }
+        }
+
+        $event = $eventManager->selectOneById($id);
+
+        } catch (\Exception $e) {
+            $errors = $e->getMessage();
+        }
+        return $this->twig->render('Admin/Event/updateEvent.html.twig', ['data' => $event, 'errors'=>$errors]);
+    }
+
 }
+

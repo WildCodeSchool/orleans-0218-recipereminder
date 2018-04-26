@@ -10,8 +10,8 @@
         <form method="post" action="" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="name">Recette nom</label>
-                <input type="name" class="form-control" id="name" name="name" value="{{ post.name }}"
-                       placeholder="ex: Boeuf Bourguignon" required>
+                <input type="name" class="form-control" id="name" name="name" value="{{ data.name }}"
+                       placeholder="ex: Boeuf Bourguignon">
             </div>
             <div class="form-group">
                 <label for="categoryId">Catégorie</label>
@@ -27,17 +27,17 @@
             </div>
             <div class="form-group">
                 <label for="book">Référence livre / magazine</label>
-                <input type="text" class="form-control" id="book" name="book" value="{{ post.book }}"
+                <input type="text" class="form-control" id="book" name="book" value="{{ data.book }}"
                        placeholder="ex: La cuisine française (Jean Bon, édition Miam) p.45 / Cuisine magazine n°34 p.22">
             </div>
             <div class="form-group">
                 <label for="url">Référence site</label>
-                <input type="text" class="form-control" id="url" name="url" value="{{ post.url }}"
+                <input type="text" class="form-control" id="url" name="url" value="{{ data.url }}"
                        placeholder="ex: www.marecette.com">
             </div>
             <div class="form-group">
                 <label for="comment">Commentaire</label>
-                <textarea class="form-control" id="comment" name="comment" rows="5" required>{{ post.comment }}</textarea>
+                <textarea class="form-control" id="comment" name="comment" rows="5">{{ data.comment }}</textarea>
             </div>
             <button type="submit" class="btn">Ajouter recette</button>
         </form>

@@ -2,9 +2,9 @@
     <a href="event/{{ event.id }}">
         <figure class="thumbnail">
             {% if event.img is empty %}
-                <img src="assets/images/eventPlaceHolder.jpg" alt="recipe without image" class="">
+                <img src="/assets/images/eventPlaceHolder.jpg" alt="recipe without image" class="">
             {% else %}
-                <img src="assets/upload/{{ event.img }}" alt="{{ event.name }}" class="">
+                <img src="/assets/upload/{{ event.img }}" alt="{{ event.name }}" class="">
             {% endif %}
             <figcaption class="caption">
                 <h3>{{ event.name |capitalize }}</h3>

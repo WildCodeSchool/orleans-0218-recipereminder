@@ -86,10 +86,11 @@ class RecipeController extends AbstractController
     {
         $recipeManager = new RecipeManager();
         $recipe = $recipeManager->selectRecipesById($id);
+        $showEvents = $recipeManager->showLinkedEvent($id);
 
-
-        return $this->twig->render('Recipe/show-one-recipe.html.twig', ['recipe' => $recipe ]);
+        return $this->twig->render('Recipe/show-one-recipe.html.twig', ['recipe' => $recipe, "showEvents" => $showEvents]);
     }
+
 
     /**
      * @param int $id
@@ -118,6 +119,7 @@ class RecipeController extends AbstractController
 
         header('Location: /admin/recipeList');
     }
+
 
     public function adminListRecipe()
     {
@@ -148,6 +150,7 @@ class RecipeController extends AbstractController
         return $this->twig->render('Admin/Recipe/search_recipeList.html.twig', ['recipes' => $recipes ]);
     }
 
+
     public function setNote($recipeId, $note)
     {
         if (!empty($recipeId) && !empty($note)) {
@@ -156,7 +159,10 @@ class RecipeController extends AbstractController
 
             $recipeManager = new recipeManager();
             $recipeManager->updateNote($recipeId, $note);
-            header('Location: /recipe/'.$recipeId);
+            header('Location: /recipe/' . $recipeId);
         }
     }
+
+
+
 }
