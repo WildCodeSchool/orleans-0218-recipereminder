@@ -7,7 +7,7 @@
     </div>
     <section>
     <div class="banner">
-        <h1><p class="info">Vous pouvez modifier le texte ici :</p>
+        <h1><p class="info">Vous pouvez modifier le texte de la phrase d'accorche ci-dessous :</p>
             <p class="editable"><span contenteditable="true" id="catchPhrase" data-toggle="tooltip" title="Vous pouvez modifier le texte ici!">{{ catchPhrase }}</span></p>
         </h1>
     </div>
@@ -17,36 +17,6 @@
 
 {% endblock %}
 {% block javascript %}
-<script>
-$('body').on('focus', '[contenteditable]', function() {
-    var $this = $(this);
-    $this.data('before', $this.html());
-    return $this;
-}).on('blur paste', '[contenteditable]', function() {
-    var $this = $(this);
-    if ($this.data('before') !== $this.html()) {
-        $this.data('before', $this.html());
-        $this.trigger('change');
-    }
-    return $this;
-});
-
-$('body *[contenteditable]').keydown(function(e) {
-    // trap the return key being pressed
-    if (e.keyCode === 13) {
-        // prevent the default behaviour of return key pressed
-        return false;
-    }
-});
-
-$('#catchPhrase').change(function(){
-    let catchPhrase = $(this).text();
-   $.post('/admin/changeCatchPhrase',{catchPhrase: catchPhrase});
-});
-
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
-});
-</script>
+<script src="/assets/js/catchPhrase.js"></script>
 {% endblock %}
 

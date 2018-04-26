@@ -346,8 +346,6 @@ h4.media-heading {
 }
 
 .editable{
-    background-color: black;
-    color:white;
     display:inline-block;
     border-radius:5px;
     padding:10px;
@@ -360,4 +358,5 @@ h4.media-heading {
     margin-top:-50px;
     margin-bottom:30px;
     font-family: normal;
+    font-weight: bold;
 }
