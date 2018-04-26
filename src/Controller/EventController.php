@@ -34,14 +34,10 @@ class EventController extends AbstractController
     public function adminListEvent()
     {
         $eventManager = new EventManager();
-        $events = $eventManager->selectAll();
+        //$events = $eventManager->selectAll();
 
         return $this->twig->render(
-            'Admin/Event/eventList.html.twig',
-            [
-                'events' => $events
-            ]
-        );
+            'Admin/Event/eventList.html.twig');
     }
 
     public function addEvent()
@@ -110,7 +106,7 @@ class EventController extends AbstractController
         } catch (\Exception $e) {
             exit();
         }
-        $events = $eventManager->selectEventLimit(trim($_POST['event']), $_POST['dateStart'], $_POST['dateEnd'],$_POST['page']);
+        $events = $eventManager->selectEventLimit(trim($_POST['event']), $_POST['dateStart'], $_POST['dateEnd'],$_POST['page'],THUMB_LIMIT);
 
         return $this->twig->render('Event/inc_listEvent.html.twig', ['events' => $events]);
     }
@@ -173,6 +169,14 @@ class EventController extends AbstractController
             $errors = $e->getMessage();
         }
         return $this->twig->render('Admin/Event/updateEvent.html.twig', ['data' => $event, 'errors'=>$errors]);
+    }
+
+    public function searchEventAdmin()
+    {
+        $eventManager = new EventManager();
+        $events=$eventManager->selectEventLimit(trim($_POST['name']),$_POST['dateStart'],$_POST['dateEnd'],$_POST['page'], MEDIA_LIMIT);
+
+        return $this->twig->render('Admin/Event/search_eventList.html.twig', ['events' => $events ]);
     }
 
 }
