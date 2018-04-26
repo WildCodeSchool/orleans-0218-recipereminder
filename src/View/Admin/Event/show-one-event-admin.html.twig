@@ -30,6 +30,19 @@
             </div>
         </div>
 
+            <div class="container">
+                <h2>Recettes associées</h2>
+                <div class="row">
+                    {% if showRecipes is empty %}
+                        <h4>Aucune recette à afficher</h4>
+                    {% else %}
+                        {% for recipe in showRecipes %}
+                            {% include 'Admin/thumb-recipe-admin.html.twig' %}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+
         <!-- MODAL -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
