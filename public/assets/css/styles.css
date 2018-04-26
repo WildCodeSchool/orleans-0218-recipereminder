@@ -294,6 +294,13 @@ label {
     margin-top:10px;
 }
 
+.glyphicon-remove{
+    color:red;
+}
+
+.btn-link{
+    margin:0;
+}
 /*  ------- notes -------- */
 .starBlock{
     color:#fecc00;

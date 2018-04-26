@@ -25,6 +25,7 @@ $routes = [
 
     'Category' => [ // Controller
         ['list', '/admin/category', ['GET', 'POST']], // action, url, method
+        ['delete', '/admin/category/delete','POST'], // action, url, method
     ],
 
     'Event' => [
