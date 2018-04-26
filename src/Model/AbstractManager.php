@@ -82,7 +82,7 @@ abstract class AbstractManager
 
 
     /**
-     * INSERT one row in dataase
+     * INSERT one row in database
      *
      * @param Array $data
      */
@@ -96,18 +96,30 @@ abstract class AbstractManager
         $statement = $this->pdoConnection->prepare($sql);
         $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
         foreach ($data as $key => $value) {
+
+            $statement->bindValue($key, $value);
+
+        }
+
+        $statement->execute();
+    }
+
+
+
+    public function update(int $id, array $data)
+    {
+        $key = array_keys($data);
+        foreach ($key as $value){
+            $fieldTab[]= $value.'=:'.$value;
+        }
+        $field= implode(',',$fieldTab);
+        $query = "UPDATE $this->table SET $field WHERE id=:id";
+        $statement = $this->pdoConnection->prepare($query);
+        foreach($data as $key => $value){
             $statement->bindValue($key, $value);
         }
 
         $statement->execute();
     }
 
-    /**
-     * @param int $id Id of the row to update
-     * @param array $data $data to update
-     */
-    public function update(int $id, array $data)
-    {
-        //TODO : Implements SQL UPDATE request
-    }
 }

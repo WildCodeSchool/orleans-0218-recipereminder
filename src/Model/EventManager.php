@@ -45,7 +45,7 @@ class EventManager extends AbstractManager
 
         $statement = $this->pdoConnection->prepare($sql);
         $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
-        $statement->bindValue('name', '%'.$name.'%', \PDO::PARAM_STR);
+        $statement->bindValue('name', '%' . $name . '%', \PDO::PARAM_STR);
         if (!empty($dateStart) && !empty($dateEnd)) {
             $statement->bindValue('dateStart', $dateStart, \PDO::PARAM_STR);
             $statement->bindValue('dateEnd', $dateEnd, \PDO::PARAM_STR);
@@ -70,3 +70,5 @@ class EventManager extends AbstractManager
         return $statement->fetchAll();
     }
 }
+
+

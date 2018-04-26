@@ -36,8 +36,8 @@ $routes = [
         ['addEvent', '/admin/addEvent', ['GET', 'POST']],
         ['deleteEvent', '/event/delete', 'POST'],
         ['searchEvent', '/event/search', 'POST'], // action, url, method
-
-    ],
+        ['updateEvent', '/admin/updateEvent/{id:\d+}', ['GET', 'POST']]
+      ],
 
     'Recipe' => [ // Controller
         ['listRecipe', '/recipe', 'GET'], // action, url, method
@@ -49,7 +49,7 @@ $routes = [
         ['deleteRecipe', '/recipe/delete', 'POST'],
         ['setNote', '/recipe/{recipeId: \d+}/setNote/{note: \d+}', 'GET'],
         ['searchRecipeAdmin', '/admin/recipeList/search', 'POST'], // action, url, method
-
+        ['updateRecipe', '/admin/updateRecipe/{id:\d+}', ['GET', 'POST']]
     ],
 
 ];
