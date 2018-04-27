@@ -37,10 +37,10 @@ class EventManager extends AbstractManager
      * @param int $page
      * @return array
      */
-    public function selectEventLimit($name = null, $dateStart = null, $dateEnd = null, $page = 0)
+    public function selectEventLimit($name = null, $dateStart = null, $dateEnd = null, $page = 0,$limit=9)
     {
 
-        $offset = $page * THUMB_LIMIT;
+        $offset = $page * $limit;
         $sql = "SELECT e.id, e.name, e.img, e.date
                 FROM event AS e
                  WHERE (e.name LIKE :name OR e.guest LIKE :name)";
@@ -57,7 +57,7 @@ class EventManager extends AbstractManager
             $statement->bindValue('dateEnd', $dateEnd, \PDO::PARAM_STR);
         }
         $statement->bindValue('offset', $offset, \PDO::PARAM_INT);
-        $statement->bindValue('limit', THUMB_LIMIT, \PDO::PARAM_INT);
+        $statement->bindValue('limit', $limit, \PDO::PARAM_INT);
         $statement->execute();
 
         return $statement->fetchAll();
