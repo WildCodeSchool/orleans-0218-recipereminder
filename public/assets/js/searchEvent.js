@@ -44,10 +44,8 @@ function searchEvent(reset=false){
     });
 }
 
-$( document ).ready(function() {
     infiniteScroll();
     searchEvent();
-});
 
 function infiniteScroll(){
     // on initialise ajaxready à true au premier chargement de la fonction

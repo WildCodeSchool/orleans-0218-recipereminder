@@ -102,7 +102,7 @@ class EventController extends AbstractController
         } catch (\Exception $e) {
             exit();
         }
-        $events = $eventManager->selectEventLimit(trim($_POST['event']), $_POST['dateStart'], $_POST['dateEnd'],$_POST['page'],THUMB_LIMIT);
+        $events = $eventManager->selectEventLimit(trim($_POST['name']), $_POST['dateStart'], $_POST['dateEnd'],$_POST['page'],THUMB_LIMIT);
 
         return $this->twig->render('Event/inc_listEvent.html.twig', ['events' => $events]);
     }
