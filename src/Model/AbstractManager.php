@@ -114,6 +114,7 @@ abstract class AbstractManager
         }
         $field= implode(',',$fieldTab);
         $query = "UPDATE $this->table SET $field WHERE id=:id";
+
         $statement = $this->pdoConnection->prepare($query);
         foreach($data as $key => $value){
             $statement->bindValue($key, $value);

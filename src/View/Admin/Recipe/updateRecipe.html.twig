@@ -3,7 +3,7 @@
 {% block content %}
 
     <div class="container">
-        <h1>Ajouter recette</h1>
+        <h1>Administration des recettes</h1>
         {% if errors is not empty %}
             <div class="alert alert-danger">{{ errors }}</div>
         {% endif %}
@@ -11,7 +11,7 @@
             <div class="form-group">
                 <label for="name">Recette nom</label>
                 <input type="name" class="form-control" id="name" name="name" value="{{ data.name }}"
-                       placeholder="ex: Boeuf Bourguignon">
+                       placeholder="ex: Boeuf Bourguignon" required>
             </div>
             <div class="form-group">
                 <label for="categoryId">Catégorie</label>
@@ -22,8 +22,19 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="img">Ajouter lien image</label>
+                <label for="img">Ajouter une image</label>
                 <input type="file" name="img" id="img">
+            </div>
+            <div>
+
+                <label>Photo précédente :</label>
+                {% if data.img is not empty %}
+                <figure class="imgEvent">
+                        <img class="img-responsive" src= "/assets/upload/{{ data.img }}">
+                </figure>
+                {% else %}
+                    <p>Aucune photo enregistrée</p>
+                {% endif %}
             </div>
             <div class="form-group">
                 <label for="book">Référence livre / magazine</label>
@@ -37,9 +48,10 @@
             </div>
             <div class="form-group">
                 <label for="comment">Commentaire</label>
-                <textarea class="form-control" id="comment" name="comment" rows="5">{{ data.comment }}</textarea>
+                <textarea class="form-control" id="comment" name="comment" rows="5" required>{{ data.comment }}</textarea>
             </div>
-            <button type="submit" class="btn">Ajouter recette</button>
+            <button type="submit" class="btn">Modifier une recette</button>
         </form>
     </div>
 {% endblock %}
+
