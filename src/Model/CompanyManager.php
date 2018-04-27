@@ -8,9 +8,9 @@
 
 namespace Model;
 
-class catchPhraseManager extends AbstractManager
+class CompanyManager extends AbstractManager
 {
-    const TABLE = 'catchPhrase';
+    const TABLE = 'company';
 
     /**
      *  Initializes this class.
@@ -22,7 +22,7 @@ class catchPhraseManager extends AbstractManager
 
     public function changeCatchPhrase(string $text)
     {
-        $sql = "UPDATE catchPhrase SET value = :catchPhrase WHERE name= 'catchPhrase' ";
+        $sql = "UPDATE company SET value = :catchPhrase WHERE name= 'catchPhrase' ";
         $statement = $this->pdoConnection->prepare($sql);
         $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
         $statement->bindValue(':catchPhrase', $text);
@@ -31,7 +31,7 @@ class catchPhraseManager extends AbstractManager
 
     public function selectCatchPhrase():string
     {
-        $sql = "SELECT value FROM catchPhrase WHERE name='catchPhrase'";
+        $sql = "SELECT value FROM company WHERE name='catchPhrase'";
         $catchPhrase = $this->pdoConnection->query($sql, \PDO::FETCH_CLASS, $this->className)->fetch();
         return $catchPhrase->getValue();
     }

@@ -8,7 +8,7 @@
 
 namespace Model;
 
-class CatchPhrase
+class Company
 {
     /**
      * @var int

@@ -8,14 +8,14 @@
 
 namespace Controller;
 
-use Model\CatchPhraseManager;
-use Model\CatchPhrase;
+use Model\CompanyManager;
+use Model\Company;
 
-class CatchPhraseController extends AbstractController
+class CompanyController extends AbstractController
 {
     public function changeCatchPhrase()
     {
-        $catchPhrase = new CatchPhraseManager();
+        $catchPhrase = new CompanyManager();
         $catchPhrase->changeCatchPhrase(trim($_POST['catchPhrase']));
     }
 }
