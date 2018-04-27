@@ -63,9 +63,10 @@ class CategoryController extends AbstractController
     public function update()
     {
         if(!empty($_POST['categoryId']) && !empty($_POST['newName'])){
+            $categoryId = $_POST['categoryId'];
             $data['name']=trim($_POST['newName']);
             $categoryManager = new CategoryManager();
-            $categoryManager->update($_POST['categoryId'],$data);
+            $categoryManager->update($categoryId,$data);
           
             header('location:/admin/category');
         }

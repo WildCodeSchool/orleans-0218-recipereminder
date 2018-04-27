@@ -32,11 +32,13 @@ $routes = [
     'Event' => [
         ['listEvent', '/event', 'GET'],
         ['showEvent', '/event/{id:\d+}', 'GET'],
-        ['showAdminEvent', '/admin/event/{id: \d+}', 'GET'],
+        ['showAdminEvent', '/admin/event/{id: \d+}', ['GET', 'POST']],
         ['adminListEvent', '/admin/eventList', 'GET'], // action, url, method
         ['addEvent', '/admin/addEvent', ['GET', 'POST']],
         ['deleteEvent', '/event/delete', 'POST'],
         ['searchEvent', '/event/search', 'POST'], // action, url, method
+        ['searchRecipeToLink', '/admin/event/searchRecipeToLink', 'POST'], // action, url, method
+        ['linkRecipeToEvent', '/admin/event/linkRecipeToEvent', 'POST'], // action, url, method
         ['searchEventAdmin', '/admin/event/search', 'POST'], // action, url, method
         ['updateEvent', '/admin/updateEvent/{id:\d+}', ['GET', 'POST']]
       ],
@@ -52,6 +54,10 @@ $routes = [
         ['setNote', '/recipe/{recipeId: \d+}/setNote/{note: \d+}', 'GET'],
         ['searchRecipeAdmin', '/admin/recipeList/search', 'POST'], // action, url, method
         ['updateRecipe', '/admin/updateRecipe/{id:\d+}', ['GET', 'POST']]
+    ],
+
+    'Company' => [
+      ['changeCatchPhrase','/admin/changeCatchPhrase','POST'],
     ],
 
 ];

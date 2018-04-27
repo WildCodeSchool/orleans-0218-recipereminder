@@ -27,6 +27,7 @@
                          <thead>
                              <tr>
                                  <th>CATÉGORIES</th>
+                                 <th>Suprimer</th>
                                  <th>Modifier</th>
                              </tr>
                          </thead>
@@ -35,6 +36,12 @@
 
                             <tr>
                                 <td>{{ category.name |capitalize}}</td>
+                                <td>
+                                    <form method="POST" action="/admin/category/delete">
+                                        <input type="hidden" name="categoryId" id="categoryId" value="{{ category.id }}">
+                                        <button type="submit" class="btn-link"><span class="glyphicon glyphicon-remove"></span></button>
+                                    </form>
+                                </td>
                                 <td>
                                     <button data-categoryName="{{ category.name }}"
                                             data-categoryId="{{ category.id }}"
@@ -92,7 +99,7 @@
                     </div>
                     <div class="modal-body">
                         <form method="POST" action="/admin/category/update">
-                            <input type="hidden" value="" name="categoryId" id="categoryId">
+                            <input type="hidden" value="" name="categoryId" id="categoryIdToUpdate">
                             <div class="form-group">
                                 <label for="newName">Nom de la catégorie : </label>
                                 <input class="form-control" type="text" name="newName" id="newName">

@@ -201,6 +201,15 @@ section:nth-child(even) .thumbnail{
     margin-bottom: -1em;
 }
 
+.success {
+    color: lightseagreen;
+}
+
+.modalBtn {
+    margin-bottom: 15px;
+    margin-right: 5px;
+}
+
 /* Texte Recipe Reminder fin Homepage */
 .recipeText p {
     font-family: 'Galada', cursive;
@@ -211,8 +220,6 @@ section:nth-child(even) .thumbnail{
 .orange {
     color: #ffaa00;
 }
-
-/*Fin pages pour une recette ou un événement*/
 
 /*FOOTER */
 footer {
@@ -341,7 +348,21 @@ h4.media-heading {
 }
 
 .imgEvent {
-    width : 200px;
     margin-bottom: 20px;
 }
 
+.editable{
+    display:inline-block;
+    border-radius:5px;
+    padding:10px;
+    text-shadow:none;
+}
+
+.info {
+    font-size:16px;
+    font-weight:normal;
+    margin-top:-50px;
+    margin-bottom:30px;
+    font-family: normal;
+    font-weight: bold;
+}

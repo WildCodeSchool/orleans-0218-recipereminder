@@ -1,15 +1,22 @@
 {% extends 'Admin/admin_layout.html.twig' %}
 
 {% block content %}
-    <div class="banner">
-        <h1>Recipe Reminder : la recette pour gérer vos recettes !</h1>
+    <div class="container recipeText">
+        <h1 class="orange">Bienvenue dans la partie Administrateur !</h1>
+        <p align="center">Ici vous pourrez modifier ou ajouter des recettes et des événements.</p>
     </div>
-
     <section>
-        <div class="container recipeText">
-            <h2 class="orange">Bienvenue dans la partie Administrateur !</h2>
-            <p align="center">Ici vous pourrez modifier ou ajouter des recettes et des événements.</p>
-        </div>
+    <div class="banner">
+        <h1><p class="info">Vous pouvez modifier le texte de la phrase d'accorche ci-dessous :</p>
+            <p class="editable"><span contenteditable="true" id="catchPhrase" data-toggle="tooltip" title="Vous pouvez modifier le texte ici!">{{ catchPhrase }}</span></p>
+        </h1>
+    </div>
     </section>
 
+
+
 {% endblock %}
+{% block javascript %}
+<script src="/assets/js/catchPhrase.js"></script>
+{% endblock %}
+

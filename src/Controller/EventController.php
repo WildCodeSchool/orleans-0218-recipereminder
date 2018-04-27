@@ -11,7 +11,9 @@ namespace Controller;
 use Model\Event;
 use Model\EventManager;
 use Model\CategoryManager;
+use Model\EventRecipeManager;
 use Model\UploadManager;
+use Model\RecipeManager;
 use Model\UpdateManager;
 
 class EventController extends AbstractController
@@ -64,7 +66,7 @@ class EventController extends AbstractController
                 $errors = $e->getMessage();
             }
         }
-
+      
         return $this->twig->render('Admin/Event/addEvent.html.twig', [ 'errors' => $errors, 'data' => $data]);
     }
 
@@ -80,10 +82,14 @@ class EventController extends AbstractController
     public function showAdminEvent(int $id)
     {
         $eventManager = new EventManager();
-        $event =  $eventManager->selectOneById($id);
+        $event = $eventManager->selectOneById($id);
+
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll();
+
         $showRecipes = $eventManager->showLinkedRecipes($id);
 
-        return $this->twig->render('Admin/Event/show-one-event-admin.html.twig', ['event' => $event, 'showRecipes' => $showRecipes]);
+        return $this->twig->render('Admin/Event/show-one-event-admin.html.twig', ['event' => $event, 'showRecipes' => $showRecipes, 'categories' => $categories]);
     }
 
     /**
@@ -117,6 +123,48 @@ class EventController extends AbstractController
         $eventManager->delete($id);
 
         header('Location: /admin/eventList');
+    }
+
+    /**
+     * Send all the recipes that can be linked to one event (not already linked) and corresponding
+     * to the  requested name /category to the modal view in admin/event/id
+     * @return string
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
+    public function searchRecipeToLink()
+    {
+        $eventRecipeManager = new EventRecipeManager();
+
+        if (empty(trim($_POST['findRecipe'])) && empty($_POST['categoryId'])) {
+            $recipes = $eventRecipeManager->selectNotLinkedRecipes($_POST['eventId']);
+        } else {
+            $recipes = $eventRecipeManager->selectNotLinkedRecipes(
+                $_POST['eventId'],
+                trim($_POST['findRecipe']),
+                $_POST['categoryId']
+            );
+        }
+
+        return $this->twig->render('Admin/Event/searchRecipeToLink.html.twig', ['recipes' => $recipes]);
+    }
+
+    /**
+     * Link one recipe to one event (new entry in the table event_recipe)
+     * only if this link (event/recipe pair) does not already exist.
+     */
+    public function linkRecipeToEvent()
+    {
+        if (!empty($_POST['recipeId']) && !empty($_POST['eventId'])) {
+            $data = $_POST;
+
+            $eventRecipeManager = new EventRecipeManager();
+
+            if ($eventRecipeManager->testNoLink($_POST['recipeId'], $_POST['eventId'])) {
+                $eventRecipeManager->insert($data);
+            }
+        }
     }
 
     public function updateEvent(int $id)

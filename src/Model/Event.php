@@ -63,7 +63,7 @@ class Event
     /**
      * @return string
      */
-    public function getName() : string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -76,13 +76,14 @@ class Event
     public function setName($name): Event
     {
         $this->name = $name;
+
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getDate() : string
+    public function getDate(): string
     {
         return $this->date;
     }
@@ -102,7 +103,7 @@ class Event
     /**
      * @return string
      */
-    public function getImg() : ?string
+    public function getImg(): ?string
     {
         return $this->img;
     }
@@ -122,7 +123,7 @@ class Event
     /**
      * @return string
      */
-    public function getGuest() : string
+    public function getGuest(): string
     {
         return $this->guest;
     }
@@ -142,7 +143,7 @@ class Event
     /**
      * @return string
      */
-    public function getComment() : string
+    public function getComment(): string
     {
         return $this->comment;
     }
@@ -155,6 +156,7 @@ class Event
     public function setComment($comment): Event
     {
         $this->comment = $comment;
+
         return $this;
     }
 }
