@@ -118,6 +118,7 @@ abstract class AbstractManager
         foreach($data as $key => $value){
             $statement->bindValue($key, $value);
         }
+        $statement->bindValue('id', $id);
 
         $statement->execute();
     }
