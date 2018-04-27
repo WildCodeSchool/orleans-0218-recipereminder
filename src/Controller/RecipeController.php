@@ -170,10 +170,8 @@ class RecipeController extends AbstractController
                     throw new \Exception('Le champ nom ne doit pas etre vide !');
                 }
 
-                if (empty($_FILES['filename']['name'])) {
-                    $recipeManager->update($id, $data);
-                    header('Location:/admin/recipeList');
-                } else {
+                if (!empty($_FILES['filename']['name'])) {
+
                     $recipe = $recipeManager->selectOneById($id);
                     $imageName = $recipe->getImg();
 
@@ -184,13 +182,11 @@ class RecipeController extends AbstractController
 
                     // supprimer l'ancien fichier s'il existe
                     $upload->unlink($imageName);
-
-                    // update de tous les champs
-
-                    $recipeManager->update($id, $data);
-                    header('Location:/admin/recipeList');
-                    exit();
                 }
+
+                // update de tous les champs
+                $recipeManager->update($id, $data);
+                header('Location:/admin/recipeList');
             }
 
             $recipe = $recipeManager->selectOneById($id);
