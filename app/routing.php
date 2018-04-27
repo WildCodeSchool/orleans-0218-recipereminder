@@ -39,6 +39,7 @@ $routes = [
         ['searchEvent', '/event/search', 'POST'], // action, url, method
         ['searchRecipeToLink', '/admin/event/searchRecipeToLink', 'POST'], // action, url, method
         ['linkRecipeToEvent', '/admin/event/linkRecipeToEvent', 'POST'], // action, url, method
+        ['searchEventAdmin', '/admin/event/search', 'POST'], // action, url, method
         ['updateEvent', '/admin/updateEvent/{id:\d+}', ['GET', 'POST']]
       ],
 

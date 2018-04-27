@@ -4,7 +4,7 @@ $('#formSeekEvent').submit(function (e) {
     e.preventDefault();
 });
 
-$('#event').keyup(function () {
+$('#name').keyup(function () {
     // on lance la fonction seulement si au moins 2 lettre dans le input, ou 0
     if($(this).val().length > 2 || $(this).val().length === 0) {
         $('#page').val(0);
@@ -32,7 +32,8 @@ $('#dateEnd').change(function(){
 function searchEvent(reset=false){
     let form = $('#formSeekEvent');
     let page = parseInt($('#page').val());
-    $.post("/event/search", form.serialize()).done(function (html) {
+    let action = form.attr('action');
+    $.post(action, form.serialize()).done(function (html) {
         if(reset === false) {
             $('#list').append(html);
         }else{
@@ -43,8 +44,10 @@ function searchEvent(reset=false){
     });
 }
 
-infiniteScroll();
-searchEvent();
+$( document ).ready(function() {
+    infiniteScroll();
+    searchEvent();
+});
 
 function infiniteScroll(){
     // on initialise ajaxready à true au premier chargement de la fonction

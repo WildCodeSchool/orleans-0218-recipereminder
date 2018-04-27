@@ -1,0 +1,22 @@
+<div class="row listed">
+    {% for event in events %}
+        <div class="media col-xs-4">
+            <div class="media-left">
+                <a href="/admin/event/{{ event.id }}">
+
+                    {% if event.img is empty %}
+                            <img class="media-object" src="/assets/images/eventPlaceHolder.jpg" alt="event without image" class="">
+                    {% else %}
+                            <img class="media-object" src="/assets/upload/{{ event.img }}" alt="{{ event.name }}" class="">
+                    {% endif %}
+
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">{{ event.name |capitalize }}</h4>
+                <p>{{ event.date|date("d / m / Y") }}</p>
+            </div>
+        </div>
+
+    {% endfor %}
+</div>
