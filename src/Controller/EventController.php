@@ -138,11 +138,11 @@ class EventController extends AbstractController
         $eventRecipeManager = new EventRecipeManager();
 
         if (empty(trim($_POST['findRecipe'])) && empty($_POST['categoryId'])) {
-            $recipes = $eventRecipeManager->selectNotLinkedLastRecipes($_POST['eventId']);
+            $recipes = $eventRecipeManager->selectNotLinkedRecipes($_POST['eventId']);
         } else {
             $recipes = $eventRecipeManager->selectNotLinkedRecipes(
-                trim($_POST['findRecipe']),
                 $_POST['eventId'],
+                trim($_POST['findRecipe']),
                 $_POST['categoryId']
             );
         }
