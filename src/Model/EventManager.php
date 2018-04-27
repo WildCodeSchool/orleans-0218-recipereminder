@@ -68,7 +68,7 @@ class EventManager extends AbstractManager
         $sql = "SELECT r.id, r.name, img, categoryId, book, url, comment, eventId, recipeId, ca.name as category 
                 FROM recipe as r
                 JOIN event_recipe as er ON r.id = er.recipeId
-                JOIN category as ca ON r.categoryId = ca.id
+                LEFT JOIN category as ca ON r.categoryId = ca.id
                 WHERE eventId = :id";
         $statement = $this->pdoConnection->prepare($sql);
         $statement->setFetchMode(\PDO::FETCH_ASSOC);
