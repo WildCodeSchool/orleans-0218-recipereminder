@@ -120,6 +120,7 @@ abstract class AbstractManager
             $statement->bindValue($key, $value);
         }
         $statement->bindValue('id', $id);
+
         $statement->execute();
     }
 
