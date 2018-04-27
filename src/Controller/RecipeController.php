@@ -163,7 +163,6 @@ class RecipeController extends AbstractController
         $recipeManager = new RecipeManager();
         try {
             if (!empty($_POST)) {
-
                 if (empty(trim($_POST['comment']))) {
                     throw new \Exception('Merci d\'ajouter un commentaire!');
                 }
