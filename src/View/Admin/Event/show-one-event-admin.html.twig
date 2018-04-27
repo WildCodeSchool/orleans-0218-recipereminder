@@ -35,12 +35,22 @@
             </div>
         </div>
         <a class="btn backBtn" href="/admin/eventList" role="button"><span class="glyphicon glyphicon-chevron-left"></span> Liste des événements</a>
+        <a class="btn backBtn btnBlack" href="/admin/updateEvent/{{ event.id }}" role="button"> Modifier l'événement</a>
         <button type="button" class="btn backBtn btnBlack" data-toggle="modal" data-target="#myModal2">
             Supprimer cet événement
         </button>
         <button type="button" class="btn backBtn" data-toggle="modal" data-target="#myModal1">
             Associer une recette
         </button>
+            <div class="container">
+                <h2>Recettes associées</h2>
+                <div class="row">
+                    {% for recipe in showRecipes %}
+                        {% include 'Admin/thumb-recipe-admin.html.twig' %}
+                    {% else %}
+                        <h4>Aucune recette à afficher</h4>
+                    {% endfor %}
+      
         
         <div class="container">
             <h2>Recettes associées</h2>
