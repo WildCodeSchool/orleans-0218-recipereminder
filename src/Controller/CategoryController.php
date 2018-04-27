@@ -58,4 +58,28 @@ class CategoryController extends AbstractController
             ]
         );
     }
+
+
+    public function update()
+    {
+        if(!empty($_POST['categoryId']) && !empty($_POST['newName'])){
+            $categoryId = $_POST['categoryId'];
+            $data['name']=trim($_POST['newName']);
+            $categoryManager = new CategoryManager();
+            $categoryManager->update($categoryId,$data);
+          
+            header('location:/admin/category');
+        }
+    }
+  
+    public function delete()
+    {
+        if (!empty($_POST['categoryId'])) {
+            $id= trim($_POST['categoryId']);
+            $categoryManager = new CategoryManager();
+            $categoryManager->delete($id);
+          
+          header('location:/admin/category');
+        }
+    }
 }

@@ -1,0 +1,57 @@
+img {
+    width: 550px;
+    height: 450px;
+    object-fit: cover;
+    box-shadow: 5px 5px 5px grey;
+}
+
+@media screen and (max-width: 1199px) {
+    img {
+        width: 100%;
+        height: 300px;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    img {
+        width: 100%;
+        height: 220px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    p.comment {
+        margin-top: 18px;
+    }
+}
+
+
+
+.btn {
+    margin-bottom: 0px;
+}
+
+.itemHeader {
+    margin-bottom: 0px;
+}
+
+h1 {
+    font-family: Galada;
+    padding-top: 10px;
+}
+
+.btnBlack {
+
+    background-color: #ff6052;
+}
+
+.btnBlack:hover {
+    color: white;
+    background-color: #ff251e;
+}
+
+.bold {
+    font-family: Galada;
+    font-size: 25px;
+}

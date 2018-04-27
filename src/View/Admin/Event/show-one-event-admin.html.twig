@@ -1,0 +1,121 @@
+{% extends 'Admin/admin_layout.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/recipe-event.css">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+    <h1 class="text-center itemHeader">{{ event.name |capitalize }}</h1>
+        <hr>
+
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <p class="guest"><span class="bold">Cet événement a eu lieu le {{ event.date|date("d / m / Y") }}</span> </p>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <figure>
+                    {% if event.img is empty %}
+                        <img src="/assets/images/eventPlaceHolder.jpg" alt="Image par défaut: cuisinier" />
+                    {% else %}
+                        <img src="/assets/upload/{{ event.img }}" alt="{{ event.name }}" />
+                    {% endif %}
+                </figure>
+            </div>
+
+            <div class="col-xs-12 col-md-6">
+                <p class="guest"><span class="bold">Convives: </span>{{ event.guest |capitalize }}</p>
+            </div>
+
+            <div class="col-xs-12 col-md-6">
+                <p class="comment">" {{ event.comment |capitalize }} "</p>
+            </div>
+        </div>
+        <a class="btn backBtn" href="/admin/eventList" role="button"><span class="glyphicon glyphicon-chevron-left"></span> Liste des événements</a>
+        <a class="btn backBtn btnBlack" href="/admin/updateEvent/{{ event.id }}" role="button"> Modifier l'événement</a>
+        <button type="button" class="btn backBtn btnBlack" data-toggle="modal" data-target="#myModal2">
+            Supprimer cet événement
+        </button>
+        <button type="button" class="btn backBtn" data-toggle="modal" data-target="#myModal1">
+            Associer une recette
+        </button>
+            <div class="container">
+                <h2>Recettes associées</h2>
+                <div class="row">
+                    {% for recipe in showRecipes %}
+                        {% include 'Admin/thumb-recipe-admin.html.twig' %}
+                    {% else %}
+                        <h4>Aucune recette à afficher</h4>
+                    {% endfor %}
+
+        
+        <!-- MODAL1 -->
+        <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Sélectionnez la recette à associer à l'événement: {{ event.name }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="" id="formFindRecipe">
+                            <div class="form-group">
+                                <label for="findRecipe">Entrez le nom de la recette à associer:</label>
+                                <input type="text" name="findRecipe" id="findRecipe" class="form-control"
+                                       placeholder="Quelle recette cherchez-vous?">
+                            </div>
+                            <div class="form-group">
+                                <label for="categoryId">Ou selectionnez une catégorie de recette:</label>
+                                    <select id="categoryId" name="categoryId" class="form-control">
+                                        <option value="" selected>Toutes</option>
+                                        {% for category in categories %}
+                                            <option value="{{ category.id }}">{{ category.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" name="eventId" value="{{ event.id }}"  class="form-control">
+                            </div>
+                        </form>
+                        <div class="row" id="list" data-eventId="{{ event.id }}">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                            <button type="button" class="btn" data-dismiss="modal">Retour</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+       </div>
+     </div>
+        <!-- MODAL2 -->
+        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Suppression de l'événement</h4>
+                    </div>
+                    <div class="modal-body">
+                        Êtes-vous sûr de vouloir supprimer cet événement ?
+                    </div>
+                    <div class="modal-footer">
+                        <form action="/event/delete" method="POST">
+                            <input type="hidden" name="id" value="{{ event.id }}">
+                            <button type="button" class="btn" data-dismiss="modal">Retour</button>
+                            <button type="submit" class="btn">Supprimer l'événement</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascript %}
+<script src="/assets/js/searchRecipeToLink.js"></script>
+    <script src="/assets/js/linkRecipesToOneEvent.js"></script>
+{% endblock %}

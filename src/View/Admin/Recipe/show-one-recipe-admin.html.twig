@@ -1,35 +1,56 @@
 {% extends 'Admin/admin_layout.html.twig' %}
 
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/recipe-event.css">
+{% endblock %}
+
 {% block content %}
     <div class="container">
-        <h1 class="text-center itemHeader">{{ recipe.name|capitalize }}</h1>
         <div class="row">
-            <div class="col-xs-12 col-md-12">
-                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                    Supprimer la recette
-                </button>
-            </div>
-            <div class="col-xs-12 col-md-6">
-                <h3 class="text-left">{{ recipe.category|capitalize }}</h3>
-            </div>
+            <h1 class="text-center itemHeader">{{ recipe.name|capitalize }}</h1>
+            <hr>
+
+                <div class="col-xs-12 col-md-6">
+                    <h3 class="text-left">{{ recipe.category|capitalize }}</h3>
+                </div>
+
         </div>
         <div class="row">
             <div class="col-xs-12 col-md-6">
                 {% if recipe.img is empty %}
-                    <img src="/assets/images/thumbtest3.jpg" alt="recipe without image" class="itemImg" />
+                    <img src="/assets/images/recipePlaceHolder.jpg" alt="recipe without image" />
                 {% else %}
-                    <img src="/assets/upload/{{ recipe.img }}" alt="{{ recipe.name }}" class="itemImg" />
-                {% endif %}
-                {% if recipe.url is not empty %}
-                    <a class="btn btn-info itemRef" href="{{ recipe.url }}" role="button" target="_blank"><b>Ma recette sur le web</b></a>
-                {% elseif recipe.book is not empty %}
-                    <p class="text-left itemRef"><b>Référence:</b> {{ recipe.book }}</p>
+                    <img src="/assets/upload/{{ recipe.img }}" alt="{{ recipe.name }}" />
                 {% endif %}
             </div>
+
             <div class="col-xs-12 col-md-6">
                 <p class="comment"><q>{{ recipe.comment }}</q></p>
             </div>
+        </div>
 
+        <div>
+            <a class="btn backBtn" href="/admin/recipeList" role="button"><span class="glyphicon glyphicon-chevron-left"></span> Liste des recettes</a>
+            <button type="button" class="btn backBtn btnBlack" data-toggle="modal" data-target="#myModal">
+                Supprimer la recette
+            </button>
+            <a class="btn backBtn btnBlack" href="/admin/updateRecipe/{{ recipe.id }}" role="button"> Modifier la recette</a>
+            {% if recipe.url is not empty %}
+                <a class="btn backBtn" href="{{ recipe.url }}" role="button" target="_blank">Ma recette sur le web</a>
+            {% elseif recipe.book is not empty %}
+                <p class="text-left itemRef"><b>Référence:</b> {{ recipe.book }}</p>
+            {% endif %}
+        </div>
+
+        <div class="container">
+            <h2>Recettes associées</h2>
+            <div class="row">
+                {% for event in showEvents %}
+                    {% include 'Admin/thumb-event-admin.html.twig' %}
+                {% else %}
+                    <h4>Aucune recette à afficher</h4>
+                {% endfor %}
+            </div>
         </div>
 
         <!-- MODAL -->
@@ -46,8 +67,8 @@
                     <div class="modal-footer">
                         <form action="/recipe/delete" method="POST">
                             <input type="hidden" name="id" value="{{ recipe.id }}">
-                            <button type="button" class="btn" data-dismiss="modal">Retour</button>
-                            <button type="submit" class="btn">Supprimer la recette</button>
+                            <button type="button" class="btn backBtn" data-dismiss="modal">Retour</button>
+                            <button type="submit" class="btn backBtn">Supprimer la recette</button>
                         </form>
                     </div>
                 </div>

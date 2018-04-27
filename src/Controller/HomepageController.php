@@ -10,6 +10,8 @@ namespace Controller;
 
 use Model\EventManager;
 use Model\RecipeManager;
+use Model\CompanyManager;
+use Model\Company;
 
 class HomepageController extends AbstractController
 {
@@ -21,11 +23,20 @@ class HomepageController extends AbstractController
         $eventManager = new EventManager();
         $lastEvents = $eventManager->selectLastEvents();
 
-        return $this->twig->render('Homepage/homepage.html.twig', ['lastrecipes' => $lastRecipes, 'lastevents' => $lastEvents]);
+        $companyManager= new CompanyManager();
+        $catchPhrase = $companyManager->selectCatchPhrase();
+
+        return $this->twig->render(
+            'Homepage/homepage.html.twig',
+            ['lastrecipes' => $lastRecipes, 'lastevents' => $lastEvents,'catchPhrase'=> $catchPhrase]
+        );
     }
 
     public function adminIndex()
     {
-        return $this->twig->render('Admin/adminHomepage.html.twig');
+        $companyManager= new CompanyManager();
+        $catchPhrase = $companyManager->selectCatchPhrase();
+
+        return $this->twig->render('Admin/adminHomepage.html.twig', ['catchPhrase'=> $catchPhrase]);
     }
 }

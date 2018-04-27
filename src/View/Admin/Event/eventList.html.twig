@@ -9,26 +9,30 @@
         <div class="text-center">
             <a href="/admin/addEvent"><button class="btn">Ajouter un Evénement</button></a>
         </div>
+        <div class="row text-center searchEngine">
+        <form method="post" action="/admin/event/search" id="formSeekEvent" class="form-inline">
+            <input type="hidden" value="0" id="page" name="page">
+            <div class="form-group">
+                <label for="name">Nom de l'événement : </label>
+                    <input type="text" name="name" id="name" class="form-control"
+                           placeholder="Quels événements cherchez-vous?">
 
-            <div class="row">
-                <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12">
-                     <table class="table table-hover table-bordered table-center">
-                         <thead>
-                             <tr>
-                                 <th>ÉVÉNEMENTS</th>
-                                 <th>DATE</th>
-                             </tr>
-                         </thead>
-                         <tbody>
-                         {% for event in events  %}
-                            <tr>
-                                <td>{{ event.name |capitalize }}</td>
-                                <td>{{ event.date|date("d / m / Y") }}</td>
-                            </tr>
-                            {% endfor %}
-                         </tbody>
-                     </table>
-                </div>
             </div>
+            <div class="form-group">
+                <label for="dateStart">de :</label>
+                <input type="date" name="dateStart" id="dateStart" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="dateEnd">à :</label>
+                <input type="date" name="dateEnd" id="dateEnd" class="form-control">
+            </div>
+        </form>
         </div>
+        <div id="list" class="text-center">
+        </div>
+
+        </div>
+{% endblock %}
+{% block javascript %}
+<script src="/assets/js/searchEvent.js"></script>
 {% endblock %}
