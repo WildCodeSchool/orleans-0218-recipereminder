@@ -5,13 +5,9 @@
                 <a href="/admin/event/{{ event.id }}">
 
                     {% if event.img is empty %}
-                        <a href="/admin/event/{{ event.id }}">
                             <img class="media-object" src="/assets/images/eventPlaceHolder.jpg" alt="event without image" class="">
-                        </a>
                     {% else %}
-                        <a href="/admin/event/{{ event.id }}">
                             <img class="media-object" src="/assets/upload/{{ event.img }}" alt="{{ event.name }}" class="">
-                        </a>
                     {% endif %}
 
                 </a>
