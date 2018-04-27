@@ -18,13 +18,14 @@ $routes = [
 
     ],
 
-    'Mentions' => [
-        ['mentionsLegales', '/mentions', 'GET'],
+    'GeneralConditions' => [
+        ['generalConditions', '/mentions', 'GET'],
 
     ],
 
     'Category' => [ // Controller
         ['list', '/admin/category', ['GET', 'POST']], // action, url, method
+        ['update', '/admin/category/update', ['GET', 'POST']], // action, url, method
         ['delete', '/admin/category/delete','POST'], // action, url, method
     ],
 

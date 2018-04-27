@@ -1,6 +1,7 @@
 body {
     margin: 0;
     margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 .banner {
@@ -78,6 +79,7 @@ figcaption p {
 .thumbnail img {
     display: block;
     max-width: 350px;
+    box-shadow: 5px 5px 5px grey;
     height: 70%;
     width: 100%;
     object-fit: cover;
@@ -125,7 +127,7 @@ section:nth-child(even) .thumbnail{
 
 .logo-header {
     margin-top: 3px;
-    font-size: 30px;
+    font-size: 27px;
     color: white;
 }
 
@@ -174,7 +176,6 @@ section:nth-child(even) .thumbnail{
 .guest {
     font-size: 1.3em;
     max-height: 18em;
-    overflow: auto;
 }
 
 .bold {
@@ -263,6 +264,7 @@ footer a:hover {
     border-color: #e65c00;
     font-family: 'Galada', cursive;
     font-size: 20px;
+    border: 0;
 
 }
 
@@ -333,6 +335,7 @@ img.media-object {
 h4.media-heading {
     text-align: left;
     font-size: 25px;
+    font-family: Galada;
 }
 
 .media {
