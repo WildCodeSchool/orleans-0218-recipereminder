@@ -54,4 +54,8 @@ $routes = [
         ['updateRecipe', '/admin/updateRecipe/{id:\d+}', ['GET', 'POST']]
     ],
 
+    'Company' => [
+      ['changeCatchPhrase','/admin/changeCatchPhrase','POST'],
+    ],
+
 ];
