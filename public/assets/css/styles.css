@@ -79,7 +79,6 @@ figcaption p {
 .thumbnail img {
     display: block;
     max-width: 350px;
-    box-shadow: 5px 5px 5px grey;
     height: 70%;
     width: 100%;
     object-fit: cover;
