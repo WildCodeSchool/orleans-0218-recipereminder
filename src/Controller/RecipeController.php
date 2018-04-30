@@ -12,6 +12,7 @@ use Model\Recipe;
 use Model\RecipeManager;
 use Model\CategoryManager;
 use Model\UploadManager;
+use Model\EventRecipeManager;
 
 /**
  * Class RecipeController
@@ -119,6 +120,22 @@ class RecipeController extends AbstractController
         header('Location: /admin/recipeList');
     }
 
+
+    /**
+     * DELETE row "recipeId" in db event_recipe
+     */
+
+    public function deleteLinkEventRecipe()
+    {
+        $eventManager = new EventRecipeManager();
+        if (!empty($_POST)) {
+            $id = $_POST['id'];
+        }
+
+        $eventManager->deleteLinkEventRecipe($id);
+
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+    }
 
     public function adminListRecipe()
     {

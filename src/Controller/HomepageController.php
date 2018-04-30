@@ -23,6 +23,7 @@ class HomepageController extends AbstractController
         $eventManager = new EventManager();
         $lastEvents = $eventManager->selectLastEvents();
 
+
         $companyManager= new CompanyManager();
         $catchPhrase = $companyManager->selectCatchPhrase();
 

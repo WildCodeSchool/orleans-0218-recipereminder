@@ -10,6 +10,10 @@
                 <h3>{{ event.name |capitalize }}</h3>
                 <p>Le {{ event.date |date("d/m/Y")}}</p>
             </figcaption>
+            <form action="/event/deleteLinkRecipe/{{ event.id }}" method="POST">
+                <input type="hidden" name="id" value="{{ event.id }}">
+                <button type="submit" class="btn delinkBtn">Désindexer l'événement</button>
+            </form>
         </figure>
     </a>
 </div>

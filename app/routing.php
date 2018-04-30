@@ -36,6 +36,7 @@ $routes = [
         ['adminListEvent', '/admin/eventList', 'GET'], // action, url, method
         ['addEvent', '/admin/addEvent', ['GET', 'POST']],
         ['deleteEvent', '/event/delete', 'POST'],
+        ['deleteLinkRecipeEvent', '/event/deleteLinkRecipe/{id: \d+}', 'POST'],
         ['searchEvent', '/event/search', 'POST'], // action, url, method
         ['searchRecipeToLink', '/admin/event/searchRecipeToLink', 'POST'], // action, url, method
         ['linkRecipeToEvent', '/admin/event/linkRecipeToEvent', 'POST'], // action, url, method
@@ -51,6 +52,7 @@ $routes = [
         ['adminlistRecipe', '/admin/recipeList', 'GET'], // action, url, method
         ['searchRecipe', '/recipe/search', 'POST'], // action, url, method
         ['deleteRecipe', '/recipe/delete', 'POST'],
+        ['deleteLinkEventRecipe', '/recipe/deleteLinkEvent/{id: \d+}', 'POST'],
         ['setNote', '/recipe/{recipeId: \d+}/setNote/{note: \d+}', 'GET'],
         ['searchRecipeAdmin', '/admin/recipeList/search', 'POST'], // action, url, method
         ['updateRecipe', '/admin/updateRecipe/{id:\d+}', ['GET', 'POST']]

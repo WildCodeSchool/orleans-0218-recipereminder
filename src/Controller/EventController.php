@@ -126,6 +126,22 @@ class EventController extends AbstractController
     }
 
     /**
+     * DELETE row "eventId" in db event_recipe
+     */
+
+    public function deleteLinkRecipeEvent()
+    {
+        $eventManager = new EventRecipeManager();
+        if (!empty($_POST)) {
+            $id = $_POST['id'];
+        }
+
+        $eventManager->deleteLinkRecipeEvent($id);
+
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
+    }
+
+    /**
      * Send all the recipes that can be linked to one event (not already linked) and corresponding
      * to the  requested name /category to the modal view in admin/event/id
      * @return string

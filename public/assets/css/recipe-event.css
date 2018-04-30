@@ -11,7 +11,6 @@ img {
     }
 }
 
-
 @media screen and (max-width: 600px) {
     img {
         width: 100%;
@@ -24,8 +23,6 @@ img {
         margin-top: 18px;
     }
 }
-
-
 
 .btn {
     margin-bottom: 0px;
@@ -53,4 +50,13 @@ h1 {
 .bold {
     font-family: Galada;
     font-size: 25px;
+}
+
+.delinkBtn {
+    display: block;
+    margin: auto;
+    background-color: #ff8008;
+    max-height: 30px;
+    line-height: 20px;
+
 }
