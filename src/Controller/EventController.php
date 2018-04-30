@@ -223,5 +223,15 @@ class EventController extends AbstractController
         return $this->twig->render('Admin/Event/search_eventList.html.twig', ['events' => $events ]);
     }
 
+    public function unlinkRecipeFromEvent()
+    {
+        $eventRecipeManager = new EventRecipeManager();
+        if (!empty($_POST['recipeId']) && !empty($_POST['eventId'])) {
+            $eventRecipeManager->unlink($_POST['eventId'], $_POST['recipeId']);
+        }
+
+        header('Location: /admin/event/' . $_POST['eventId']);
+    }
+
 }
 

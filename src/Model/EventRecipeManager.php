@@ -74,4 +74,13 @@ class EventRecipeManager extends AbstractManager
 
         return $statement->fetchAll();
     }
+
+    public function unlink($eventId, $recipeId)
+    {
+        $sql = "DELETE FROM $this->table WHERE eventId=:eventId AND recipeId=:recipeId";
+        $exec = $this->pdoConnection->prepare($sql);
+        $exec->bindValue('eventId', $eventId, \PDO::PARAM_INT);
+        $exec->bindValue('recipeId', $recipeId, \PDO::PARAM_INT);
+        $exec->execute();
+    }
 }
