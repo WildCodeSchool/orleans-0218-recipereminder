@@ -31,12 +31,12 @@
 
         <div>
             <a class="btn backBtn" href="/admin/recipeList" role="button"><span class="glyphicon glyphicon-chevron-left"></span> Liste des recettes</a>
+            <a class="btn backBtn btnBlack" href="/admin/updateRecipe/{{ recipe.id }}" role="button"><span class="glyphicon glyphicon-pencil"></span>  Modifier la recette</a>
             <button type="button" class="btn backBtn btnBlack" data-toggle="modal" data-target="#myModal">
-                Supprimer la recette
+                <span class="glyphicon glyphicon-trash"></span>  Supprimer la recette
             </button>
-            <a class="btn backBtn btnBlack" href="/admin/updateRecipe/{{ recipe.id }}" role="button"> Modifier la recette</a>
             {% if recipe.url is not empty %}
-                <a class="btn backBtn" href="{{ recipe.url }}" role="button" target="_blank">Ma recette sur le web</a>
+                <a class="btn backBtn" href="{{ recipe.url }}" role="button" target="_blank"><span class="glyphicon glyphicon-log-in"></span>  Ma recette sur le web</a>
             {% elseif recipe.book is not empty %}
                 <p class="text-left itemRef"><b>Référence:</b> {{ recipe.book }}</p>
             {% endif %}
