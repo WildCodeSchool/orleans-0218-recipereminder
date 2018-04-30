@@ -77,7 +77,7 @@ class RecipeController extends AbstractController
         $categories = $categoryManager->selectAll();
         return $this->twig->render(
             'Admin/Recipe/addRecipe.html.twig',
-            ['categories' => $categories, 'errors' => $errors, 'post' => $data]
+            ['categories' => $categories, 'Errors' => $errors, 'post' => $data]
         );
     }
 
@@ -194,7 +194,7 @@ class RecipeController extends AbstractController
         } catch (\Exception $e) {
             $errors = $e->getMessage();
         }
-        return $this->twig->render('Admin/Recipe/updateRecipe.html.twig', ['data' => $recipe, 'errors'=>$errors]);
+        return $this->twig->render('Admin/Recipe/updateRecipe.html.twig', ['data' => $recipe, 'Errors'=>$errors]);
     }
 
 }

@@ -67,7 +67,7 @@ class EventController extends AbstractController
             }
         }
       
-        return $this->twig->render('Admin/Event/addEvent.html.twig', [ 'errors' => $errors, 'data' => $data]);
+        return $this->twig->render('Admin/Event/addEvent.html.twig', [ 'Errors' => $errors, 'data' => $data]);
     }
 
     public function showEvent(int $id)
@@ -212,7 +212,7 @@ class EventController extends AbstractController
         } catch (\Exception $e) {
             $errors = $e->getMessage();
         }
-        return $this->twig->render('Admin/Event/updateEvent.html.twig', ['data' => $event, 'errors'=>$errors]);
+        return $this->twig->render('Admin/Event/updateEvent.html.twig', ['data' => $event, 'Errors'=>$errors]);
     }
 
     public function searchEventAdmin()
