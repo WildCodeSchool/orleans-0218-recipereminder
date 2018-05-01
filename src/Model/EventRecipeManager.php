@@ -74,4 +74,32 @@ class EventRecipeManager extends AbstractManager
 
         return $statement->fetchAll();
     }
+
+    public function selectNotLinkedEvents($recipeId, $name = null, $dateStart = null, $dateEnd = null, $page = 0, $limit=5)
+    {
+
+        $offset = $page * $limit;
+        $sql = "SELECT DISTINCT e.id, e.name, e.img, e.date
+                FROM event AS e
+                LEFT JOIN event_recipe AS er ON er.eventId =e.id
+                 WHERE (e.name LIKE :name OR e.guest LIKE :name AND e.id NOT IN (SELECT eventId FROM event_recipe WHERE recipeId = :recipeId))";
+        if (!empty($dateStart) && !empty($dateEnd)) {
+            $sql .= " AND date BETWEEN :dateStart AND :dateEnd";
+        }
+        $sql.=" ORDER BY e.name LIMIT :offset , :limit";
+
+        $statement = $this->pdoConnection->prepare($sql);
+        $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
+        $statement->bindValue('name', '%' . $name . '%', \PDO::PARAM_STR);
+        $statement->bindValue('recipeId', $recipeId, \PDO::PARAM_INT);
+        if (!empty($dateStart) && !empty($dateEnd)) {
+            $statement->bindValue('dateStart', $dateStart, \PDO::PARAM_STR);
+            $statement->bindValue('dateEnd', $dateEnd, \PDO::PARAM_STR);
+        }
+        $statement->bindValue('offset', $offset, \PDO::PARAM_INT);
+        $statement->bindValue('limit', $limit, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchAll();
+    }
 }

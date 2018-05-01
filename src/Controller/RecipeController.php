@@ -197,4 +197,20 @@ class RecipeController extends AbstractController
         return $this->twig->render('Admin/Recipe/updateRecipe.html.twig', ['data' => $recipe, 'errors'=>$errors]);
     }
 
+    public function searchEventToLink()
+    {
+        $eventRecipeManager = new EventRecipeManager();
+
+        if (empty(trim($_POST['findRecipe'])) && empty($_POST['categoryId'])) {
+            $events = $eventRecipeManager->selectNotLinkedRecipes($_POST['recipeId']);
+        } else {
+            $events = $eventRecipeManager->selectNotLinkedRecipes(
+                $_POST['recipeId'],
+                trim($_POST['findEvent'])
+            );
+        }
+
+        return $this->twig->render('Admin/Event/searchRecipeToLink.html.twig', ['events' => $events]);
+    }
+
 }
