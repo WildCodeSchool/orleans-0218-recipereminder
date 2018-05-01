@@ -4,7 +4,7 @@
             <a href="/admin/recipe/{{ recipe.id }}">
 
                 {% if recipe.img is empty %}
-                    <img class="media-object" src="/assets/images/recipePlaceHolder.jpg" alt="recipe without image">
+                    <img class="media-object" src="/assets/images/recipePlaceHolder.jpg" alt="Image par défaut d'une recette: pizza pop art">
                 {% else %}
                     <img class="media-object" src="/assets/upload/{{ recipe.img }}" alt="{{ recipe.name }}">
                 {% endif %}

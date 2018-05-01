@@ -12,6 +12,7 @@ use Model\Recipe;
 use Model\RecipeManager;
 use Model\CategoryManager;
 use Model\UploadManager;
+use Model\EventRecipeManager;
 
 /**
  * Class RecipeController
@@ -201,16 +202,18 @@ class RecipeController extends AbstractController
     {
         $eventRecipeManager = new EventRecipeManager();
 
-        if (empty(trim($_POST['findRecipe'])) && empty($_POST['categoryId'])) {
-            $events = $eventRecipeManager->selectNotLinkedRecipes($_POST['recipeId']);
+        if (empty(trim($_POST['name'])) && empty($_POST['dateStart']) && empty($_POST['dateEnd'])) {
+            $events = $eventRecipeManager->selectNotLinkedEvents($_POST['recipeId']);
         } else {
-            $events = $eventRecipeManager->selectNotLinkedRecipes(
+            $events = $eventRecipeManager->selectNotLinkedEvents(
                 $_POST['recipeId'],
-                trim($_POST['findEvent'])
+                trim($_POST['name']),
+                $_POST['dateStart'],
+                $_POST['dateEnd']
             );
         }
 
-        return $this->twig->render('Admin/Event/searchRecipeToLink.html.twig', ['events' => $events]);
+        return $this->twig->render('Admin/Recipe/searchEventToLink.html.twig', ['events' => $events]);
     }
 
 }

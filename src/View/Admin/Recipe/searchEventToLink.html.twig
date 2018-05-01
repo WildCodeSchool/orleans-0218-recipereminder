@@ -1,0 +1,23 @@
+{% for event in events %}
+    <div class="media col-xs-12">
+        <div class="media-left">
+            <a href="/admin/event/{{ event.id }}">
+
+                {% if event.img is empty %}
+                    <img class="media-object" src="/assets/images/eventPlaceHolder.jpg" alt="Image par défaut d'un événement: cuisinier pop art">
+                {% else %}
+                    <img class="media-object" src="/assets/upload/{{ event.img }}" alt="{{ event.name }}">
+                {% endif %}
+
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">{{ event.name }}</h4>
+            <p>{{ event.date }}</p>
+            <button type="button" class="btn pull-right linkBtn" data-recipeId="{{ recipe.id }}"><span class="glyphicon glyphicon-resize-small"></span>  Associer</button>
+        </div>
+    </div>
+{% endfor %}
+{% block javascript %}
+<script src="/assets/js/linkRecipesToOneEvent.js"></script>
+{% endblock %}

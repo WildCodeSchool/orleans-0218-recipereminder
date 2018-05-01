@@ -82,9 +82,9 @@ class EventRecipeManager extends AbstractManager
         $sql = "SELECT DISTINCT e.id, e.name, e.img, e.date
                 FROM event AS e
                 LEFT JOIN event_recipe AS er ON er.eventId =e.id
-                 WHERE (e.name LIKE :name OR e.guest LIKE :name AND e.id NOT IN (SELECT eventId FROM event_recipe WHERE recipeId = :recipeId))";
+                 WHERE (e.name LIKE :name OR e.guest LIKE :name) AND (e.id NOT IN (SELECT eventId FROM event_recipe WHERE recipeId = :recipeId))";
         if (!empty($dateStart) && !empty($dateEnd)) {
-            $sql .= " AND date BETWEEN :dateStart AND :dateEnd";
+            $sql .= " AND (date BETWEEN :dateStart AND :dateEnd)";
         }
         $sql.=" ORDER BY e.name LIMIT :offset , :limit";
 
