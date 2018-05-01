@@ -86,7 +86,7 @@
                                 <input type="date" name="dateEnd" id="dateEnd" class="form-control">
                             </div>
                         </form>
-                        <div class="row" id="list">
+                        <div class="row" id="list" data-recipeId="{{ recipe.id }}">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -121,4 +121,5 @@
 {% endblock %}
 {% block javascript %}
 <script src="/assets/js/searchEvent.js"></script>
+    <script src="/assets/js/linkEventsToOneRecipe.js"></script>
 {% endblock %}
