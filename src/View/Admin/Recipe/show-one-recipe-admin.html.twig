@@ -31,10 +31,13 @@
 
         <div>
             <a class="btn backBtn" href="/admin/recipeList" role="button"><span class="glyphicon glyphicon-chevron-left"></span> Liste des recettes</a>
-            <button type="button" class="btn backBtn btnBlack" data-toggle="modal" data-target="#myModal">
+            <a class="btn backBtn btnBlack" href="/admin/updateRecipe/{{ recipe.id }}" role="button"> Modifier la recette</a>
+            <button type="button" class="btn backBtn btnBlack" data-toggle="modal" data-target="#deleteRecipeModal">
                 Supprimer la recette
             </button>
-            <a class="btn backBtn btnBlack" href="/admin/updateRecipe/{{ recipe.id }}" role="button"> Modifier la recette</a>
+            <button type="button" class="btn backBtn" data-toggle="modal" data-target="#linkEventsModal">
+                <span class="glyphicon glyphicon-resize-small"></span>  Associer un événement
+            </button>
             {% if recipe.url is not empty %}
                 <a class="btn backBtn" href="{{ recipe.url }}" role="button" target="_blank">Ma recette sur le web</a>
             {% elseif recipe.book is not empty %}
@@ -53,8 +56,44 @@
             </div>
         </div>
 
-        <!-- MODAL -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <!-- linkEventsModal -->
+        <div class="modal fade" id="linkEventsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Sélectionnez l'événement à associer à la recette : {{ recipe.name }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="/admin/event/search" id="formSeekEvent" class="form-inline">
+                            <input type="hidden" value="0" id="page" name="page">
+                            <div class="form-group">
+                                <label for="name">Entrez le nom de l'événement à associer: </label>
+                                <input type="text" name="name" id="name" class="form-control"
+                                       placeholder="Quels événements cherchez-vous?">
+
+                            </div>
+                            <div class="form-group">
+                                <label for="dateStart">de :</label>
+                                <input type="date" name="dateStart" id="dateStart" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="dateEnd">à :</label>
+                                <input type="date" name="dateEnd" id="dateEnd" class="form-control">
+                            </div>
+                        </form>
+                        <div id="list" class="text-center">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" data-dismiss="modal">Retour</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- deleteRecipeModal -->
+        <div class="modal fade" id="deleteRecipeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -74,8 +113,5 @@
                 </div>
             </div>
         </div>
-
-
     </div>
-
 {% endblock %}
