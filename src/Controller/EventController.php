@@ -197,7 +197,9 @@ class EventController extends AbstractController
                 $data['img'] = $filename;
 
                 // supprimer l'ancien fichier s'il existe
-                $upload->unlink($imageName);
+                if (!empty($imageName)) {
+                    $upload->unlink($imageName);
+                }
 
                 // update de tous les champs
 
