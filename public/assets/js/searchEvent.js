@@ -44,8 +44,6 @@ function searchEvent(reset=false){
     });
 }
 
-    infiniteScroll();
-    searchEvent();
 
 function infiniteScroll(){
     // on initialise ajaxready à true au premier chargement de la fonction
@@ -66,3 +64,13 @@ function infiniteScroll(){
         }
     });
 }
+
+$('#linkEventsModal').on('hidden.bs.modal', function (e) {
+    window.location.reload();
+});
+
+$('#page').val(0);
+infiniteScroll();
+searchEvent();
+
+

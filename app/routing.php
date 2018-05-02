@@ -18,6 +18,10 @@ $routes = [
 
     ],
 
+    'Errors' => [
+        ['errors', '/error404', 'GET'],
+    ],
+
     'GeneralConditions' => [
         ['generalConditions', '/mentions', 'GET'],
 
@@ -27,6 +31,7 @@ $routes = [
         ['list', '/admin/category', ['GET', 'POST']], // action, url, method
         ['update', '/admin/category/update', ['GET', 'POST']], // action, url, method
         ['delete', '/admin/category/delete','POST'], // action, url, method
+        ['countRecipe', '/admin/category/countRecipe','POST'], // action, url, method
     ],
 
     'Event' => [
@@ -40,7 +45,8 @@ $routes = [
         ['searchRecipeToLink', '/admin/event/searchRecipeToLink', 'POST'], // action, url, method
         ['linkRecipeToEvent', '/admin/event/linkRecipeToEvent', 'POST'], // action, url, method
         ['searchEventAdmin', '/admin/event/search', 'POST'], // action, url, method
-        ['updateEvent', '/admin/updateEvent/{id:\d+}', ['GET', 'POST']]
+        ['updateEvent', '/admin/updateEvent/{id:\d+}', ['GET', 'POST']],
+        ['unlinkRecipeFromEvent', '/admin/event/unlinkRecipeFromEvent', 'POST'], // action, url, method
       ],
 
     'Recipe' => [ // Controller
@@ -53,7 +59,9 @@ $routes = [
         ['deleteRecipe', '/recipe/delete', 'POST'],
         ['setNote', '/recipe/{recipeId: \d+}/setNote/{note: \d+}', 'GET'],
         ['searchRecipeAdmin', '/admin/recipeList/search', 'POST'], // action, url, method
-        ['updateRecipe', '/admin/updateRecipe/{id:\d+}', ['GET', 'POST']]
+        ['updateRecipe', '/admin/updateRecipe/{id:\d+}', ['GET', 'POST']],
+        ['searchEventToLink', '/admin/recipe/searchEventToLink', 'POST'], // action, url, method
+        ['unlinkEventFromRecipe', '/admin/event/unlinkEventFromRecipe', 'POST'], // action, url, method
     ],
 
     'Company' => [

@@ -2,7 +2,6 @@ img {
     width: 550px;
     height: 450px;
     object-fit: cover;
-    box-shadow: 5px 5px 5px grey;
 }
 
 @media screen and (max-width: 1199px) {
@@ -24,12 +23,6 @@ img {
     p.comment {
         margin-top: 18px;
     }
-}
-
-
-
-.btn {
-    margin-bottom: 0px;
 }
 
 .itemHeader {

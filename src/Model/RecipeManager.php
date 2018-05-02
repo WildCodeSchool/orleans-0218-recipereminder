@@ -144,7 +144,6 @@ class RecipeManager extends AbstractManager
 
     public function selectRecipeLikeName($name = null, $dateStart = null, $dateEnd = null)
     {
-
         $sql = "SELECT e.id, e.name, e.img, e.date
                 FROM event AS e
                  WHERE (e.name LIKE :name OR e.guest LIKE :name)";
@@ -163,5 +162,19 @@ class RecipeManager extends AbstractManager
         $statement->execute();
 
         return $statement->fetchAll();
+    }
+
+    /**
+     * @param int $categoryId
+     * @return int
+     */
+    public function countRecipeInCategory(int $categoryId)
+    {
+        $sql = "SELECT COUNT(id) as nbRecipe FROM recipe WHERE categoryId = :categoryId";
+        $statement = $this->pdoConnection->prepare($sql);
+        $statement->setFetchMode(\PDO::FETCH_ASSOC);
+        $statement->bindValue('categoryId', $categoryId, \PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetch();
     }
 }

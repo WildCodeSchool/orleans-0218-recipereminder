@@ -31,16 +31,16 @@
             </div>
 
             <div class="col-xs-12 col-md-6">
-                <p class="comment">" {{ event.comment |capitalize }} "</p>
+                <p class="comment"> {{ event.comment |capitalize | nl2br }} </p>
             </div>
         </div>
         <a class="btn backBtn" href="/admin/eventList" role="button"><span class="glyphicon glyphicon-chevron-left"></span> Liste des événements</a>
-        <a class="btn backBtn btnBlack" href="/admin/updateEvent/{{ event.id }}" role="button"> Modifier l'événement</a>
-        <button type="button" class="btn backBtn btnBlack" data-toggle="modal" data-target="#myModal2">
-            Supprimer cet événement
+        <a class="btn backBtn btnBlack" href="/admin/updateEvent/{{ event.id }}" role="button"><span class="glyphicon glyphicon-pencil"></span>  Modifier l'événement</a>
+        <button type="button" class="btn backBtn btnBlack" data-toggle="modal" data-target="#deleteEventModal">
+            <span class="glyphicon glyphicon-trash"></span>  Supprimer cet événement
         </button>
-        <button type="button" class="btn backBtn" data-toggle="modal" data-target="#myModal1">
-            Associer une recette
+        <button type="button" class="btn backBtn" data-toggle="modal" data-target="#linkRecipesModal">
+            <span class="glyphicon glyphicon-resize-small"></span>  Associer une recette
         </button>
             <div class="container">
                 <h2>Recettes associées</h2>
@@ -50,10 +50,11 @@
                     {% else %}
                         <h4>Aucune recette à afficher</h4>
                     {% endfor %}
-
+                </div>
+            </div>
         
-        <!-- MODAL1 -->
-        <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <!-- linkRecipesModal -->
+        <div class="modal fade" id="linkRecipesModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -89,10 +90,9 @@
                 </div>
             </div>
         </div>
-       </div>
-     </div>
-        <!-- MODAL2 -->
-        <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+        <!-- deleteEventModal -->
+        <div class="modal fade" id="deleteEventModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
