@@ -89,7 +89,7 @@ class CategoryController extends AbstractController
             $categoryId = trim($_POST['categoryId']);
             $recipeManager = new RecipeManager();
             $nbRecipeInCategory = $recipeManager->countRecipeInCategory($categoryId);
-            echo $nbRecipeInCategory['nbRecipe'];
+            return $this->twig->render('Admin/Category/nbRecipe.html.twig', ['nbRecipe' => $nbRecipeInCategory['nbRecipe'] ]);
         }
     }
 }
