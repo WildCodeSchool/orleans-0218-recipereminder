@@ -90,6 +90,7 @@ section:nth-child(odd) {
 
 section:nth-child(even) {
     background-color: #ffaa00;
+    background-image: url("../images/wallpaper_section.png");
     padding-bottom: 50px;
 }
 

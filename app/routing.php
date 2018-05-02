@@ -18,6 +18,10 @@ $routes = [
 
     ],
 
+    'Errors' => [
+        ['errors', '/error404', 'GET'],
+    ],
+
     'GeneralConditions' => [
         ['generalConditions', '/mentions', 'GET'],
 
