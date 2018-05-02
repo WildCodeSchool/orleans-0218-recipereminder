@@ -12,6 +12,7 @@ use Model\Recipe;
 use Model\RecipeManager;
 use Model\CategoryManager;
 use Model\UploadManager;
+use Model\EventRecipeManager;
 
 /**
  * Class RecipeController
@@ -195,6 +196,16 @@ class RecipeController extends AbstractController
             $errors = $e->getMessage();
         }
         return $this->twig->render('Admin/Recipe/updateRecipe.html.twig', ['data' => $recipe, 'errors'=>$errors]);
+    }
+
+    public function unlinkEventFromRecipe()
+    {
+        $eventRecipeManager = new EventRecipeManager();
+        if (!empty($_POST['recipeId']) && !empty($_POST['eventId'])) {
+            $eventRecipeManager->unlink($_POST['eventId'], $_POST['recipeId']);
+        }
+
+        header('Location: /admin/recipe/' . $_POST['recipeId']);
     }
 
 }
