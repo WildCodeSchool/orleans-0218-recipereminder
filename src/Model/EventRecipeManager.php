@@ -77,7 +77,6 @@ class EventRecipeManager extends AbstractManager
 
     public function selectNotLinkedEvents($recipeId, $name = null, $dateStart = null, $dateEnd = null, $page = 0, $limit=5)
     {
-
         $offset = $page * $limit;
         $sql = "SELECT DISTINCT e.id, e.name, e.img, e.date
                 FROM event AS e
@@ -106,5 +105,14 @@ class EventRecipeManager extends AbstractManager
         $statement->execute();
 
         return $statement->fetchAll();
+    }
+
+    public function unlink($eventId, $recipeId)
+    {
+        $sql = "DELETE FROM $this->table WHERE eventId=:eventId AND recipeId=:recipeId";
+        $exec = $this->pdoConnection->prepare($sql);
+        $exec->bindValue('eventId', $eventId, \PDO::PARAM_INT);
+        $exec->bindValue('recipeId', $recipeId, \PDO::PARAM_INT);
+        $exec->execute();
     }
 }

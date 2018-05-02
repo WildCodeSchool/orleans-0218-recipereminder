@@ -18,6 +18,10 @@ $routes = [
 
     ],
 
+    'Errors' => [
+        ['errors', '/error404', 'GET'],
+    ],
+
     'GeneralConditions' => [
         ['generalConditions', '/mentions', 'GET'],
 
@@ -40,7 +44,8 @@ $routes = [
         ['searchRecipeToLink', '/admin/event/searchRecipeToLink', 'POST'], // action, url, method
         ['linkRecipeToEvent', '/admin/event/linkRecipeToEvent', 'POST'], // action, url, method
         ['searchEventAdmin', '/admin/event/search', 'POST'], // action, url, method
-        ['updateEvent', '/admin/updateEvent/{id:\d+}', ['GET', 'POST']]
+        ['updateEvent', '/admin/updateEvent/{id:\d+}', ['GET', 'POST']],
+        ['unlinkRecipeFromEvent', '/admin/event/unlinkRecipeFromEvent', 'POST'], // action, url, method
       ],
 
     'Recipe' => [ // Controller
@@ -55,6 +60,7 @@ $routes = [
         ['searchRecipeAdmin', '/admin/recipeList/search', 'POST'], // action, url, method
         ['updateRecipe', '/admin/updateRecipe/{id:\d+}', ['GET', 'POST']],
         ['searchEventToLink', '/admin/recipe/searchEventToLink', 'POST'], // action, url, method
+        ['unlinkEventFromRecipe', '/admin/event/unlinkEventFromRecipe', 'POST'], // action, url, method
     ],
 
     'Company' => [
