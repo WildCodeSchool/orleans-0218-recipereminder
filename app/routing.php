@@ -59,6 +59,7 @@ $routes = [
         ['setNote', '/recipe/{recipeId: \d+}/setNote/{note: \d+}', 'GET'],
         ['searchRecipeAdmin', '/admin/recipeList/search', 'POST'], // action, url, method
         ['updateRecipe', '/admin/updateRecipe/{id:\d+}', ['GET', 'POST']],
+        ['searchEventToLink', '/admin/recipe/searchEventToLink', 'POST'], // action, url, method
         ['unlinkEventFromRecipe', '/admin/event/unlinkEventFromRecipe', 'POST'], // action, url, method
     ],
 
