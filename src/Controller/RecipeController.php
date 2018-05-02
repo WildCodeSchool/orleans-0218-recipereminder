@@ -188,7 +188,7 @@ class RecipeController extends AbstractController
                 }
                 // update de tous les champs
                 $recipeManager->update($id, $data);
-                header('Location:/admin/recipeList');
+                header('Location: /admin/recipe/' . $id);
             }
             $categoryManager = new CategoryManager();
             $categories = $categoryManager->selectAll();
