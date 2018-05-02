@@ -25,6 +25,6 @@ function sendForm(){
 
 sendForm();
 
-$('#myModal1').on('hidden.bs.modal', function (e) {
+$('#linkRecipesModal').on('hidden.bs.modal', function (e) {
     window.location.reload();
 });

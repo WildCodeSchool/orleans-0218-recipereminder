@@ -12,6 +12,7 @@ use Model\Recipe;
 use Model\RecipeManager;
 use Model\CategoryManager;
 use Model\UploadManager;
+use Model\EventRecipeManager;
 
 /**
  * Class RecipeController
@@ -34,7 +35,7 @@ class RecipeController extends AbstractController
         return $this->twig->render(
             'Recipe/list_recipe.html.twig',
             [
-                'recipes' => $recipes ,
+                'recipes' => $recipes,
                 'categories' => $categories
             ]
         );
@@ -131,17 +132,17 @@ class RecipeController extends AbstractController
     public function searchRecipe()
     {
         $recipeManager = new RecipeManager();
-        $recipes=$recipeManager->selectRecipesLimit(trim($_POST['name']), $_POST['categoryId'], $_POST['page'], THUMB_LIMIT);
+        $recipes = $recipeManager->selectRecipesLimit(trim($_POST['name']), $_POST['categoryId'], $_POST['page'], THUMB_LIMIT);
 
-        return $this->twig->render('Recipe/inc_listRecipe.html.twig', ['recipes' => $recipes ]);
+        return $this->twig->render('Recipe/inc_listRecipe.html.twig', ['recipes' => $recipes]);
     }
 
     public function searchRecipeAdmin()
     {
         $recipeManager = new RecipeManager();
-        $recipes=$recipeManager->selectRecipesLimit(trim($_POST['name']), $_POST['categoryId'], $_POST['page'], MEDIA_LIMIT);
+        $recipes = $recipeManager->selectRecipesLimit(trim($_POST['name']), $_POST['categoryId'], $_POST['page'], MEDIA_LIMIT);
 
-        return $this->twig->render('Admin/Recipe/search_recipeList.html.twig', ['recipes' => $recipes ]);
+        return $this->twig->render('Admin/Recipe/search_recipeList.html.twig', ['recipes' => $recipes]);
     }
 
 
@@ -158,7 +159,8 @@ class RecipeController extends AbstractController
     }
 
     public function updateRecipe(int $id)
-    {   $data = $_POST;
+    {
+        $data = $_POST;
         $errors = null;
         $recipeManager = new RecipeManager();
         try {
@@ -172,29 +174,58 @@ class RecipeController extends AbstractController
 
                 if (!empty($_FILES['filename']['name'])) {
 
-                    $recipe = $recipeManager->selectOneById($id);
+                    $recipe = $recipeManager->selectRecipesById($id);
                     $imageName = $recipe->getImg();
 
                     // upload du fichier
                     $upload = new UploadManager();
                     $filename = $upload->upload($_FILES['filename']);
                     $data['img'] = $filename;
+                    if (!empty($imageName)) {
+                        $upload->unlink($imageName);
+                    }
 
-                    // supprimer l'ancien fichier s'il existe
-                    $upload->unlink($imageName);
                 }
-
                 // update de tous les champs
                 $recipeManager->update($id, $data);
                 header('Location:/admin/recipeList');
             }
-
-            $recipe = $recipeManager->selectOneById($id);
+            $categoryManager = new CategoryManager();
+            $categories = $categoryManager->selectAll();
+            $recipe = $recipeManager->selectRecipesById($id);
 
         } catch (\Exception $e) {
             $errors = $e->getMessage();
         }
-        return $this->twig->render('Admin/Recipe/updateRecipe.html.twig', ['data' => $recipe, 'errors'=>$errors]);
+        return $this->twig->render('Admin/Recipe/updateRecipe.html.twig', ['categories' => $categories, 'data' => $recipe, 'errors' => $errors]);
+    }
+
+    public function searchEventToLink()
+    {
+        $eventRecipeManager = new EventRecipeManager();
+
+        if (empty(trim($_POST['name'])) && empty($_POST['dateStart']) && empty($_POST['dateEnd'])) {
+            $events = $eventRecipeManager->selectNotLinkedEvents($_POST['recipeId']);
+        } else {
+            $events = $eventRecipeManager->selectNotLinkedEvents(
+                $_POST['recipeId'],
+                trim($_POST['name']),
+                $_POST['dateStart'],
+                $_POST['dateEnd']
+            );
+        }
+
+        return $this->twig->render('Admin/Recipe/searchEventToLink.html.twig', ['events' => $events]);
+    }
+
+    public function unlinkEventFromRecipe()
+    {
+        $eventRecipeManager = new EventRecipeManager();
+        if (!empty($_POST['recipeId']) && !empty($_POST['eventId'])) {
+            $eventRecipeManager->unlink($_POST['eventId'], $_POST['recipeId']);
+        }
+
+        header('Location: /admin/recipe/' . $_POST['recipeId']);
     }
 
 }

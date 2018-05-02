@@ -1,5 +1,10 @@
 {% extends 'Admin/admin_layout.html.twig' %}
 
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/edit-recipe-event.css">
+{% endblock %}
+
+
 {% block content %}
 
     <div class="container">
@@ -22,15 +27,15 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="img">Ajouter une image</label>
-                <input type="file" name="img" id="img">
+                <label for="filename">Ajouter une image</label>
+                <input type="file" name="filename" id="filename">
             </div>
             <div>
 
                 <label>Photo précédente :</label>
                 {% if data.img is not empty %}
                 <figure class="imgEvent">
-                        <img class="img-responsive" src= "/assets/upload/{{ data.img }}">
+                        <img class="" src= "/assets/upload/{{ data.img }}">
                 </figure>
                 {% else %}
                     <p>Aucune photo enregistrée</p>
@@ -50,7 +55,7 @@
                 <label for="comment">Commentaire</label>
                 <textarea class="form-control" id="comment" name="comment" rows="5" required>{{ data.comment }}</textarea>
             </div>
-            <button type="submit" class="btn">Modifier une recette</button>
+            <button type="submit" class="btn">Modifier</button>
         </form>
     </div>
 {% endblock %}

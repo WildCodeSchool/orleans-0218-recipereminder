@@ -4,7 +4,7 @@
             <a href="/admin/recipe/{{ recipe.id }}">
 
                 {% if recipe.img is empty %}
-                    <img class="media-object" src="/assets/images/recipePlaceHolder.jpg" alt="recipe without image">
+                    <img class="media-object" src="/assets/images/recipePlaceHolder.jpg" alt="Image par défaut d'une recette: pizza pop art">
                 {% else %}
                     <img class="media-object" src="/assets/upload/{{ recipe.img }}" alt="{{ recipe.name }}">
                 {% endif %}
@@ -14,7 +14,7 @@
         <div class="media-body">
             <h4 class="media-heading">{{ recipe.name |capitalize }}</h4>
             <p>{{ recipe.category |capitalize }}</p>
-            <button type="button" class="btn pull-right linkBtn" data-recipeId="{{ recipe.id }}"><span class="glyphicon glyphicon-plus"></span></button>
+            <button type="button" class="btn pull-right linkBtn" data-recipeId="{{ recipe.id }}"><span class="glyphicon glyphicon-resize-small"></span>  Associer</button>
         </div>
     </div>
 {% endfor %}

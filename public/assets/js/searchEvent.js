@@ -65,7 +65,12 @@ function infiniteScroll(){
     });
 }
 
+$('#linkEventsModal').on('hidden.bs.modal', function (e) {
+    window.location.reload();
+});
+
 $('#page').val(0);
 infiniteScroll();
 searchEvent();
+
 
