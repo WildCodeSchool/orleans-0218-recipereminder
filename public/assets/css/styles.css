@@ -158,6 +158,10 @@ section:nth-child(even) .thumbnail{
     margin-bottom: 0px;
 }
 
+.navbar-default {
+    padding-left: 0px;
+}
+
 /*FIN NAVBAR */
 
 /*Pages pour une recette ou un événement*/
