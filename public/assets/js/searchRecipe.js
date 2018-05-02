@@ -32,8 +32,7 @@ function sendForm(reset = false){
     });
 }
 
-sendForm();// on lance la recherche dès le premier chargement de la page
-infiniteScroll();
+
 
 function infiniteScroll(){
     // on initialise ajaxready à true au premier chargement de la fonction
@@ -54,3 +53,7 @@ function infiniteScroll(){
         }
     });
 }
+
+$('#page').val(0);
+sendForm();// on lance la recherche dès le premier chargement de la page
+infiniteScroll();

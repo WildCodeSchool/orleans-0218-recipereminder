@@ -27,7 +27,7 @@ class UploadManager
 
             $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
 
-            $extensionAuth = ["jpg", "png", "gif"];
+            $extensionAuth = ["jpg","jpeg", "png", "gif"];
             if (!in_array($imageFileType, $extensionAuth)) {
                 throw new \Exception('Oups pas le bon format ' . implode(", ", $extensionAuth));
             }

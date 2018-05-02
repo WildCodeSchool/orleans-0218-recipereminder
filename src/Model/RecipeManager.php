@@ -163,4 +163,18 @@ class RecipeManager extends AbstractManager
 
         return $statement->fetchAll();
     }
+
+    /**
+     * @param int $categoryId
+     * @return int
+     */
+    public function countRecipeInCategory(int $categoryId)
+    {
+        $sql = "SELECT COUNT(id) as nbRecipe FROM recipe WHERE categoryId = :categoryId";
+        $statement = $this->pdoConnection->prepare($sql);
+        $statement->setFetchMode(\PDO::FETCH_ASSOC);
+        $statement->bindValue('categoryId', $categoryId, \PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetch();
+    }
 }

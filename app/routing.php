@@ -31,6 +31,7 @@ $routes = [
         ['list', '/admin/category', ['GET', 'POST']], // action, url, method
         ['update', '/admin/category/update', ['GET', 'POST']], // action, url, method
         ['delete', '/admin/category/delete','POST'], // action, url, method
+        ['countRecipe', '/admin/category/countRecipe','POST'], // action, url, method
     ],
 
     'Event' => [
