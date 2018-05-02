@@ -197,7 +197,9 @@ class EventController extends AbstractController
                 $data['img'] = $filename;
 
                 // supprimer l'ancien fichier s'il existe
-                $upload->unlink($imageName);
+                if (!empty($imageName)) {
+                    $upload->unlink($imageName);
+                }
 
                 // update de tous les champs
 
@@ -221,6 +223,16 @@ class EventController extends AbstractController
         $events=$eventManager->selectEventLimit(trim($_POST['name']),$_POST['dateStart'],$_POST['dateEnd'],$_POST['page'], MEDIA_LIMIT);
 
         return $this->twig->render('Admin/Event/search_eventList.html.twig', ['events' => $events ]);
+    }
+
+    public function unlinkRecipeFromEvent()
+    {
+        $eventRecipeManager = new EventRecipeManager();
+        if (!empty($_POST['recipeId']) && !empty($_POST['eventId'])) {
+            $eventRecipeManager->unlink($_POST['eventId'], $_POST['recipeId']);
+        }
+
+        header('Location: /admin/event/' . $_POST['eventId']);
     }
 
 }

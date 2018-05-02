@@ -5,6 +5,7 @@ $('body').on('focus', '[contenteditable]', function() {
 }).on('blur paste', '[contenteditable]', function() {
     var $this = $(this);
     if ($this.data('before') !== $this.html()) {
+        $this.data('lastText',$this.data('before'));
         $this.data('before', $this.html());
         $this.trigger('change');
     }
@@ -20,8 +21,15 @@ $('body *[contenteditable]').keydown(function(e) {
 });
 
 $('#catchPhrase').change(function(){
-    let catchPhrase = $(this).text();
-    $.post('/admin/changeCatchPhrase',{catchPhrase: catchPhrase});
+    $this=$(this);
+    let catchPhrase = $this.text();
+    if (catchPhrase !== ''){
+        $.post('/admin/changeCatchPhrase',{catchPhrase: catchPhrase});
+    }
+    else{
+        $this.text($this.data('lastText'));
+    }
+
 });
 
 $(document).ready(function(){
