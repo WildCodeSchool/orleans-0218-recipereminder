@@ -30,7 +30,7 @@
                 <p class="guest"><span class="bold">Convives: </span>{{ event.guest |capitalize }} </p>
             </div>
             <div class="col-xs-12 col-md-6">
-                <p class="comment">" {{ event.comment |capitalize }} "</p>
+                <p class="comment"> {{ event.comment |capitalize | nl2br }} </p>
             </div>
         </div>
 
