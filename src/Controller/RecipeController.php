@@ -189,13 +189,14 @@ class RecipeController extends AbstractController
                 $recipeManager->update($id, $data);
                 header('Location:/admin/recipeList');
             }
-
+            $categoryManager = new CategoryManager();
+            $categories = $categoryManager->selectAll();
             $recipe = $recipeManager->selectOneById($id);
 
         } catch (\Exception $e) {
             $errors = $e->getMessage();
         }
-        return $this->twig->render('Admin/Recipe/updateRecipe.html.twig', ['data' => $recipe, 'errors'=>$errors]);
+        return $this->twig->render('Admin/Recipe/updateRecipe.html.twig', ['categories'=>$categories,'data' => $recipe, 'errors'=>$errors]);
     }
 
     public function unlinkEventFromRecipe()
