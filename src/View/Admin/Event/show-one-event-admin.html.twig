@@ -31,7 +31,7 @@
             </div>
 
             <div class="col-xs-12 col-md-6">
-                <p class="comment">" {{ event.comment |capitalize }} "</p>
+                <p class="comment"> {{ event.comment |capitalize | nl2br }} </p>
             </div>
         </div>
         <a class="btn backBtn" href="/admin/eventList" role="button"><span class="glyphicon glyphicon-chevron-left"></span> Liste des événements</a>
