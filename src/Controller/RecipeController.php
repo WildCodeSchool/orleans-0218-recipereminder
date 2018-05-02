@@ -36,7 +36,7 @@ class RecipeController extends AbstractController
             'Recipe/list_recipe.html.twig',
             [
                 'recipes' => $recipes,
-                'categories' => $categories
+                'categories' => $categories,
             ]
         );
     }
@@ -76,6 +76,7 @@ class RecipeController extends AbstractController
         }
         $categoryManager = new CategoryManager();
         $categories = $categoryManager->selectAll();
+
         return $this->twig->render(
             'Admin/Recipe/addRecipe.html.twig',
             ['categories' => $categories, 'errors' => $errors, 'post' => $data]
@@ -88,7 +89,10 @@ class RecipeController extends AbstractController
         $recipe = $recipeManager->selectRecipesById($id);
         $showEvents = $recipeManager->showLinkedEvent($id);
 
-        return $this->twig->render('Recipe/show-one-recipe.html.twig', ['recipe' => $recipe, "showEvents" => $showEvents]);
+        return $this->twig->render(
+            'Recipe/show-one-recipe.html.twig',
+            ['recipe' => $recipe, "showEvents" => $showEvents]
+        );
     }
 
 
@@ -105,7 +109,10 @@ class RecipeController extends AbstractController
         $recipe = $recipeManager->selectRecipesById($id);
         $showEvents = $recipeManager->showLinkedEvent($id);
 
-        return $this->twig->render('Admin/Recipe/show-one-recipe-admin.html.twig', ['recipe' => $recipe, "showEvents" => $showEvents]);
+        return $this->twig->render(
+            'Admin/Recipe/show-one-recipe-admin.html.twig',
+            ['recipe' => $recipe, "showEvents" => $showEvents]
+        );
     }
 
     public function deleteRecipe()
@@ -132,7 +139,12 @@ class RecipeController extends AbstractController
     public function searchRecipe()
     {
         $recipeManager = new RecipeManager();
-        $recipes = $recipeManager->selectRecipesLimit(trim($_POST['name']), $_POST['categoryId'], $_POST['page'], THUMB_LIMIT);
+        $recipes = $recipeManager->selectRecipesLimit(
+            trim($_POST['name']),
+            $_POST['categoryId'],
+            $_POST['page'],
+            THUMB_LIMIT
+        );
 
         return $this->twig->render('Recipe/inc_listRecipe.html.twig', ['recipes' => $recipes]);
     }
@@ -140,7 +152,12 @@ class RecipeController extends AbstractController
     public function searchRecipeAdmin()
     {
         $recipeManager = new RecipeManager();
-        $recipes = $recipeManager->selectRecipesLimit(trim($_POST['name']), $_POST['categoryId'], $_POST['page'], MEDIA_LIMIT);
+        $recipes = $recipeManager->selectRecipesLimit(
+            trim($_POST['name']),
+            $_POST['categoryId'],
+            $_POST['page'],
+            MEDIA_LIMIT
+        );
 
         return $this->twig->render('Admin/Recipe/search_recipeList.html.twig', ['recipes' => $recipes]);
     }
@@ -154,7 +171,7 @@ class RecipeController extends AbstractController
 
             $recipeManager = new recipeManager();
             $recipeManager->updateNote($recipeId, $note);
-            header('Location: /recipe/' . $recipeId);
+            header('Location: /recipe/'.$recipeId);
         }
     }
 
@@ -173,7 +190,6 @@ class RecipeController extends AbstractController
                 }
 
                 if (!empty($_FILES['filename']['name'])) {
-
                     $recipe = $recipeManager->selectRecipesById($id);
                     $imageName = $recipe->getImg();
 
@@ -184,20 +200,21 @@ class RecipeController extends AbstractController
                     if (!empty($imageName)) {
                         $upload->unlink($imageName);
                     }
-
                 }
                 // update de tous les champs
                 $recipeManager->update($id, $data);
-                header('Location: /admin/recipe/' . $id);
+                header('Location: /admin/recipe/'.$id);
             }
             $categoryManager = new CategoryManager();
             $categories = $categoryManager->selectAll();
             $recipe = $recipeManager->selectRecipesById($id);
-
         } catch (\Exception $e) {
             $errors = $e->getMessage();
         }
-        return $this->twig->render('Admin/Recipe/updateRecipe.html.twig', ['categories' => $categories, 'data' => $recipe, 'errors' => $errors]);
+        return $this->twig->render(
+            'Admin/Recipe/updateRecipe.html.twig',
+            ['categories' => $categories, 'data' => $recipe, 'errors' => $errors]
+        );
     }
 
     public function searchEventToLink()
@@ -225,7 +242,6 @@ class RecipeController extends AbstractController
             $eventRecipeManager->unlink($_POST['eventId'], $_POST['recipeId']);
         }
 
-        header('Location: /admin/recipe/' . $_POST['recipeId']);
+        header('Location: /admin/recipe/'.$_POST['recipeId']);
     }
-
 }

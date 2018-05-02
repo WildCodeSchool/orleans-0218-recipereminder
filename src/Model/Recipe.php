@@ -67,6 +67,7 @@ class Recipe
         }
         $this->note = $note;
     }
+
     /**
      * @return int
      */

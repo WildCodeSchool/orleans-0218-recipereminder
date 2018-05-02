@@ -27,7 +27,7 @@ class CategoryController extends AbstractController
      */
     public function list()
     {
-        $error=null;
+        $error = null;
         if (isset($_POST['name'])) {
             try {
                 $cleanPost['name'] = trim($_POST['name']);
@@ -39,57 +39,61 @@ class CategoryController extends AbstractController
                 $categoryManager = new CategoryManager();
                 $categoryManager->insert($cleanPost);
             } catch (\PDOException $p) {
-                if ($p->errorInfo[0]==23000) {
-                    $error='Ce nom existe déjà.';
+                if ($p->errorInfo[0] == 23000) {
+                    $error = 'Ce nom existe déjà.';
                 } else {
-                    $error=$p->getMessage();
+                    $error = $p->getMessage();
                 }
             } catch (\Exception $e) {
-                $error=$e->getMessage();
+                $error = $e->getMessage();
             }
         }
-            $categoryManager = new CategoryManager();
-            $categories = $categoryManager->selectAll();
+        $categoryManager = new CategoryManager();
+        $categories = $categoryManager->selectAll();
 
         return $this->twig->render(
             'Admin/Category/category.html.twig',
             [
-                        'categories' => $categories ,
-                        'error' => $error
+                'categories' => $categories,
+                'error' => $error,
             ]
         );
     }
 
     public function update()
     {
-        if(!empty($_POST['categoryId']) && !empty($_POST['newName'])){
+        if (!empty($_POST['categoryId']) && !empty($_POST['newName'])) {
             $categoryId = $_POST['categoryId'];
-            $data['name']=trim($_POST['newName']);
+            $data['name'] = trim($_POST['newName']);
             $categoryManager = new CategoryManager();
-            $categoryManager->update($categoryId,$data);
-          
+            $categoryManager->update($categoryId, $data);
+
             header('location:/admin/category');
         }
     }
-  
+
     public function delete()
     {
         if (!empty($_POST['categoryId'])) {
-            $id= trim($_POST['categoryId']);
+            $id = trim($_POST['categoryId']);
             $categoryManager = new CategoryManager();
             $categoryManager->delete($id);
-          
-          header('location:/admin/category');
+
+            header('location:/admin/category');
         }
     }
 
     public function countRecipe()
     {
-        if(!empty(trim($_POST['categoryId']))){
+        if (!empty(trim($_POST['categoryId']))) {
             $categoryId = trim($_POST['categoryId']);
             $recipeManager = new RecipeManager();
             $nbRecipeInCategory = $recipeManager->countRecipeInCategory($categoryId);
-            return $this->twig->render('Admin/Category/nbRecipe.html.twig', ['nbRecipe' => $nbRecipeInCategory['nbRecipe'] ]);
+
+            return $this->twig->render(
+                'Admin/Category/nbRecipe.html.twig',
+                ['nbRecipe' => $nbRecipeInCategory['nbRecipe']]
+            );
         }
     }
 }

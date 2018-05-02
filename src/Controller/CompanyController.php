@@ -16,7 +16,7 @@ class CompanyController extends AbstractController
     public function changeCatchPhrase()
     {
         $catchPhrase = trim($_POST['catchPhrase']);
-        if($catchPhrase != ''){
+        if ($catchPhrase != '') {
             $companyManager = new CompanyManager();
             $companyManager->changeCatchPhrase(trim($_POST['catchPhrase']));
         }

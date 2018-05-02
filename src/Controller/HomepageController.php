@@ -23,20 +23,20 @@ class HomepageController extends AbstractController
         $eventManager = new EventManager();
         $lastEvents = $eventManager->selectLastEvents();
 
-        $companyManager= new CompanyManager();
+        $companyManager = new CompanyManager();
         $catchPhrase = $companyManager->selectCatchPhrase();
 
         return $this->twig->render(
             'Homepage/homepage.html.twig',
-            ['lastrecipes' => $lastRecipes, 'lastevents' => $lastEvents,'catchPhrase'=> $catchPhrase]
+            ['lastrecipes' => $lastRecipes, 'lastevents' => $lastEvents, 'catchPhrase' => $catchPhrase]
         );
     }
 
     public function adminIndex()
     {
-        $companyManager= new CompanyManager();
+        $companyManager = new CompanyManager();
         $catchPhrase = $companyManager->selectCatchPhrase();
 
-        return $this->twig->render('Admin/adminHomepage.html.twig', ['catchPhrase'=> $catchPhrase]);
+        return $this->twig->render('Admin/adminHomepage.html.twig', ['catchPhrase' => $catchPhrase]);
     }
 }
