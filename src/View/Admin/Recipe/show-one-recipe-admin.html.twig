@@ -58,12 +58,12 @@
         </div>
 
         <!-- linkEventsModal -->
-        <div class="modal fade" id="linkEventsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade" id="linkEventsModal" tabindex="-1" role="dialog" aria-labelledby="linkEventsModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Sélectionnez l'événement à associer à la recette : {{ recipe.name }}</h4>
+                        <h4 class="modal-title" id="linkEventsModalLabel">Sélectionnez l'événement à associer à la recette : {{ recipe.name }}</h4>
                     </div>
                     <div class="modal-body">
                         <form method="post" action="/admin/recipe/searchEventToLink" id="formSeekEvent">
@@ -98,12 +98,12 @@
         </div>
 
         <!-- deleteRecipeModal -->
-        <div class="modal fade" id="deleteRecipeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade" id="deleteRecipeModal" tabindex="-1" role="dialog" aria-labelledby="deleteRecipeModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Suppression de la recette</h4>
+                        <h4 class="modal-title" id="deleteRecipeModalLabel">Suppression de la recette</h4>
                     </div>
                     <div class="modal-body">
                         Êtes-vous sûr de vouloir supprimer la recette ?
