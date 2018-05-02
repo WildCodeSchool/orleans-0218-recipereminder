@@ -11,6 +11,7 @@ namespace Controller;
 
 use Model\Category;
 use Model\CategoryManager;
+use Model\RecipeManager;
 
 /**
  * Class ItemController
@@ -59,7 +60,6 @@ class CategoryController extends AbstractController
         );
     }
 
-
     public function update()
     {
         if(!empty($_POST['categoryId']) && !empty($_POST['newName'])){
@@ -74,12 +74,23 @@ class CategoryController extends AbstractController
   
     public function delete()
     {
+        print_r($_POST);
         if (!empty($_POST['categoryId'])) {
             $id= trim($_POST['categoryId']);
             $categoryManager = new CategoryManager();
             $categoryManager->delete($id);
           
           header('location:/admin/category');
+        }
+    }
+
+    public function countRecipe()
+    {
+        if(!empty(trim($_POST['categoryId']))){
+            $categoryId = trim($_POST['categoryId']);
+            $recipeManager = new RecipeManager();
+            $nbRecipeInCategory = $recipeManager->countRecipeInCategory($categoryId);
+            echo $nbRecipeInCategory['nbRecipe'];
         }
     }
 }

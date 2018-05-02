@@ -37,10 +37,11 @@
                             <tr>
                                 <td>{{ category.name |capitalize}}</td>
                                 <td>
-                                    <form method="POST" action="/admin/category/delete">
-                                        <input type="hidden" name="categoryId" id="categoryId" value="{{ category.id }}">
-                                        <button type="submit" class="btn-link"><span class="glyphicon glyphicon-remove"></span></button>
-                                    </form>
+                                    <button data-categoryName="{{ category.name }}"
+                                            data-categoryId="{{ category.id }}"
+                                            type="submit" class="btn-link deleteCategory"
+                                            data-toggle="modal"
+                                            data-target="#deleteCategory"><span class="glyphicon glyphicon-remove"></span></button>
                                 </td>
                                 <td>
                                     <button data-categoryName="{{ category.name }}"
@@ -117,6 +118,31 @@
             </div>
         </div>
 
+        <!-- Modal -->
+        <div id="deleteCategory" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Supprimer une catégorie</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Etes vous sûr de vouloir supprimer la catégorie <span id="deleteName"></span> ?</p>
+                        <p id="nbRecipe"></p>
+                        <form method="POST" action="/admin/category/delete">
+                            <input type="hidden" name="categoryId" id="categoryIdToDelete" value="">
+                            <input type="submit" class="btn" value="Supprimer">
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
         </div>
     </div>
 
@@ -124,6 +150,6 @@
 
 {% endblock %}
 {% block javascript %}
-  <script src="/assets/js/updateCategory.js"></script>
+  <script src="/assets/js/category.js"></script>
 {% endblock %}
 
