@@ -198,7 +198,7 @@ class EventController extends AbstractController
 
                 if (empty($_FILES['filename']['name'])) {
                     $eventManager->update($id, $data);
-                    header('Location:/admin/eventList');
+                    header('Location: /admin/event/' . $id);
                 } else {
                     $event = $eventManager->selectOneById($id);
                     $imageName = $event->getImg();
