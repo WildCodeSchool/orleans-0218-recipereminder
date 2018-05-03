@@ -204,7 +204,7 @@ class EventController extends AbstractController
                 // update de tous les champs
 
                 $eventManager->update($id, $data);
-                header('Location:/admin/eventList');
+                header('Location: /admin/event/' . $id);
                 exit();
             }
         }
