@@ -30,8 +30,8 @@ $routes = [
     'Category' => [ // Controller
         ['list', '/admin/category', ['GET', 'POST']], // action, url, method
         ['update', '/admin/category/update', ['GET', 'POST']], // action, url, method
-        ['delete', '/admin/category/delete','POST'], // action, url, method
-        ['countRecipe', '/admin/category/countRecipe','POST'], // action, url, method
+        ['delete', '/admin/category/delete', 'POST'], // action, url, method
+        ['countRecipe', '/admin/category/countRecipe', 'POST'], // action, url, method
     ],
 
     'Event' => [
@@ -47,7 +47,7 @@ $routes = [
         ['searchEventAdmin', '/admin/event/search', 'POST'], // action, url, method
         ['updateEvent', '/admin/updateEvent/{id:\d+}', ['GET', 'POST']],
         ['unlinkRecipeFromEvent', '/admin/event/unlinkRecipeFromEvent', 'POST'], // action, url, method
-      ],
+    ],
 
     'Recipe' => [ // Controller
         ['listRecipe', '/recipe', 'GET'], // action, url, method
@@ -65,7 +65,7 @@ $routes = [
     ],
 
     'Company' => [
-      ['changeCatchPhrase','/admin/changeCatchPhrase','POST'],
+        ['changeCatchPhrase', '/admin/changeCatchPhrase', 'POST'],
     ],
 
 ];

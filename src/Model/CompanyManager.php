@@ -29,10 +29,11 @@ class CompanyManager extends AbstractManager
         $statement->execute();
     }
 
-    public function selectCatchPhrase():string
+    public function selectCatchPhrase(): string
     {
         $sql = "SELECT value FROM company WHERE name='catchPhrase'";
         $catchPhrase = $this->pdoConnection->query($sql, \PDO::FETCH_CLASS, $this->className)->fetch();
+
         return $catchPhrase->getValue();
     }
 }

@@ -20,26 +20,27 @@ class UploadManager
     public function upload($file): ?string
     {
         if (!empty($file['name'])) {
-            $uploadFile = APP_UPLOADDIR . basename($file['name']);
+            $uploadFile = APP_UPLOADDIR.basename($file['name']);
             if ($file["size"] > self::MAXSIZE) {
-                throw new \Exception('Votre image devrait faire moins de '. self::MAXSIZE / 1000000 . 'Mo');
+                throw new \Exception('Votre image devrait faire moins de '.self::MAXSIZE / 1000000 .'Mo');
             }
 
             $imageFileType = strtolower(pathinfo($uploadFile, PATHINFO_EXTENSION));
 
-            $extensionAuth = ["jpg","jpeg", "png", "gif"];
+            $extensionAuth = ["jpg", "jpeg", "png", "gif"];
             if (!in_array($imageFileType, $extensionAuth)) {
-                throw new \Exception('Oups pas le bon format ' . implode(", ", $extensionAuth));
+                throw new \Exception('Oups pas le bon format '.implode(", ", $extensionAuth));
             }
 
             $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
-            $filename = "Image" . uniqid() . '.' . $extension;
+            $filename = "Image".uniqid().'.'.$extension;
 
             if (empty($filename)) {
                 throw new \Exception('erreur création fichier');
             }
-            move_uploaded_file($file['tmp_name'], 'assets/upload/' . $filename);
+            move_uploaded_file($file['tmp_name'], 'assets/upload/'.$filename);
         }
+
         return $filename ?? null;
     }
 
@@ -48,12 +49,11 @@ class UploadManager
      */
     public function unlink(string $file)
     {
-        $fileName = 'assets/upload/' . $file;
+        $fileName = 'assets/upload/'.$file;
 
         if (!file_exists($fileName)) {
             throw new \Exception('fichier introuvable');
         }
         unlink($fileName);
-
     }
 }

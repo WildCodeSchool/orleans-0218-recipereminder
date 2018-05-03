@@ -37,7 +37,6 @@ class RecipeManager extends AbstractManager
     }
 
 
-
     public function selectLastRecipes()
     {
         $sql = "SELECT r.id, r.name, r.img, c.name AS category FROM recipe AS r 
@@ -103,11 +102,11 @@ class RecipeManager extends AbstractManager
             $sql .= "AND r.categoryId = :categoryId";
         }
 
-        $sql.=" ORDER BY r.name LIMIT :offset , :limit";
+        $sql .= " ORDER BY r.name LIMIT :offset , :limit";
 
         $statement = $this->pdoConnection->prepare($sql);
         $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
-        $statement->bindValue('name', '%' . $name . '%', \PDO::PARAM_STR);
+        $statement->bindValue('name', '%'.$name.'%', \PDO::PARAM_STR);
         if (!empty($categoryId)) {
             $statement->bindValue('categoryId', $categoryId, \PDO::PARAM_INT);
         }
@@ -117,10 +116,10 @@ class RecipeManager extends AbstractManager
 
         return $statement->fetchAll();
     }
-  
+
     public function updateNote(int $recipeId, int $note)
     {
-        $sql='UPDATE recipe SET note = :note WHERE id = :id';
+        $sql = 'UPDATE recipe SET note = :note WHERE id = :id';
         $statement = $this->pdoConnection->prepare($sql);
         $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
         $statement->bindValue('note', $note, \PDO::PARAM_INT);
@@ -153,9 +152,8 @@ class RecipeManager extends AbstractManager
 
         $statement = $this->pdoConnection->prepare($sql);
         $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
-        $statement->bindValue('name', '%' . $name . '%', \PDO::PARAM_STR);
+        $statement->bindValue('name', '%'.$name.'%', \PDO::PARAM_STR);
         if (!empty($dateStart) && !empty($dateEnd)) {
-
             $statement->bindValue('dateStart', $dateStart, \PDO::PARAM_STR);
             $statement->bindValue('dateEnd', $dateEnd, \PDO::PARAM_STR);
         }
@@ -175,6 +173,7 @@ class RecipeManager extends AbstractManager
         $statement->setFetchMode(\PDO::FETCH_ASSOC);
         $statement->bindValue('categoryId', $categoryId, \PDO::PARAM_INT);
         $statement->execute();
+
         return $statement->fetch();
     }
 }

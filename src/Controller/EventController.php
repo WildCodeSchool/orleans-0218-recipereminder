@@ -66,8 +66,8 @@ class EventController extends AbstractController
                 $errors = $e->getMessage();
             }
         }
-      
-        return $this->twig->render('Admin/Event/addEvent.html.twig', [ 'errors' => $errors, 'data' => $data]);
+
+        return $this->twig->render('Admin/Event/addEvent.html.twig', ['errors' => $errors, 'data' => $data]);
     }
 
     public function showEvent(int $id)
@@ -76,7 +76,10 @@ class EventController extends AbstractController
         $event = $eventManager->selectOneById($id);
         $showRecipes = $eventManager->showLinkedRecipes($id);
 
-        return $this->twig->render('Event/show-one-event.html.twig', ['event' => $event, 'showRecipes' => $showRecipes]);
+        return $this->twig->render(
+            'Event/show-one-event.html.twig',
+            ['event' => $event, 'showRecipes' => $showRecipes]
+        );
     }
 
     public function showAdminEvent(int $id)
@@ -89,7 +92,10 @@ class EventController extends AbstractController
 
         $showRecipes = $eventManager->showLinkedRecipes($id);
 
-        return $this->twig->render('Admin/Event/show-one-event-admin.html.twig', ['event' => $event, 'showRecipes' => $showRecipes, 'categories' => $categories]);
+        return $this->twig->render(
+            'Admin/Event/show-one-event-admin.html.twig',
+            ['event' => $event, 'showRecipes' => $showRecipes, 'categories' => $categories]
+        );
     }
 
     /**
@@ -108,7 +114,13 @@ class EventController extends AbstractController
         } catch (\Exception $e) {
             exit();
         }
-        $events = $eventManager->selectEventLimit(trim($_POST['name']), $_POST['dateStart'], $_POST['dateEnd'],$_POST['page'],THUMB_LIMIT);
+        $events = $eventManager->selectEventLimit(
+            trim($_POST['name']),
+            $_POST['dateStart'],
+            $_POST['dateEnd'],
+            $_POST['page'],
+            THUMB_LIMIT
+        );
 
         return $this->twig->render('Event/inc_listEvent.html.twig', ['events' => $events]);
     }
@@ -168,61 +180,67 @@ class EventController extends AbstractController
     }
 
     public function updateEvent(int $id)
-    {   $data = $_POST;
+    {
+        $data = $_POST;
         $errors = null;
         $eventManager = new EventManager();
         try {
-        if (!empty($_POST)) {
-
+            if (!empty($_POST)) {
                 if (empty(trim($_POST['comment']))) {
                     throw new \Exception('Merci d\'ajouter un commentaire!');
                 }
-            if (empty(trim($_POST['name']))) {
-                throw new \Exception('Le champ nom ne doit pas etre vide !');
-            }
-            if (empty(trim($_POST['date']))) {
-                throw new \Exception('Le champ date doit être renseigné !');
-            }
-
-            if (empty($_FILES['filename']['name'])) {
-                $eventManager->update($id, $data);
-                header('Location:/admin/eventList');
-            } else {
-                $event = $eventManager->selectOneById($id);
-                $imageName = $event->getImg();
-
-                // upload du fichier
-                $upload = new UploadManager();
-                $filename = $upload->upload($_FILES['filename']);
-                $data['img'] = $filename;
-
-                // supprimer l'ancien fichier s'il existe
-                if (!empty($imageName)) {
-                    $upload->unlink($imageName);
+                if (empty(trim($_POST['name']))) {
+                    throw new \Exception('Le champ nom ne doit pas etre vide !');
+                }
+                if (empty(trim($_POST['date']))) {
+                    throw new \Exception('Le champ date doit être renseigné !');
                 }
 
-                // update de tous les champs
+                if (empty($_FILES['filename']['name'])) {
+                    $eventManager->update($id, $data);
+                    header('Location:/admin/eventList');
+                } else {
+                    $event = $eventManager->selectOneById($id);
+                    $imageName = $event->getImg();
 
-                $eventManager->update($id, $data);
-                header('Location: /admin/event/' . $id);
-                exit();
+                    // upload du fichier
+                    $upload = new UploadManager();
+                    $filename = $upload->upload($_FILES['filename']);
+                    $data['img'] = $filename;
+ 
+                    // supprimer l'ancien fichier s'il existe
+                    if (!empty($imageName)) {
+                        $upload->unlink($imageName);
+                    }
+
+                    // update de tous les champs
+
+                    $eventManager->update($id, $data);
+                    header('Location: /admin/event/' . $id);
+                    exit();
+                }
             }
-        }
 
-        $event = $eventManager->selectOneById($id);
-
+            $event = $eventManager->selectOneById($id);
         } catch (\Exception $e) {
             $errors = $e->getMessage();
         }
-        return $this->twig->render('Admin/Event/updateEvent.html.twig', ['data' => $event, 'errors'=>$errors]);
+
+        return $this->twig->render('Admin/Event/updateEvent.html.twig', ['data' => $event, 'errors' => $errors]);
     }
 
     public function searchEventAdmin()
     {
         $eventManager = new EventManager();
-        $events=$eventManager->selectEventLimit(trim($_POST['name']),$_POST['dateStart'],$_POST['dateEnd'],$_POST['page'], MEDIA_LIMIT);
+        $events = $eventManager->selectEventLimit(
+            trim($_POST['name']),
+            $_POST['dateStart'],
+            $_POST['dateEnd'],
+            $_POST['page'],
+            MEDIA_LIMIT
+        );
 
-        return $this->twig->render('Admin/Event/search_eventList.html.twig', ['events' => $events ]);
+        return $this->twig->render('Admin/Event/search_eventList.html.twig', ['events' => $events]);
     }
 
     public function unlinkRecipeFromEvent()
@@ -232,8 +250,6 @@ class EventController extends AbstractController
             $eventRecipeManager->unlink($_POST['eventId'], $_POST['recipeId']);
         }
 
-        header('Location: /admin/event/' . $_POST['eventId']);
+        header('Location: /admin/event/'.$_POST['eventId']);
     }
-
 }
-

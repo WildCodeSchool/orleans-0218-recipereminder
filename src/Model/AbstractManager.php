@@ -31,7 +31,7 @@ abstract class AbstractManager
         $connexion = new Connection();
         $this->pdoConnection = $connexion->getPdoConnection();
         $this->table = $table;
-        $this->className = __NAMESPACE__ . '\\' . ucfirst($table);
+        $this->className = __NAMESPACE__.'\\'.ucfirst($table);
     }
 
     /**
@@ -42,7 +42,7 @@ abstract class AbstractManager
     public function selectAll()
     {
         return $this->pdoConnection->query(
-            'SELECT * FROM ' . $this->table,
+            'SELECT * FROM '.$this->table,
             \PDO::FETCH_CLASS,
             $this->className
         )->fetchAll();
@@ -96,32 +96,26 @@ abstract class AbstractManager
         $statement = $this->pdoConnection->prepare($sql);
         $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
         foreach ($data as $key => $value) {
-
             $statement->bindValue($key, $value);
-
         }
-
         $statement->execute();
     }
-
-
 
     public function update(int $id, array $data)
     {
         $key = array_keys($data);
-        foreach ($key as $value){
-            $fieldTab[]= $value.'=:'.$value;
+        foreach ($key as $value) {
+            $fieldTab[] = $value.'=:'.$value;
         }
-        $field= implode(',',$fieldTab);
+        $field = implode(',', $fieldTab);
         $query = "UPDATE $this->table SET $field WHERE id=:id";
 
         $statement = $this->pdoConnection->prepare($query);
-        foreach($data as $key => $value){
+        foreach ($data as $key => $value) {
             $statement->bindValue($key, $value);
         }
         $statement->bindValue('id', $id);
 
         $statement->execute();
     }
-
 }
