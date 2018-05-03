@@ -37,7 +37,7 @@ class EventManager extends AbstractManager
      * @param int $page
      * @return array
      */
-    public function selectEventLimit($name = null, $dateStart = null, $dateEnd = null, $page = 0,$limit=9)
+    public function selectEventLimit($name = null, $dateStart = null, $dateEnd = null, $page = 0, $limit = 9)
     {
 
         $offset = $page * $limit;
@@ -47,11 +47,11 @@ class EventManager extends AbstractManager
         if (!empty($dateStart) && !empty($dateEnd)) {
             $sql .= " AND date BETWEEN :dateStart AND :dateEnd";
         }
-        $sql.=" ORDER BY e.name LIMIT :offset , :limit";
+        $sql .= " ORDER BY e.name LIMIT :offset , :limit";
 
         $statement = $this->pdoConnection->prepare($sql);
         $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
-        $statement->bindValue('name', '%' . $name . '%', \PDO::PARAM_STR);
+        $statement->bindValue('name', '%'.$name.'%', \PDO::PARAM_STR);
         if (!empty($dateStart) && !empty($dateEnd)) {
             $statement->bindValue('dateStart', $dateStart, \PDO::PARAM_STR);
             $statement->bindValue('dateEnd', $dateEnd, \PDO::PARAM_STR);
@@ -62,7 +62,7 @@ class EventManager extends AbstractManager
 
         return $statement->fetchAll();
     }
-  
+
     public function showLinkedRecipes(int $id)
     {
         $sql = "SELECT r.id, r.name, img, categoryId, book, url, comment, eventId, recipeId, ca.name as category 
@@ -78,5 +78,3 @@ class EventManager extends AbstractManager
         return $statement->fetchAll();
     }
 }
-
-

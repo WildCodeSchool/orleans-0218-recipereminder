@@ -55,8 +55,8 @@ class EventRecipeManager extends AbstractManager
         $sql = "SELECT DISTINCT r.id, r.name, r.img, r.url, r.book, r.comment, c.name as category
                  FROM recipe AS r
                   LEFT JOIN category AS c ON c.id = r.categoryId
-                   LEFT JOIN event_recipe AS er ON er.recipeId =r.id  
-                    WHERE r.name LIKE :name AND r.id NOT IN (SELECT recipeId FROM event_recipe WHERE eventId = :eventId)";
+                  LEFT JOIN event_recipe AS er ON er.recipeId =r.id  
+                  WHERE r.name LIKE :name AND r.id NOT IN (SELECT recipeId FROM event_recipe WHERE eventId = :eventId)";
 
         if (!empty($categoryId)) {
             $sql .= " AND r.categoryId = :categoryId";
@@ -75,8 +75,14 @@ class EventRecipeManager extends AbstractManager
         return $statement->fetchAll();
     }
 
-    public function selectNotLinkedEvents($recipeId, $name = null, $dateStart = null, $dateEnd = null, $page = 0, $limit=5)
-    {
+    public function selectNotLinkedEvents(
+        $recipeId,
+        $name = null,
+        $dateStart = null,
+        $dateEnd = null,
+        $page = 0,
+        $limit = 5
+    ) {
         $offset = $page * $limit;
         $sql = "SELECT DISTINCT e.id, e.name, e.img, e.date
                 FROM event AS e
@@ -94,7 +100,7 @@ class EventRecipeManager extends AbstractManager
         $statement->setFetchMode(\PDO::FETCH_CLASS, $this->className);
         $statement->bindValue('recipeId', $recipeId, \PDO::PARAM_INT);
         if (!empty($name)) {
-            $statement->bindValue('name', '%' . $name . '%', \PDO::PARAM_STR);
+            $statement->bindValue('name', '%'.$name.'%', \PDO::PARAM_STR);
         }
         if (!empty($dateStart) && !empty($dateEnd)) {
             $statement->bindValue('dateStart', $dateStart, \PDO::PARAM_STR);

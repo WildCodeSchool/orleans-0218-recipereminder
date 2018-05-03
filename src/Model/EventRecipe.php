@@ -8,7 +8,6 @@
 
 namespace Model;
 
-
 class EventRecipe
 {
     /**
@@ -52,5 +51,4 @@ class EventRecipe
     {
         $this->eventId = $eventId;
     }
-
 }
