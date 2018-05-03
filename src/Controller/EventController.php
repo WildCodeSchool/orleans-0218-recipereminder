@@ -207,7 +207,7 @@ class EventController extends AbstractController
                     $upload = new UploadManager();
                     $filename = $upload->upload($_FILES['filename']);
                     $data['img'] = $filename;
-
+ 
                     // supprimer l'ancien fichier s'il existe
                     if (!empty($imageName)) {
                         $upload->unlink($imageName);
@@ -216,7 +216,7 @@ class EventController extends AbstractController
                     // update de tous les champs
 
                     $eventManager->update($id, $data);
-                    header('Location:/admin/eventList');
+                    header('Location: /admin/event/' . $id);
                     exit();
                 }
             }
